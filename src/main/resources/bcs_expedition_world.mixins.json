@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "dev.bc.expeditionworld.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "bcs-expedition-world.refmap.json",
+  "refmap": "bcs_expedition_world.refmap.json",
   "mixins": [
     "EntityMixin"
   ],
