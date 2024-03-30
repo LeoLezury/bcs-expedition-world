@@ -1,0 +1,14 @@
+{
+  "advancements.bcs_expedition_world.obtain_sculk_mint.description": "Obtain the sculk mint",
+  "advancements.bcs_expedition_world.obtain_sculk_mint.title": "The sculk is salivating over it",
+  "advancements.bcs_expedition_world.root.description": "BC's Expedition World",
+  "advancements.bcs_expedition_world.root.title": "BC's Expedition World",
+  "advancements.bcs_expedition_world.stand_on_sculk_shrieker_with_catwalk.description": "Stand on a sculk shrieker with catwalk effect and darkness effect",
+  "advancements.bcs_expedition_world.stand_on_sculk_shrieker_with_catwalk.title": "Dancer on the knife",
+  "effect.bcs_expedition_world.catwalk": "Catwalk",
+  "item.bcs_expedition_world.sculk_mint": "Sculk Mint",
+  "item.minecraft.lingering_potion.effect.catwalk": "Lingering Potion of Catwalk",
+  "item.minecraft.potion.effect.catwalk": "Potion of Catwalk",
+  "item.minecraft.splash_potion.effect.catwalk": "Splash Potion of Catwalk",
+  "item_group.bcs_expedition_world": "BC's Expedition World"
+}

@@ -1,0 +1,4 @@
+// 1.20.1	2024-03-30T17:38:02.1588556	Global Loot Modifiers : bcs_expedition_world
+bde64e3c8a503a7a6e4ae1c6958a9e1487c5012e data/bcs_expedition_world/loot_modifiers/chest_ancient_city.json
+647e90d6ac11fc085b0573847f683fc2df634c42 data/bcs_expedition_world/loot_modifiers/entity_warden.json
+da2770d5096111e6d84922eca895015cebe9e9cd data/forge/loot_modifiers/global_loot_modifiers.json
