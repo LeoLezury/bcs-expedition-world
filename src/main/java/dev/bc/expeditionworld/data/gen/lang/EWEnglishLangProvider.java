@@ -26,7 +26,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(Items.LINGERING_POTION, EWPotions.CATWALK.get(), "Lingering Potion of Catwalk");
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");
         addAdvancement("obtain_sculk_mint", "The sculk is salivating over it", "Obtain the sculk mint");
-        addAdvancement("stand_on_sculk_shrieker_with_catwalk", "Dancer on the knife", "Stand on a sculk shrieker with catwalk effect and darkness effect");
+        addAdvancement("stand_on_sculk_shrieker_with_catwalk", "Dancer on the knife", "Stand on a sculk shrieker with catwalk and darkness effect");
     }
 
     public void add(Item item, Potion key, String name) {

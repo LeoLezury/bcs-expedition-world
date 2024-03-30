@@ -26,7 +26,7 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(Items.LINGERING_POTION, EWPotions.CATWALK.get(), "滞留型猫步药水");
         addAdvancement("root", "BC的远征物语", "BC的远征物语");
         addAdvancement("obtain_sculk_mint", "幽匿也为之垂涎欲滴", "获得幽匿薄荷");
-        addAdvancement("stand_on_sculk_shrieker_with_catwalk", "刀尖舞者", "在同时拥有黑暗与猫步效果时下站在一个幽匿尖啸体上方");
+        addAdvancement("stand_on_sculk_shrieker_with_catwalk", "刀尖舞者", "在同时拥有黑暗与猫步效果时站在一个幽匿尖啸体上");
     }
 
     public void add(Item item, Potion key, String name) {
