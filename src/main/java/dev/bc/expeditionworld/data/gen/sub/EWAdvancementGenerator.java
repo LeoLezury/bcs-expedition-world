@@ -45,6 +45,13 @@ public class EWAdvancementGenerator implements ForgeAdvancementProvider.Advancem
                 .addCriterion("stand_with_effect", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.STAND_ON_SCULK_SHRIEKER_WITH_CATWALK.getId(), ContextAwarePredicate.ANY))
                 .rewards(new AdvancementRewards(20, new ResourceLocation[0], new ResourceLocation[0], CommandFunction.CacheableFunction.NONE))
                 .save(saver, ExpeditionWorld.MOD_ID + ":stand_on_sculk_shrieker_with_catwalk");
+        Advancement fullArmorSetWithTrappedSoulTrim = Advancement.Builder.advancement().parent(root).display(
+                        EWItems.TRAPPED_SOUL.get(),
+                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.description"),
+                        null, FrameType.GOAL, true, true, false)
+                .addCriterion("armor_set", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.getId(), ContextAwarePredicate.ANY))
+                .save(saver, ExpeditionWorld.MOD_ID + ":full_armor_set_with_trapped_soul_trim");
     }
 
     private static Advancement addItemObtain(Consumer<Advancement> consumer, Advancement parent, String id, Item item) {

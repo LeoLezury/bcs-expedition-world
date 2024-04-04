@@ -1,0 +1,30 @@
+{
+  "parent": "bcs_expedition_world:root",
+  "criteria": {
+    "armor_set": {
+      "conditions": {},
+      "trigger": "bcs_expedition_world:full_armor_set_with_trapped_soul_trim"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.bcs_expedition_world.full_armor_set_with_trapped_soul_trim.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "bcs_expedition_world:trapped_soul"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.bcs_expedition_world.full_armor_set_with_trapped_soul_trim.title"
+    }
+  },
+  "requirements": [
+    [
+      "armor_set"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

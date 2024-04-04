@@ -1,0 +1,9 @@
+{
+  "asset_name": "trapped_soul",
+  "description": {
+    "color": "#A1A1A1",
+    "translate": "trim_material.bcs_expedition_world.trapped_soul"
+  },
+  "ingredient": "bcs_expedition_world:trapped_soul",
+  "item_model_index": 0.1
+}

@@ -1,6 +1,8 @@
 package dev.bc.expeditionworld.data.gen.lang;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
+import dev.bc.expeditionworld.block.EWBlocks;
+import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import dev.bc.expeditionworld.potion.EWPotions;
@@ -19,14 +21,37 @@ public class EWEnglishLangProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add("item_group." + ExpeditionWorld.MOD_ID, "BC's Expedition World");
+
+        add(EWBlocks.FETTERED_CHEST.get(), "Fettered Chest");
+        add(EWBlocks.FETTERED_POT.get(), "Fettered Pot");
+
         add(EWItems.SCULK_MINT.get(), "Sculk Mint");
-        add(EWMobEffects.CATWALK.get(), "Catwalk");
+        add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");
+        add(EWItems.STONE_MIMICHEST_KNIFE.get(), "Stone Mimichest Knife");
+        add(EWItems.BRICK_MIMICHEST_KNIFE.get(), "Brick Mimichest Knife");
+
+        add("trim_material." + ExpeditionWorld.MOD_ID + ".trapped_soul", "Trapped Soul Material");
+
         add(Items.POTION, EWPotions.CATWALK.get(), "Potion of Catwalk");
         add(Items.SPLASH_POTION, EWPotions.CATWALK.get(), "Splash Potion of Catwalk");
         add(Items.LINGERING_POTION, EWPotions.CATWALK.get(), "Lingering Potion of Catwalk");
+        add(Items.TIPPED_ARROW, EWPotions.CATWALK.get(), "Arrow of Catwalk");
+
+        add(Items.POTION, EWPotions.FETTERED.get(), "Potion of Fettered");
+        add(Items.SPLASH_POTION, EWPotions.FETTERED.get(), "Splash Potion of Fettered");
+        add(Items.LINGERING_POTION, EWPotions.FETTERED.get(), "Lingering Potion of Fettered");
+        add(Items.TIPPED_ARROW, EWPotions.FETTERED.get(), "Arrow of Fettered");
+
+        add(EWMobEffects.CATWALK.get(), "Catwalk");
+        add(EWMobEffects.FETTERED.get(), "Fettered");
+
+        add(EWEntities.MIMICHEST.get(), "Mimichest");
+        add(EWEntities.MIMIPOT.get(), "Mimipot");
+
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");
         addAdvancement("obtain_sculk_mint", "The sculk is salivating over it", "Obtain the sculk mint");
         addAdvancement("stand_on_sculk_shrieker_with_catwalk", "Dancer on the knife", "Stand on a sculk shrieker with catwalk and darkness effect");
+        addAdvancement("full_armor_set_with_trapped_soul_trim", "Confined", "Wearing a full set of armor with trapped soul as the armor trim material");
     }
 
     public void add(Item item, Potion key, String name) {
