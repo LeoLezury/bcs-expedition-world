@@ -122,7 +122,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
         return blockState.getValue(HALF) == DoubleBlockHalf.LOWER ? BOUNDING_BOX_LOWER : (chest ? BOUNDING_BOX_UPPER_CHEST : BOUNDING_BOX_UPPER_POT);
     }
 
-    public FluidState getFluidState(BlockState p_51581_) {
-        return p_51581_.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(p_51581_);
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 }
