@@ -48,6 +48,6 @@ public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
     }
 
     public ResourceLocation getTextureLocation(MimichestKnife knife) {
-        return knife.isBricks() ? BRICK_LOCATION : STONE_LOCATION;
+        return knife.isBrick() ? BRICK_LOCATION : STONE_LOCATION;
     }
 }

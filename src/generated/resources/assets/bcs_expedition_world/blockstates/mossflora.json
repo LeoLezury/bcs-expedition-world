@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "bcs_expedition_world:block/mossflora"
+    },
+    "age=1": {
+      "model": "bcs_expedition_world:block/mossflora_age_1"
+    },
+    "age=2": {
+      "model": "bcs_expedition_world:block/mossflora_age_2"
+    },
+    "age=3": {
+      "model": "bcs_expedition_world:block/mossflora_age_3"
+    }
+  }
+}

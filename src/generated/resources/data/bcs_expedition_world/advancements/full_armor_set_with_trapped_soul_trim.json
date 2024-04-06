@@ -1,5 +1,5 @@
 {
-  "parent": "bcs_expedition_world:root",
+  "parent": "bcs_expedition_world:wake_mimichest",
   "criteria": {
     "armor_set": {
       "conditions": {},

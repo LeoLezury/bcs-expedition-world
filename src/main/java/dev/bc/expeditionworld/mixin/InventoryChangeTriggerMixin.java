@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mixin(InventoryChangeTrigger.class)
 public class InventoryChangeTriggerMixin {
-    @Inject(method = "trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/item/ItemStack;)V", at = @At("TAIL"), cancellable = true)
+    @Inject(method = "trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/item/ItemStack;)V", at = @At("TAIL"))
     private void expeditionWorld$trigger(ServerPlayer player, Inventory inventory, ItemStack stack, CallbackInfo ci) {
         AtomicBoolean shouldTrigger = new AtomicBoolean(true);
         for (ItemStack armor : player.getArmorSlots()) {

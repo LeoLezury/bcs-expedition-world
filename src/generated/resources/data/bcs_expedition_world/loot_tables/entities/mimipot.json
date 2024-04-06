@@ -46,7 +46,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:bricks"
+          "name": "minecraft:brick"
         }
       ],
       "rolls": 1.0

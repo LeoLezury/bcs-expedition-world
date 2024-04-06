@@ -45,7 +45,14 @@ public class EWAdvancementGenerator implements ForgeAdvancementProvider.Advancem
                 .addCriterion("stand_with_effect", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.STAND_ON_SCULK_SHRIEKER_WITH_CATWALK.getId(), ContextAwarePredicate.ANY))
                 .rewards(new AdvancementRewards(20, new ResourceLocation[0], new ResourceLocation[0], CommandFunction.CacheableFunction.NONE))
                 .save(saver, ExpeditionWorld.MOD_ID + ":stand_on_sculk_shrieker_with_catwalk");
-        Advancement fullArmorSetWithTrappedSoulTrim = Advancement.Builder.advancement().parent(root).display(
+        Advancement wakeMimichest = Advancement.Builder.advancement().parent(root).display(
+                        EWItems.FETTERED_CHEST.get(),
+                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".wake_mimichest.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".wake_mimichest.description"),
+                        null, FrameType.GOAL, true, true, false)
+                .addCriterion("wake", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.WAKE_MIMICHEST.getId(), ContextAwarePredicate.ANY))
+                .save(saver, ExpeditionWorld.MOD_ID + ":wake_mimichest");
+        Advancement fullArmorSetWithTrappedSoulTrim = Advancement.Builder.advancement().parent(wakeMimichest).display(
                         EWItems.TRAPPED_SOUL.get(),
                         Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.title"),
                         Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.description"),

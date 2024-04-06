@@ -29,7 +29,7 @@ public class MimichestRangedAttackPhase extends AttackPhase<Mimichest> {
     public void tick(Mimichest entity) {
         LivingEntity target = entity.getTarget();
         if (target != null) {
-            entity.setAttackYRot(EWMathUtil.positionToYaw(entity.position(), target.position()));
+            entity.setFixedYRot(EWMathUtil.positionToYaw(entity.position(), target.position()));
             if (entity.getAttackTicks() == 10) {
                 Vec3 basePos = target.position().add(0, target.getBbHeight() * 0.4, 0);
                 float baseYaw = EWMathUtil.positionToYaw(entity.position(), basePos);
@@ -45,7 +45,7 @@ public class MimichestRangedAttackPhase extends AttackPhase<Mimichest> {
     private void shootAt(Mimichest entity, Vec3 pos) {
         MimichestKnife knife = new MimichestKnife(entity, entity.level());
         if (entity.getType() == EWEntities.MIMIPOT.get()) {
-            knife.setBricks(true);
+            knife.setBrick(true);
         }
         knife.setPos(knife.getX(), entity.getY() + entity.getBbHeight() * 0.1, knife.getZ());
         double d0 = pos.x - entity.getX();

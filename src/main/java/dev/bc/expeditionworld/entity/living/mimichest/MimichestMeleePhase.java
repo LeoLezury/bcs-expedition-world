@@ -30,7 +30,7 @@ public class MimichestMeleePhase extends AttackPhase<Mimichest> {
         if (target != null) {
             if (entity.getAttackTicks() == 8) {
                 motion = target.position().subtract(entity.position()).normalize().scale(0.5);
-                entity.setAttackYRot(EWMathUtil.positionToYaw(Vec3.ZERO, motion));
+                entity.setFixedYRot(EWMathUtil.positionToYaw(Vec3.ZERO, motion));
             }
         }
         if (entity.getAttackTicks() >= 8 && entity.getAttackTicks() <= 50) {

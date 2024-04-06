@@ -1,5 +1,8 @@
-// 1.20.1	2024-04-04T21:12:48.0382652	Loot Tables
+// 1.20.1	2024-04-06T14:50:49.9105026	Loot Tables
+83c548e211e9828ea046d7a0a4e6bbf0502ddff7 data/bcs_expedition_world/loot_tables/blocks/fettered_chest.json
+292616e69f9c07e31e075d211bc94b6f71d2a80a data/bcs_expedition_world/loot_tables/blocks/fettered_pot.json
+d3527a7db6b7fe2694bbbeee505370e2b7dceeb8 data/bcs_expedition_world/loot_tables/blocks/mossflora.json
 37547c7b31c7c1ecb4f94bb4cb3e30745f6dab68 data/bcs_expedition_world/loot_tables/chests/ancient_city.json
-e9011d322759080b7d68d913b5603c1c07a87014 data/bcs_expedition_world/loot_tables/entities/mimichest.json
-62d061e31b2a911d4f5f93c0311772b5f44c8296 data/bcs_expedition_world/loot_tables/entities/mimipot.json
+82ad8ad0bf7f2dabd124c117e6316c88e1745ee6 data/bcs_expedition_world/loot_tables/entities/mimichest.json
+9a281c15b7f73b54b3c0693714db43c6b40479a3 data/bcs_expedition_world/loot_tables/entities/mimipot.json
 85552ec5c4bc25fc65743f0c48f296e7de618685 data/bcs_expedition_world/loot_tables/entities/warden.json

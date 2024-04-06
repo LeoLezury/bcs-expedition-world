@@ -28,8 +28,6 @@ public class EWEntityLootSubProvider extends EntityLootSubProvider {
         add(EWEntities.MIMICHEST.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(EWItems.TRAPPED_SOUL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))))
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(Items.STONE).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0F, 1.0F))
                         .add(LootItem.lootTableItem(Items.IRON_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))))));
 
@@ -37,7 +35,7 @@ public class EWEntityLootSubProvider extends EntityLootSubProvider {
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
                         .add(LootItem.lootTableItem(EWItems.TRAPPED_SOUL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))))
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(Items.BRICKS).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
+                        .add(LootItem.lootTableItem(Items.BRICK).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))))
                 .withPool(LootPool.lootPool().setRolls(UniformGenerator.between(0F, 1.0F))
                         .add(LootItem.lootTableItem(Items.GOLD_INGOT).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F))))));
     }

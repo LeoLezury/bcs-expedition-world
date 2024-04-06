@@ -24,6 +24,7 @@ public class EWChineseLangProvider extends LanguageProvider {
 
         add(EWBlocks.FETTERED_CHEST.get(), "桎梏箱");
         add(EWBlocks.FETTERED_POT.get(), "桎梏罐");
+        add(EWBlocks.MOSSFLORA.get(), "苔花");
 
         add(EWItems.SCULK_MINT.get(), "幽匿薄荷");
         add(EWItems.TRAPPED_SOUL.get(), "受困灵魂");
@@ -51,6 +52,7 @@ public class EWChineseLangProvider extends LanguageProvider {
         addAdvancement("root", "BC的远征物语", "BC的远征物语");
         addAdvancement("obtain_sculk_mint", "幽匿也为之垂涎欲滴", "获得幽匿薄荷");
         addAdvancement("stand_on_sculk_shrieker_with_catwalk", "刀尖舞者", "在同时拥有黑暗与猫步效果时站在一个幽匿尖啸体上");
+        addAdvancement("wake_mimichest", "死者为大", "惊醒匿箱灵或匿罐灵");
         addAdvancement("full_armor_set_with_trapped_soul_trim", "身陷桎梏", "穿戴一整套使用受困灵魂作为盔甲纹饰材料的护甲");
     }
 

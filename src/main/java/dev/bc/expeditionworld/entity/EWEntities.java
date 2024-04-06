@@ -18,7 +18,7 @@ public class EWEntities {
 
     // monsters
     public static final RegistryObject<EntityType<Mimichest>> MIMICHEST = ENTITY_TYPES.register("mimichest",
-            () -> EntityType.Builder.of(Mimichest::new, MobCategory.MONSTER).sized(0.9f, 0.7f).build("mimichest"));
+            () -> EntityType.Builder.of(Mimichest::new, MobCategory.MONSTER).sized(0.9f, 1.5f).build("mimichest"));
     public static final RegistryObject<EntityType<Mimichest>> MIMIPOT = ENTITY_TYPES.register("mimipot",
-            () -> EntityType.Builder.of(Mimichest::new, MobCategory.MONSTER).sized(0.9f, 0.7f).build("mimipot"));
+            () -> EntityType.Builder.of(Mimichest::new, MobCategory.MONSTER).sized(0.9f, 1.5f).build("mimipot"));
 }

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "bcs_expedition_world.refmap.json",
   "mixins": [
+    "BlockMixin",
     "EntityMixin",
     "InventoryChangeTriggerMixin"
   ],

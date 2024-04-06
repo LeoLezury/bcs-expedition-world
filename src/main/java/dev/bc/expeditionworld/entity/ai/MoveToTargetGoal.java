@@ -38,7 +38,7 @@ public class MoveToTargetGoal extends Goal {
     }
 
     public void tick() {
-        if (mob.getTarget() != null) {
+        if (mob.getTarget() != null && mob.getTarget().isAlive()) {
             mob.getLookControl().setLookAt(mob.getTarget(), 500, 500);
             if (mob.getNavigation().isDone() || (lastTargetPos != mob.getTarget().position() && mob.tickCount - lastRecalculate > recalculateInterval)) {
                 lastTargetPos = mob.getTarget().position();

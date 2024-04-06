@@ -1,5 +1,6 @@
 package dev.bc.expeditionworld.data.gen;
 
+import dev.bc.expeditionworld.data.gen.sub.EWBlockLootSubProvider;
 import dev.bc.expeditionworld.data.gen.sub.EWChestLootSubProvider;
 import dev.bc.expeditionworld.data.gen.sub.EWEntityLootSubProvider;
 import dev.bc.expeditionworld.data.gen.sub.EWEntityModifiedLootSubProvider;
@@ -13,9 +14,10 @@ import java.util.Set;
 public class EWLootProvider extends LootTableProvider {
     public EWLootProvider(PackOutput output) {
         super(output, Set.of(), List.of(
+                new SubProviderEntry(EWBlockLootSubProvider::new, LootContextParamSets.BLOCK),
                 new SubProviderEntry(EWEntityLootSubProvider::new, LootContextParamSets.ENTITY),
-                new SubProviderEntry(EWEntityModifiedLootSubProvider::new, LootContextParamSets.ENTITY),
-                new SubProviderEntry(EWChestLootSubProvider::new, LootContextParamSets.CHEST)
+                new SubProviderEntry(EWChestLootSubProvider::new, LootContextParamSets.CHEST),
+                new SubProviderEntry(EWEntityModifiedLootSubProvider::new, LootContextParamSets.ENTITY)
         ));
     }
 }

@@ -22,12 +22,12 @@ public class MimichestKnifeItem extends Item {
     public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int time) {
         MimichestKnife knife = new MimichestKnife(living, level);
         int usedTime = this.getUseDuration(stack) - time;
-        knife.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, 3F * ((float) usedTime / this.getUseDuration(stack)), 1.0F);
+        knife.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, 3F * (Math.min(usedTime, 50F) / 50F), 1.0F);
         if (living instanceof Player player && player.getAbilities().instabuild) {
             knife.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
         }
         if (stack.is(EWItems.BRICK_MIMICHEST_KNIFE.get())) {
-            knife.setBricks(true);
+            knife.setBrick(true);
         }
         level.addFreshEntity(knife);
         level.playSound(null, knife, SoundEvents.TRIDENT_THROW, living instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE, 1.0F, 1.0F);
@@ -43,7 +43,7 @@ public class MimichestKnifeItem extends Item {
 
     @Override
     public int getUseDuration(ItemStack stack) {
-        return 100;
+        return 72000;
     }
 
     @Override

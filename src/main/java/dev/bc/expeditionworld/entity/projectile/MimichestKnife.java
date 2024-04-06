@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class MimichestKnife extends AbstractArrow {
-    protected static final EntityDataAccessor<Boolean> BRICKS = SynchedEntityData.defineId(MimichestKnife.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> BRICK = SynchedEntityData.defineId(MimichestKnife.class, EntityDataSerializers.BOOLEAN);
 
     private boolean dealtDamage;
     public int clientSideReturnTickCount;
@@ -42,15 +42,15 @@ public class MimichestKnife extends AbstractArrow {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(BRICKS, false);
+        this.entityData.define(BRICK, false);
     }
 
-    public boolean isBricks() {
-        return this.entityData.get(BRICKS);
+    public boolean isBrick() {
+        return this.entityData.get(BRICK);
     }
 
-    public void setBricks(boolean bricks) {
-        this.entityData.set(BRICKS, bricks);
+    public void setBrick(boolean brick) {
+        this.entityData.set(BRICK, brick);
     }
 
     public void tick() {
@@ -151,7 +151,7 @@ public class MimichestKnife extends AbstractArrow {
 
     @Override
     protected ItemStack getPickupItem() {
-        return isBricks() ? EWItems.BRICK_MIMICHEST_KNIFE.get().getDefaultInstance() : EWItems.STONE_MIMICHEST_KNIFE.get().getDefaultInstance();
+        return isBrick() ? EWItems.BRICK_MIMICHEST_KNIFE.get().getDefaultInstance() : EWItems.STONE_MIMICHEST_KNIFE.get().getDefaultInstance();
     }
 
     public void playerTouch(Player player) {
@@ -163,13 +163,13 @@ public class MimichestKnife extends AbstractArrow {
     public void readAdditionalSaveData(CompoundTag compoundTag) {
         super.readAdditionalSaveData(compoundTag);
         this.dealtDamage = compoundTag.getBoolean("DealtDamage");
-        setBricks(compoundTag.getBoolean("Bricks"));
+        this.setBrick(compoundTag.getBoolean("Brick"));
     }
 
     public void addAdditionalSaveData(CompoundTag compoundTag) {
         super.addAdditionalSaveData(compoundTag);
         compoundTag.putBoolean("DealtDamage", this.dealtDamage);
-        compoundTag.putBoolean("Bricks", isBricks());
+        compoundTag.putBoolean("Brick", this.isBrick());
     }
 
     public void tickDespawn() {

@@ -2,8 +2,8 @@ package dev.bc.expeditionworld.client.event;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.client.model.entity.MimichestKnifeModel;
-import dev.bc.expeditionworld.client.renderer.entity.GlowGeoEntityRenderer;
 import dev.bc.expeditionworld.client.renderer.entity.MimichestKnifeRenderer;
+import dev.bc.expeditionworld.client.renderer.entity.MimichestRenderer;
 import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.particle.EWParticles;
 import net.minecraft.client.particle.SoulParticle;
@@ -20,9 +20,9 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 public class ClientSetupEvents {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(EWEntities.MIMICHEST.get(), context -> new GlowGeoEntityRenderer<>(
+        event.registerEntityRenderer(EWEntities.MIMICHEST.get(), context -> new MimichestRenderer<>(
                 context, new DefaultedEntityGeoModel<>(EWEntities.MIMICHEST.getId(), true)));
-        event.registerEntityRenderer(EWEntities.MIMIPOT.get(), context -> new GlowGeoEntityRenderer<>(
+        event.registerEntityRenderer(EWEntities.MIMIPOT.get(), context -> new MimichestRenderer<>(
                 context, new DefaultedEntityGeoModel<>(EWEntities.MIMIPOT.getId(), true)));
         event.registerEntityRenderer(EWEntities.MIMICHEST_KNIFE.get(), MimichestKnifeRenderer::new);
     }

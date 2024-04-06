@@ -24,6 +24,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 
         add(EWBlocks.FETTERED_CHEST.get(), "Fettered Chest");
         add(EWBlocks.FETTERED_POT.get(), "Fettered Pot");
+        add(EWBlocks.MOSSFLORA.get(), "Mossflora");
 
         add(EWItems.SCULK_MINT.get(), "Sculk Mint");
         add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");
@@ -51,6 +52,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");
         addAdvancement("obtain_sculk_mint", "The sculk is salivating over it", "Obtain the sculk mint");
         addAdvancement("stand_on_sculk_shrieker_with_catwalk", "Dancer on the knife", "Stand on a sculk shrieker with catwalk and darkness effect");
+        addAdvancement("wake_mimichest", "Disturbing the dead", "Waking a mimichest or mimipot");
         addAdvancement("full_armor_set_with_trapped_soul_trim", "Confined", "Wearing a full set of armor with trapped soul as the armor trim material");
     }
 

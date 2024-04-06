@@ -16,4 +16,5 @@ public class EWItems {
     public static final RegistryObject<MimichestKnifeItem> BRICK_MIMICHEST_KNIFE = ITEMS.register("brick_mimichest_knife", () -> new MimichestKnifeItem(new Item.Properties().stacksTo(4)));
     public static final RegistryObject<BlockItem> FETTERED_CHEST = ITEMS.register("fettered_chest", () -> new BlockItem(EWBlocks.FETTERED_CHEST.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> FETTERED_POT = ITEMS.register("fettered_pot", () -> new BlockItem(EWBlocks.FETTERED_POT.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> MOSSFLORA = ITEMS.register("mossflora", () -> new BlockItem(EWBlocks.MOSSFLORA.get(), new Item.Properties()));
 }

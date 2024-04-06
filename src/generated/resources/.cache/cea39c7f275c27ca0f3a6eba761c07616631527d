@@ -1,7 +1,8 @@
-// 1.20.1	2024-04-05T00:14:19.7808347	Item Models: bcs_expedition_world
+// 1.20.1	2024-04-06T13:52:28.7630248	Item Models: bcs_expedition_world
 e10b7841897f44cc21c89796a81af7ea6fd9beb8 assets/bcs_expedition_world/models/item/brick_mimichest_knife.json
 62429020a2d716aba0e21258c58a6ab87aea634d assets/bcs_expedition_world/models/item/fettered_chest.json
 fe08a7fd86d838d13585e333e36ede7a376182a2 assets/bcs_expedition_world/models/item/fettered_pot.json
+2ab697a03c151255f3ad9ab6866451cb7b3a0dc5 assets/bcs_expedition_world/models/item/mossflora.json
 ff02107b0b4eeec6e047b11470056494f53db577 assets/bcs_expedition_world/models/item/sculk_mint.json
 fae6a9f4cfe39fa9655bd921176a23ec2a1fc2b1 assets/bcs_expedition_world/models/item/stone_mimichest_knife.json
 6e971c6166119b439c6dbbf629382e1594679094 assets/bcs_expedition_world/models/item/trapped_soul.json
