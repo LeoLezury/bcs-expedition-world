@@ -20,12 +20,22 @@ public class EWItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(EWItems.SCULK_MINT.get());
+
         basicItem(EWItems.TRAPPED_SOUL.get());
         basicItem(EWItems.STONE_MIMICHEST_KNIFE.get());
         basicItem(EWItems.BRICK_MIMICHEST_KNIFE.get());
         basicBlockItem(EWItems.FETTERED_CHEST.get());
         basicBlockItem(EWItems.FETTERED_POT.get());
         basicItemWithBlockTexture(EWItems.MOSSFLORA.get());
+
+        basicBlockItem(EWItems.FROZEN_STONE.get());
+        basicBlockItem(EWItems.FROZEN_DIRT.get());
+        basicBlockItem(EWItems.FROZEN_GRASS_BLOCK.get());
+        basicBlockItem(EWItems.ICE_LANTERN.get());
+        basicItemWithBlockTexture(EWItems.POINTED_ICE.get());
+        basicItemWithBlockTexture(EWItems.FROZEN_GRASS.get());
+        basicItemWithBlockTexture(EWItems.ICE_FLOWER.get());
+        basicItem(EWItems.FRIGID_GLADIOLUS.get(), blockTextureFromItem(EWItems.FRIGID_GLADIOLUS.get()).withSuffix("_top"));
     }
 
     private void basicBlockItem(Item item) {

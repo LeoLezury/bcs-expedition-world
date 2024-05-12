@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bcs_expedition_world:block/frozen_grass"
+    }
+  }
+}

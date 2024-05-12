@@ -1,12 +1,14 @@
 package dev.bc.expeditionworld.data.gen;
 
+import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.item.EWItems;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Consumer;
 
@@ -35,5 +37,22 @@ public class EWRecipeProvider extends RecipeProvider {
                 .define('S', EWItems.TRAPPED_SOUL.get())
                 .unlockedBy("has_item", has(EWItems.TRAPPED_SOUL.get()))
                 .save(consumer);
+
+        addSingleConversion(consumer, Items.LIGHT_BLUE_DYE, EWItems.ICE_FLOWER.get());
+    }
+
+    protected final void addSingleConversion(Consumer<FinishedRecipe> recipeOutput, Item to, Item from) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, to)
+                .requires(from)
+                .unlockedBy("has_item", has(from))
+                .save(recipeOutput, ExpeditionWorld.id("shapeless/" + name(to) + "_from_" + name(from)));
+    }
+
+    protected final String name(ItemLike item) {
+        return key(item).getPath();
+    }
+
+    protected final ResourceLocation key(ItemLike item) {
+        return ForgeRegistries.ITEMS.getKey(item.asItem());
     }
 }

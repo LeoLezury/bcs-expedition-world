@@ -18,7 +18,7 @@ public class EWParticleDescriptionProvider extends ParticleDescriptionProvider {
     }
 
     private ResourceLocation loc(String s) {
-        return new ResourceLocation(ExpeditionWorld.MOD_ID, s);
+        return ExpeditionWorld.id(s);
     }
 
     private ResourceLocation mcLoc(String s) {

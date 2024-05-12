@@ -15,7 +15,7 @@ import java.util.function.BiConsumer;
 public class EWChestLootSubProvider implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
-        consumer.accept(new ResourceLocation(ExpeditionWorld.MOD_ID, "chests/ancient_city"),
+        consumer.accept(ExpeditionWorld.id("chests/ancient_city"),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(0, 1))

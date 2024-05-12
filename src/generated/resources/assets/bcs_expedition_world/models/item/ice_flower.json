@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "bcs_expedition_world:block/ice_flower"
+  }
+}

@@ -62,6 +62,16 @@ public class EWBlockLootSubProvider extends BlockLootSubProvider {
         add(EWBlocks.MOSSFLORA.get(), (block) ->
                 LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(this.applyExplosionDecay(block, LootItem.lootTableItem(block).apply(List.of(1, 2, 3), (integer) ->
                                 SetItemCountFunction.setCount(ConstantValue.exactly(integer + 1)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MossfloraBlock.AGE, integer))))))));
+
+        dropSelf(EWBlocks.FROZEN_STONE.get());
+        dropSelf(EWBlocks.FROZEN_DIRT.get());
+        add(EWBlocks.FROZEN_GRASS_BLOCK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, EWBlocks.FROZEN_DIRT.get()));
+        dropSelf(EWBlocks.ICE_LANTERN.get());
+        dropWhenSilkTouch(EWBlocks.POINTED_ICE.get());
+        add(EWBlocks.FROZEN_GRASS.get(), this::createGrassDrops);
+        dropSelf(EWBlocks.ICE_FLOWER.get());
+        dropPottedContents(EWBlocks.POTTED_ICE_FLOWER.get());
+        add(EWBlocks.FRIGID_GLADIOLUS.get(), (block) -> this.createDoublePlantWithSeedDrops(block, EWBlocks.FRIGID_GLADIOLUS.get()));
     }
 
     protected <T extends Comparable<T> & StringRepresentable> LootItemCondition.Builder getDoubleBlockLootCondition(Block block, Property<T> property, T value) {

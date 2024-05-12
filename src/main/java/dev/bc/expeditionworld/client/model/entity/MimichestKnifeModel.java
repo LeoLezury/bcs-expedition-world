@@ -9,14 +9,13 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MimichestKnifeModel<T extends MimichestKnife> extends EntityModel<T> {
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(ExpeditionWorld.MOD_ID, "mimichest_knife"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ExpeditionWorld.id("mimichest_knife"), "main");
     private final ModelPart root;
     private final ModelPart knife;
 

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Entity.class)
-public class EntityMixin {
+public abstract class EntityMixin {
     @Inject(method = "dampensVibrations", at = @At("TAIL"), cancellable = true)
     private void expeditionWorld$dampensVibrations(CallbackInfoReturnable<Boolean> cir) {
         Entity entity = (Entity) (Object) this;

@@ -25,6 +25,15 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWBlocks.FETTERED_CHEST.get(), "桎梏箱");
         add(EWBlocks.FETTERED_POT.get(), "桎梏罐");
         add(EWBlocks.MOSSFLORA.get(), "苔花");
+        add(EWBlocks.FROZEN_STONE.get(), "封冻石");
+        add(EWBlocks.FROZEN_DIRT.get(), "封冻土壤");
+        add(EWBlocks.FROZEN_GRASS_BLOCK.get(), "封冻草方块");
+        add(EWBlocks.ICE_LANTERN.get(), "冰灯");
+        add(EWBlocks.POINTED_ICE.get(), "冰锥");
+        add(EWBlocks.FROZEN_GRASS.get(), "霜冻草");
+        add(EWBlocks.ICE_FLOWER.get(), "冰花");
+        add(EWBlocks.POTTED_ICE_FLOWER.get(), "盆装冰花");
+        add(EWBlocks.FRIGID_GLADIOLUS.get(), "凛剑兰");
 
         add(EWItems.SCULK_MINT.get(), "幽匿薄荷");
         add(EWItems.TRAPPED_SOUL.get(), "受困灵魂");

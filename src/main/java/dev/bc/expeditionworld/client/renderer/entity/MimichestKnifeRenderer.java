@@ -18,8 +18,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
-    public static final ResourceLocation STONE_LOCATION = new ResourceLocation(ExpeditionWorld.MOD_ID, "textures/entity/stone_mimichest_knife.png");
-    public static final ResourceLocation BRICK_LOCATION = new ResourceLocation(ExpeditionWorld.MOD_ID, "textures/entity/brick_mimichest_knife.png");
+    public static final ResourceLocation STONE_LOCATION = ExpeditionWorld.id("textures/entity/stone_mimichest_knife.png");
+    public static final ResourceLocation BRICK_LOCATION = ExpeditionWorld.id("textures/entity/brick_mimichest_knife.png");
     private final MimichestKnifeModel<MimichestKnife> model;
 
     public MimichestKnifeRenderer(EntityRendererProvider.Context context) {

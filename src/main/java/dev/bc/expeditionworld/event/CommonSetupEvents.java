@@ -2,6 +2,7 @@ package dev.bc.expeditionworld.event;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.advancement.EWCriteriaTriggers;
+import dev.bc.expeditionworld.block.EWBlocks;
 import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import dev.bc.expeditionworld.item.EWItems;
@@ -12,6 +13,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -34,6 +37,8 @@ public class CommonSetupEvents {
         BrewingRecipeRegistry.addRecipe(new ExactBrewingRecipe(PotionUtils.setPotion(Items.POTION.getDefaultInstance(), EWPotions.FETTERED.get()), Ingredient.of(Items.REDSTONE), PotionUtils.setPotion(Items.POTION.getDefaultInstance(), EWPotions.LONG_FETTERED.get())));
 
         EWCriteriaTriggers.register();
+
+        ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(EWBlocks.ICE_FLOWER.getId(), EWBlocks.POTTED_ICE_FLOWER);
     }
 
     @SubscribeEvent

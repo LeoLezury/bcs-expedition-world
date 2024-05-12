@@ -1,0 +1,38 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block"
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 270
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 180
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 90
+      }
+    ],
+    "snowy=true": [
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block"
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 270
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 180
+      },
+      {
+        "model": "bcs_expedition_world:block/frozen_grass_block",
+        "y": 90
+      }
+    ]
+  }
+}

@@ -25,6 +25,15 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWBlocks.FETTERED_CHEST.get(), "Fettered Chest");
         add(EWBlocks.FETTERED_POT.get(), "Fettered Pot");
         add(EWBlocks.MOSSFLORA.get(), "Mossflora");
+        add(EWBlocks.FROZEN_STONE.get(), "Frozen Stone");
+        add(EWBlocks.FROZEN_DIRT.get(), "Frozen Dirt");
+        add(EWBlocks.FROZEN_GRASS_BLOCK.get(), "Frozen Grass Block");
+        add(EWBlocks.ICE_LANTERN.get(), "Ice Lantern");
+        add(EWBlocks.POINTED_ICE.get(), "Pointed Ice");
+        add(EWBlocks.FROZEN_GRASS.get(), "Frozen Grass");
+        add(EWBlocks.ICE_FLOWER.get(), "Ice Flower");
+        add(EWBlocks.POTTED_ICE_FLOWER.get(), "Potted Ice Flower");
+        add(EWBlocks.FRIGID_GLADIOLUS.get(), "Frigid Gladiolus");
 
         add(EWItems.SCULK_MINT.get(), "Sculk Mint");
         add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");

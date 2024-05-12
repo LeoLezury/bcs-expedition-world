@@ -7,7 +7,13 @@
   "mixins": [
     "BlockMixin",
     "EntityMixin",
-    "InventoryChangeTriggerMixin"
+    "FrostedIceBlockMixin",
+    "IceBlockMixin",
+    "InventoryChangeTriggerMixin",
+    "MultiNoiseBiomeSourceMixin",
+    "NoiseBasedChunkGeneratorMixin",
+    "SnowGolemMixin",
+    "SnowLayerBlockMixin"
   ],
   "client": [
   ],

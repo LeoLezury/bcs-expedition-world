@@ -15,7 +15,7 @@ public class EWLootModifierProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("chest_ancient_city", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build()}, new ResourceLocation(ExpeditionWorld.MOD_ID, "chests/ancient_city")));
-        add("entity_warden", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("entities/warden")).build()}, new ResourceLocation(ExpeditionWorld.MOD_ID, "entities/warden")));
+        add("chest_ancient_city", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build()}, ExpeditionWorld.id("chests/ancient_city")));
+        add("entity_warden", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("entities/warden")).build()}, ExpeditionWorld.id("entities/warden")));
     }
 }
