@@ -26,48 +26,48 @@ public class EWAdvancementGenerator implements ForgeAdvancementProvider.Advancem
     @Override
     public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
         Advancement root = Advancement.Builder.advancement().display(
-                        Items.AMETHYST_SHARD,
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".root.title"),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".root.description"),
+                        EWItems.FROZEN_GRASS_BLOCK.get(),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".root.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".root.description"),
                         new ResourceLocation("textures/block/amethyst_block.png"),
                         FrameType.TASK,
                         false, false, false)
                 .requirements(RequirementsStrategy.OR)
                 .addCriterion("crafting_table", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.CRAFTING_TABLE))
-                .save(saver, ExpeditionWorld.MOD_ID + ":root");
+                .save(saver, ExpeditionWorld.ID + ":root");
         
         Advancement obtainSculkMint = addItemObtain(saver, root, "obtain_sculk_mint", EWItems.SCULK_MINT.get());
         Advancement standOnSculkShriekerWithCatwalk = Advancement.Builder.advancement().parent(obtainSculkMint).display(
                         Items.SCULK_SHRIEKER,
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".stand_on_sculk_shrieker_with_catwalk.title"),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".stand_on_sculk_shrieker_with_catwalk.description"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".stand_on_sculk_shrieker_with_catwalk.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".stand_on_sculk_shrieker_with_catwalk.description"),
                         null, FrameType.CHALLENGE, true, true, false)
                 .addCriterion("stand_with_effect", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.STAND_ON_SCULK_SHRIEKER_WITH_CATWALK.getId(), ContextAwarePredicate.ANY))
                 .rewards(new AdvancementRewards(20, new ResourceLocation[0], new ResourceLocation[0], CommandFunction.CacheableFunction.NONE))
-                .save(saver, ExpeditionWorld.MOD_ID + ":stand_on_sculk_shrieker_with_catwalk");
+                .save(saver, ExpeditionWorld.ID + ":stand_on_sculk_shrieker_with_catwalk");
         Advancement wakeMimichest = Advancement.Builder.advancement().parent(root).display(
                         EWItems.FETTERED_CHEST.get(),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".wake_mimichest.title"),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".wake_mimichest.description"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".wake_mimichest.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".wake_mimichest.description"),
                         null, FrameType.GOAL, true, true, false)
                 .addCriterion("wake", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.WAKE_MIMICHEST.getId(), ContextAwarePredicate.ANY))
-                .save(saver, ExpeditionWorld.MOD_ID + ":wake_mimichest");
+                .save(saver, ExpeditionWorld.ID + ":wake_mimichest");
         Advancement fullArmorSetWithTrappedSoulTrim = Advancement.Builder.advancement().parent(wakeMimichest).display(
                         EWItems.TRAPPED_SOUL.get(),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.title"),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + ".full_armor_set_with_trapped_soul_trim.description"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".full_armor_set_with_trapped_soul_trim.title"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + ".full_armor_set_with_trapped_soul_trim.description"),
                         null, FrameType.GOAL, true, true, false)
                 .addCriterion("armor_set", new PlayerTrigger.TriggerInstance(EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.getId(), ContextAwarePredicate.ANY))
-                .save(saver, ExpeditionWorld.MOD_ID + ":full_armor_set_with_trapped_soul_trim");
+                .save(saver, ExpeditionWorld.ID + ":full_armor_set_with_trapped_soul_trim");
     }
 
     private static Advancement addItemObtain(Consumer<Advancement> consumer, Advancement parent, String id, Item item) {
         return Advancement.Builder.advancement().parent(parent).display(
                         item,
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + "." + id + ".title"),
-                        Component.translatable("advancements." + ExpeditionWorld.MOD_ID + "." + id + ".description"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + "." + id + ".title"),
+                        Component.translatable("advancements." + ExpeditionWorld.ID + "." + id + ".description"),
                         null, FrameType.GOAL, true, true, false)
                 .addCriterion("has_item", InventoryChangeTrigger.TriggerInstance.hasItems(item))
-                .save(consumer, ExpeditionWorld.MOD_ID + ":" + id);
+                .save(consumer, ExpeditionWorld.ID + ":" + id);
     }
 }

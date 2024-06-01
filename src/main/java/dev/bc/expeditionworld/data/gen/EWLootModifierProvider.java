@@ -10,7 +10,7 @@ import net.minecraftforge.common.loot.LootTableIdCondition;
 
 public class EWLootModifierProvider extends GlobalLootModifierProvider {
     public EWLootModifierProvider(PackOutput output) {
-        super(output, ExpeditionWorld.MOD_ID);
+        super(output, ExpeditionWorld.ID);
     }
 
     @Override

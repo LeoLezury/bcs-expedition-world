@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "bcs_expedition_world:block/ice_crystal_wall_torch"
+    },
+    "facing=north": {
+      "model": "bcs_expedition_world:block/ice_crystal_wall_torch",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "bcs_expedition_world:block/ice_crystal_wall_torch",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "bcs_expedition_world:block/ice_crystal_wall_torch",
+      "y": 180
+    }
+  }
+}

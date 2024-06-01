@@ -15,17 +15,24 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class EWChineseLangProvider extends LanguageProvider {
     public EWChineseLangProvider(PackOutput output) {
-        super(output, ExpeditionWorld.MOD_ID, "zh_cn");
+        super(output, ExpeditionWorld.ID, "zh_cn");
     }
 
     @Override
     protected void addTranslations() {
-        add("item_group." + ExpeditionWorld.MOD_ID, "BC的远征物语");
+        add("item_group." + ExpeditionWorld.ID, "BC的远征物语");
 
         add(EWBlocks.FETTERED_CHEST.get(), "桎梏箱");
         add(EWBlocks.FETTERED_POT.get(), "桎梏罐");
         add(EWBlocks.MOSSFLORA.get(), "苔花");
         add(EWBlocks.FROZEN_STONE.get(), "封冻石");
+        add(EWBlocks.FROZEN_STONE_SLAB.get(), "封冻石台阶");
+        add(EWBlocks.FROZEN_STONE_STAIRS.get(), "封冻石楼梯");
+        add(EWBlocks.FROZEN_STONE_WALL.get(), "封冻石墙");
+        add(EWBlocks.ICE_CRYSTAL_ORE.get(), "冰晶矿石");
+        add(EWBlocks.ICE_CRYSTAL_BLOCK.get(), "冰晶块");
+        add(EWBlocks.ICE_CRYSTAL_TORCH.get(), "冰石火把");
+        add(EWBlocks.FROSTBITE_TNT.get(), "冻伤TNT");
         add(EWBlocks.FROZEN_DIRT.get(), "封冻土壤");
         add(EWBlocks.FROZEN_GRASS_BLOCK.get(), "封冻草方块");
         add(EWBlocks.ICE_LANTERN.get(), "冰灯");
@@ -39,8 +46,13 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWItems.TRAPPED_SOUL.get(), "受困灵魂");
         add(EWItems.STONE_MIMICHEST_KNIFE.get(), "箱灵飞刃");
         add(EWItems.BRICK_MIMICHEST_KNIFE.get(), "罐灵飞刃");
+        add(EWItems.ICE_CRYSTAL.get(), "冰晶");
+        add(EWItems.FROSTBITE_GUNPOWDER.get(), "冻伤火药");
+        add(EWItems.SHARP_ICICLE.get(), "尖锐冰锥");
+        add(EWItems.FROST_CHARGE.get(), "霜冻弹");
+        add(EWItems.FROZEN_ARROW.get(), "冰封箭");
 
-        add("trim_material." + ExpeditionWorld.MOD_ID + ".trapped_soul", "受困灵魂材料");
+        add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "受困灵魂材料");
 
         add(Items.POTION, EWPotions.CATWALK.get(), "猫步药水");
         add(Items.SPLASH_POTION, EWPotions.CATWALK.get(), "喷溅型猫步药水");
@@ -54,9 +66,15 @@ public class EWChineseLangProvider extends LanguageProvider {
 
         add(EWMobEffects.CATWALK.get(), "猫步");
         add(EWMobEffects.FETTERED.get(), "桎梏");
+        add(EWMobEffects.FROZEN.get(), "冰封");
 
+        add(EWEntities.FROSTBITE_TNT.get(), "冻伤TNT");
+        add(EWEntities.MIMICHEST_KNIFE.get(), "箱灵飞刃");
+        add(EWEntities.FROST_CHARGE.get(), "霜冻弹");
+        add(EWEntities.FROZEN_ARROW.get(), "冰封箭");
         add(EWEntities.MIMICHEST.get(), "匿箱灵");
         add(EWEntities.MIMIPOT.get(), "匿罐灵");
+        add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "冻伤TNT：爆炸");
 
         addAdvancement("root", "BC的远征物语", "BC的远征物语");
         addAdvancement("obtain_sculk_mint", "幽匿也为之垂涎欲滴", "获得幽匿薄荷");
@@ -70,7 +88,7 @@ public class EWChineseLangProvider extends LanguageProvider {
     }
 
     public void addAdvancement(String advancement, String name, String desc) {
-        add("advancements." + ExpeditionWorld.MOD_ID + "." + advancement + ".title", name);
-        add("advancements." + ExpeditionWorld.MOD_ID + "." + advancement + ".description", desc);
+        add("advancements." + ExpeditionWorld.ID + "." + advancement + ".title", name);
+        add("advancements." + ExpeditionWorld.ID + "." + advancement + ".description", desc);
     }
 }

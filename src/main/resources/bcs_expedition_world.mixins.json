@@ -6,6 +6,7 @@
   "refmap": "bcs_expedition_world.refmap.json",
   "mixins": [
     "BlockMixin",
+    "BlockStateBaseMixin",
     "EntityMixin",
     "FrostedIceBlockMixin",
     "IceBlockMixin",

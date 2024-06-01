@@ -1,6 +1,11 @@
 {
   "values": [
     "bcs_expedition_world:frozen_stone",
+    "bcs_expedition_world:frozen_stone_slab",
+    "bcs_expedition_world:frozen_stone_stairs",
+    "bcs_expedition_world:frozen_stone_wall",
+    "bcs_expedition_world:ice_crystal_ore",
+    "bcs_expedition_world:ice_crystal_block",
     "bcs_expedition_world:ice_lantern"
   ]
 }

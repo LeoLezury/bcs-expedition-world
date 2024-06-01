@@ -37,7 +37,9 @@
     ],
     [],
     [],
-    [],
+    [
+      "bcs_expedition_world:ice_crystal_ore"
+    ],
     [
       "bcs_expedition_world:ice_spike",
       "bcs_expedition_world:hanging_ice_spike"

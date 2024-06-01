@@ -42,6 +42,8 @@ public class EWBiomes {
         genSettings.addFeature(GenerationStep.Decoration.FLUID_SPRINGS, MiscOverworldPlacements.SPRING_WATER);
         BiomeDefaultFeatures.addSurfaceFreezing(genSettings);
 
+        genSettings.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, EWPlacedFeatures.ICE_CRYSTAL_ORE);
+
         genSettings.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EWPlacedFeatures.ICE_SPIKE);
         genSettings.addFeature(GenerationStep.Decoration.UNDERGROUND_DECORATION, EWPlacedFeatures.HANGING_ICE_SPIKE);
 

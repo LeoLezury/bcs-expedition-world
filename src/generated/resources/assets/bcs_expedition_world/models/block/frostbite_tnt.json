@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "bcs_expedition_world:block/frostbite_tnt",
+    "side": "bcs_expedition_world:block/frostbite_tnt_side",
+    "top": "bcs_expedition_world:block/frostbite_tnt"
+  }
+}

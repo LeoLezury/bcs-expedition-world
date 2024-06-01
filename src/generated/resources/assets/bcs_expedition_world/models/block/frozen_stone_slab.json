@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "bcs_expedition_world:block/frozen_stone",
+    "side": "bcs_expedition_world:block/frozen_stone",
+    "top": "bcs_expedition_world:block/frozen_stone"
+  }
+}

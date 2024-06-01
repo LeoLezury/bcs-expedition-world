@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class EWPotions {
-    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ExpeditionWorld.MOD_ID);
+    public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, ExpeditionWorld.ID);
     public static final RegistryObject<Potion> CATWALK = POTIONS.register("catwalk", () -> new Potion(new MobEffectInstance(EWMobEffects.CATWALK.get(), 3600)));
     public static final RegistryObject<Potion> MEDIUM_CATWALK = POTIONS.register("medium_catwalk", () -> new Potion("catwalk", new MobEffectInstance(EWMobEffects.CATWALK.get(), 4800)));
     public static final RegistryObject<Potion> LONG_CATWALK = POTIONS.register("long_catwalk", () -> new Potion("catwalk", new MobEffectInstance(EWMobEffects.CATWALK.get(), 12000)));

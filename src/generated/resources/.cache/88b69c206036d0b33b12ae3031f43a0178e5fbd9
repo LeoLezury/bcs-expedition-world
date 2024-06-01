@@ -1,6 +1,15 @@
-// 1.20.1	2024-05-12T16:22:31.2343753	Tags for minecraft:block mod id bcs_expedition_world
+// 1.20.1	2024-06-01T22:45:17.8923292	Tags for minecraft:block mod id bcs_expedition_world
+2467c8b5698c07657f97775fcc2b1f2a152fb586 data/bcs_expedition_world/tags/blocks/prevents_melting.json
 f6031852b4a15e07652196ab70270197f1f13441 data/minecraft/tags/blocks/base_stone_overworld.json
 0bb36694a2799690bdbe68148ef628fef356b376 data/minecraft/tags/blocks/dirt.json
-a17a1031ae71928a51b5cf6e2671a026bdb3cda7 data/minecraft/tags/blocks/mineable/pickaxe.json
+7de99844cb77eae90dc8a7ff69b0430a0880a689 data/minecraft/tags/blocks/enderman_holdable.json
+1a84b384c6ff131bfeca04e35e086e33f6545260 data/minecraft/tags/blocks/mineable/pickaxe.json
 0bb36694a2799690bdbe68148ef628fef356b376 data/minecraft/tags/blocks/mineable/shovel.json
 f6031852b4a15e07652196ab70270197f1f13441 data/minecraft/tags/blocks/moss_replaceable.json
+540103ee3dde4221d37c4a5ad9a25b9a36933582 data/minecraft/tags/blocks/needs_stone_tool.json
+18f6ec4ad2ed7aa82086fa35dd695f87db5e957a data/minecraft/tags/blocks/slabs.json
+4b0a17666008ce0b86126a94942d3ac2e78d4df5 data/minecraft/tags/blocks/small_flowers.json
+0a21c4e33fa2a1f95b13b32e14514d56be89c8b7 data/minecraft/tags/blocks/stairs.json
+832962a660be53b0c7024c0b5e810eb1004b424c data/minecraft/tags/blocks/tall_flowers.json
+76e2b4830dabb7535bc136b7d83d8ea4d515d28e data/minecraft/tags/blocks/walls.json
+652927eb8dc2959eaf4869c776d5772ff9549baa data/minecraft/tags/blocks/wall_post_override.json

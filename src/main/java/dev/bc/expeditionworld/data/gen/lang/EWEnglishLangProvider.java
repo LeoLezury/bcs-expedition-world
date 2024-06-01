@@ -15,17 +15,24 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class EWEnglishLangProvider extends LanguageProvider {
     public EWEnglishLangProvider(PackOutput output) {
-        super(output, ExpeditionWorld.MOD_ID, "en_us");
+        super(output, ExpeditionWorld.ID, "en_us");
     }
 
     @Override
     protected void addTranslations() {
-        add("item_group." + ExpeditionWorld.MOD_ID, "BC's Expedition World");
+        add("item_group." + ExpeditionWorld.ID, "BC's Expedition World");
 
         add(EWBlocks.FETTERED_CHEST.get(), "Fettered Chest");
         add(EWBlocks.FETTERED_POT.get(), "Fettered Pot");
         add(EWBlocks.MOSSFLORA.get(), "Mossflora");
         add(EWBlocks.FROZEN_STONE.get(), "Frozen Stone");
+        add(EWBlocks.FROZEN_STONE_SLAB.get(), "Frozen Stone Slab");
+        add(EWBlocks.FROZEN_STONE_STAIRS.get(), "Frozen Stone Stairs");
+        add(EWBlocks.FROZEN_STONE_WALL.get(), "Frozen Stone Wall");
+        add(EWBlocks.ICE_CRYSTAL_ORE.get(), "Ice Crystal Ore");
+        add(EWBlocks.ICE_CRYSTAL_BLOCK.get(), "Ice Crystal Block");
+        add(EWBlocks.ICE_CRYSTAL_TORCH.get(), "Ice Crystal Torch");
+        add(EWBlocks.FROSTBITE_TNT.get(), "Frostbite TNT");
         add(EWBlocks.FROZEN_DIRT.get(), "Frozen Dirt");
         add(EWBlocks.FROZEN_GRASS_BLOCK.get(), "Frozen Grass Block");
         add(EWBlocks.ICE_LANTERN.get(), "Ice Lantern");
@@ -39,8 +46,13 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");
         add(EWItems.STONE_MIMICHEST_KNIFE.get(), "Stone Mimichest Knife");
         add(EWItems.BRICK_MIMICHEST_KNIFE.get(), "Brick Mimichest Knife");
+        add(EWItems.ICE_CRYSTAL.get(), "Ice Crystal");
+        add(EWItems.FROSTBITE_GUNPOWDER.get(), "Frostbite Gunpowder");
+        add(EWItems.SHARP_ICICLE.get(), "Sharp Icicle");
+        add(EWItems.FROST_CHARGE.get(), "Frost Charge");
+        add(EWItems.FROZEN_ARROW.get(), "Frozen Arrow");
 
-        add("trim_material." + ExpeditionWorld.MOD_ID + ".trapped_soul", "Trapped Soul Material");
+        add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "Trapped Soul Material");
 
         add(Items.POTION, EWPotions.CATWALK.get(), "Potion of Catwalk");
         add(Items.SPLASH_POTION, EWPotions.CATWALK.get(), "Splash Potion of Catwalk");
@@ -54,9 +66,16 @@ public class EWEnglishLangProvider extends LanguageProvider {
 
         add(EWMobEffects.CATWALK.get(), "Catwalk");
         add(EWMobEffects.FETTERED.get(), "Fettered");
+        add(EWMobEffects.FROZEN.get(), "Frozen");
 
+        add(EWEntities.FROSTBITE_TNT.get(), "Frostbite TNT");
+        add(EWEntities.MIMICHEST_KNIFE.get(), "Mimichest Knife");
+        add(EWEntities.FROST_CHARGE.get(), "Frost Charge");
+        add(EWEntities.FROZEN_ARROW.get(), "Frozen Arrow");
         add(EWEntities.MIMICHEST.get(), "Mimichest");
         add(EWEntities.MIMIPOT.get(), "Mimipot");
+
+        add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "Frostbite TNT Explodes");
 
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");
         addAdvancement("obtain_sculk_mint", "The sculk is salivating over it", "Obtain the sculk mint");
@@ -70,7 +89,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
     }
 
     public void addAdvancement(String advancement, String name, String desc) {
-        add("advancements." + ExpeditionWorld.MOD_ID + "." + advancement + ".title", name);
-        add("advancements." + ExpeditionWorld.MOD_ID + "." + advancement + ".description", desc);
+        add("advancements." + ExpeditionWorld.ID + "." + advancement + ".title", name);
+        add("advancements." + ExpeditionWorld.ID + "." + advancement + ".description", desc);
     }
 }

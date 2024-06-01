@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_torch",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "torch": "bcs_expedition_world:block/ice_crystal_torch"
+  }
+}

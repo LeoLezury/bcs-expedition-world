@@ -5,12 +5,15 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 import software.bernie.geckolib.renderer.layer.AutoGlowingGeoLayer;
 
+@OnlyIn(Dist.CLIENT)
 public class MimichestRenderer<T extends Mimichest> extends GeoEntityRenderer<T> {
     public MimichestRenderer(EntityRendererProvider.Context renderManager, GeoModel<T> model) {
         super(renderManager, model);

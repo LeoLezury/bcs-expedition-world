@@ -1,0 +1,8 @@
+{
+  "entity.frostbite_tnt.explode": {
+    "sounds": [
+      "bcs_expedition_world:entity/frostbite_tnt/explode"
+    ],
+    "subtitle": "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "G": {
+      "item": "bcs_expedition_world:frostbite_gunpowder"
+    },
+    "I": {
+      "item": "bcs_expedition_world:ice_crystal"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "SGS",
+    "GIG",
+    "SGS"
+  ],
+  "result": {
+    "item": "bcs_expedition_world:frostbite_tnt"
+  },
+  "show_notification": true
+}

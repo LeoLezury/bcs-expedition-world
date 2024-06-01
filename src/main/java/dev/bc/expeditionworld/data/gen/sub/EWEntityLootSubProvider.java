@@ -42,6 +42,6 @@ public class EWEntityLootSubProvider extends EntityLootSubProvider {
 
     @Override
     protected Stream<EntityType<?>> getKnownEntityTypes() {
-        return ForgeRegistries.ENTITY_TYPES.getValues().stream().filter(type -> ForgeRegistries.ENTITY_TYPES.getKey(type).getNamespace().equals(ExpeditionWorld.MOD_ID));
+        return ForgeRegistries.ENTITY_TYPES.getValues().stream().filter(type -> ForgeRegistries.ENTITY_TYPES.getKey(type).getNamespace().equals(ExpeditionWorld.ID));
     }
 }

@@ -1,6 +1,6 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.block.EWBlocks;
+import dev.bc.expeditionworld.block.EWBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -32,7 +32,7 @@ public abstract class SnowGolemMixin {
     @Unique
     private boolean isProtectedByIceLantern() {
         for (BlockPos blockPos : BlockPos.withinManhattan(((Entity) (Object) this).blockPosition(), 7, 7, 7)) {
-            if (((Entity) (Object) this).level().getBlockState(blockPos).is(EWBlocks.ICE_LANTERN.get())) {
+            if (((Entity) (Object) this).level().getBlockState(blockPos).is(EWBlockTags.PREVENTS_MELTING)) {
                 return true;
             }
         }

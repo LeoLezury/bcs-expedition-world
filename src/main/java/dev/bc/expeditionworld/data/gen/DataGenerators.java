@@ -17,7 +17,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.concurrent.CompletableFuture;
 
-@Mod.EventBusSubscriber(modid = ExpeditionWorld.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ExpeditionWorld.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DataGenerators {
     @SubscribeEvent
     public static void onGatherData(GatherDataEvent event) {
@@ -43,6 +43,7 @@ public class DataGenerators {
         generator.addProvider(event.includeClient(), new EWParticleDescriptionProvider(output, helper));
         generator.addProvider(event.includeClient(), new EWBlockStateProvider(output, helper));
         generator.addProvider(event.includeClient(), new EWItemModelProvider(output, helper));
+        generator.addProvider(event.includeClient(), new EWSoundProvider(output, helper));
         generator.addProvider(event.includeClient(), new EWEnglishLangProvider(output));
         generator.addProvider(event.includeClient(), new EWChineseLangProvider(output));
     }

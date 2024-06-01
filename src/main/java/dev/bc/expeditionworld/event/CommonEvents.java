@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Mod.EventBusSubscriber(modid = ExpeditionWorld.MOD_ID)
+@Mod.EventBusSubscriber(modid = ExpeditionWorld.ID)
 public class CommonEvents {
     @SubscribeEvent
     public static void serverAboutToStart(ServerAboutToStartEvent event) {

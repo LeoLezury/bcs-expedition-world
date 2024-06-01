@@ -9,6 +9,7 @@ import dev.bc.expeditionworld.item.tab.EWCreativeModeTabs;
 import dev.bc.expeditionworld.particle.EWParticles;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import dev.bc.expeditionworld.potion.EWPotions;
+import dev.bc.expeditionworld.sound.EWSoundEvents;
 import dev.bc.expeditionworld.world.feature.EWFeatures;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,9 +18,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
-@Mod(ExpeditionWorld.MOD_ID)
+@Mod(ExpeditionWorld.ID)
 public class ExpeditionWorld {
-    public static final String MOD_ID = "bcs_expedition_world";
+    public static final String ID = "bcs_expedition_world";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ExpeditionWorld() {
@@ -34,11 +35,12 @@ public class ExpeditionWorld {
         EWParticles.PARTICLE_TYPES.register(modEventBus);
         EWMobEffects.MOB_EFFECTS.register(modEventBus);
         EWPotions.POTIONS.register(modEventBus);
+        EWSoundEvents.SOUND_EVENTS.register(modEventBus);
 
         GeckoLib.initialize();
     }
 
     public static ResourceLocation id(String string) {
-        return new ResourceLocation(MOD_ID, string);
+        return new ResourceLocation(ID, string);
     }
 }

@@ -14,7 +14,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class EWItemModelProvider extends ItemModelProvider {
     public EWItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, ExpeditionWorld.MOD_ID, existingFileHelper);
+        super(output, ExpeditionWorld.ID, existingFileHelper);
     }
 
     @Override
@@ -24,26 +24,45 @@ public class EWItemModelProvider extends ItemModelProvider {
         basicItem(EWItems.TRAPPED_SOUL.get());
         basicItem(EWItems.STONE_MIMICHEST_KNIFE.get());
         basicItem(EWItems.BRICK_MIMICHEST_KNIFE.get());
-        basicBlockItem(EWItems.FETTERED_CHEST.get());
-        basicBlockItem(EWItems.FETTERED_POT.get());
-        basicItemWithBlockTexture(EWItems.MOSSFLORA.get());
+        block(EWItems.FETTERED_CHEST.get());
+        block(EWItems.FETTERED_POT.get());
+        flatBlock(EWItems.MOSSFLORA.get());
 
-        basicBlockItem(EWItems.FROZEN_STONE.get());
-        basicBlockItem(EWItems.FROZEN_DIRT.get());
-        basicBlockItem(EWItems.FROZEN_GRASS_BLOCK.get());
-        basicBlockItem(EWItems.ICE_LANTERN.get());
-        basicItemWithBlockTexture(EWItems.POINTED_ICE.get());
-        basicItemWithBlockTexture(EWItems.FROZEN_GRASS.get());
-        basicItemWithBlockTexture(EWItems.ICE_FLOWER.get());
+        block(EWItems.FROZEN_STONE.get());
+        block(EWItems.FROZEN_STONE_SLAB.get());
+        block(EWItems.FROZEN_STONE_STAIRS.get());
+        wall(EWItems.FROZEN_STONE_WALL.get(), EWItems.FROZEN_STONE.get());
+        block(EWItems.ICE_CRYSTAL_ORE.get());
+        block(EWItems.ICE_CRYSTAL_BLOCK.get());
+        flatBlock(EWItems.ICE_CRYSTAL_TORCH.get());
+        block(EWItems.FROSTBITE_TNT.get());
+        block(EWItems.FROZEN_DIRT.get());
+        block(EWItems.FROZEN_GRASS_BLOCK.get());
+        block(EWItems.ICE_LANTERN.get());
+        flatBlock(EWItems.POINTED_ICE.get());
+        flatBlock(EWItems.FROZEN_GRASS.get());
+        flatBlock(EWItems.ICE_FLOWER.get());
         basicItem(EWItems.FRIGID_GLADIOLUS.get(), blockTextureFromItem(EWItems.FRIGID_GLADIOLUS.get()).withSuffix("_top"));
+
+        basicItem(EWItems.ICE_CRYSTAL.get());
+        basicItem(EWItems.FROSTBITE_GUNPOWDER.get());
+        basicItem(EWItems.SHARP_ICICLE.get());
+        basicItem(EWItems.FROST_CHARGE.get());
+        basicItem(EWItems.FROZEN_ARROW.get());
     }
 
-    private void basicBlockItem(Item item) {
+    private void block(Item item) {
         withExistingParent(name(item), modLoc(ModelProvider.BLOCK_FOLDER + "/" + name(item)));
     }
 
-    private void basicItemWithBlockTexture(Item item) {
+    private void flatBlock(Item item) {
         basicItem(item, blockTextureFromItem(item));
+    }
+
+    private void wall(Item wall, Item stone) {
+        getBuilder(name(wall))
+                .parent(getExistingFile(mcLoc("block/wall_inventory")))
+                .texture("wall", blockTextureFromItem(stone));
     }
 
     private ItemModelBuilder basicItem(Item item, ResourceLocation texture) {

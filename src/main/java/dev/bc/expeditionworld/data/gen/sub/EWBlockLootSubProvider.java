@@ -10,12 +10,14 @@ import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -64,6 +66,18 @@ public class EWBlockLootSubProvider extends BlockLootSubProvider {
                                 SetItemCountFunction.setCount(ConstantValue.exactly(integer + 1)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MossfloraBlock.AGE, integer))))))));
 
         dropSelf(EWBlocks.FROZEN_STONE.get());
+        add(EWBlocks.FROZEN_STONE_SLAB.get(), this::createSlabItemTable);
+        dropSelf(EWBlocks.FROZEN_STONE_STAIRS.get());
+        dropSelf(EWBlocks.FROZEN_STONE_WALL.get());
+        add(EWBlocks.ICE_CRYSTAL_ORE.get(), (block) ->
+                createSilkTouchDispatchTable(block, this.applyExplosionDecay(block,
+                        LootItem.lootTableItem(EWItems.ICE_CRYSTAL.get())
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE)))));
+        dropSelf(EWBlocks.ICE_CRYSTAL_BLOCK.get());
+        dropSelf(EWBlocks.ICE_CRYSTAL_TORCH.get());
+        dropOther(EWBlocks.ICE_CRYSTAL_WALL_TORCH.get(), EWBlocks.ICE_CRYSTAL_TORCH.get());
+        dropSelf(EWBlocks.FROSTBITE_TNT.get());
         dropSelf(EWBlocks.FROZEN_DIRT.get());
         add(EWBlocks.FROZEN_GRASS_BLOCK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, EWBlocks.FROZEN_DIRT.get()));
         dropSelf(EWBlocks.ICE_LANTERN.get());
@@ -80,6 +94,6 @@ public class EWBlockLootSubProvider extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block).getNamespace().equals(ExpeditionWorld.MOD_ID)).collect(Collectors.toList());
+        return ForgeRegistries.BLOCKS.getValues().stream().filter(block -> ForgeRegistries.BLOCKS.getKey(block).getNamespace().equals(ExpeditionWorld.ID)).collect(Collectors.toList());
     }
 }

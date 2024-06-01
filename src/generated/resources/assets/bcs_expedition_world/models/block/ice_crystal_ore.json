@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "bcs_expedition_world:block/ice_crystal_ore"
+  }
+}

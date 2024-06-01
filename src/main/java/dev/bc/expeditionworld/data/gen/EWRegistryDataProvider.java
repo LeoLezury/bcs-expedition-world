@@ -22,6 +22,6 @@ public class EWRegistryDataProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.TRIM_MATERIAL, EWTrimMaterials::bootstrap);
 
     public EWRegistryDataProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(ExpeditionWorld.MOD_ID, "minecraft"));
+        super(output, registries, BUILDER, Set.of(ExpeditionWorld.ID, "minecraft"));
     }
 }

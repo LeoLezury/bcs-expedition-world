@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "bcs_expedition_world:frozen_stone"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "count": 2,
+    "item": "bcs_expedition_world:frozen_stone_stairs"
+  },
+  "show_notification": true
+}

@@ -1,6 +1,6 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.block.EWBlocks;
+import dev.bc.expeditionworld.block.EWBlockTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
@@ -16,7 +16,7 @@ public class SnowLayerBlockMixin {
     @Inject(method = "randomTick", at = @At("HEAD"), cancellable = true)
     private void expeditionWorld$randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
         for (BlockPos blockPos : BlockPos.withinManhattan(pos, 7, 7, 7)) {
-            if (level.getBlockState(blockPos).is(EWBlocks.ICE_LANTERN.get())) {
+            if (level.getBlockState(blockPos).is(EWBlockTags.PREVENTS_MELTING)) {
                 ci.cancel();
             }
         }
