@@ -22,8 +22,8 @@ public class EWItemModelProvider extends ItemModelProvider {
         basicItem(EWItems.SCULK_MINT.get());
 
         basicItem(EWItems.TRAPPED_SOUL.get());
-        basicItem(EWItems.STONE_MIMICHEST_KNIFE.get());
-        basicItem(EWItems.BRICK_MIMICHEST_KNIFE.get());
+        handheld(EWItems.STONE_MIMICHEST_KNIFE.get());
+        handheld(EWItems.BRICK_MIMICHEST_KNIFE.get());
         block(EWItems.FETTERED_CHEST.get());
         block(EWItems.FETTERED_POT.get());
         flatBlock(EWItems.MOSSFLORA.get());
@@ -49,6 +49,11 @@ public class EWItemModelProvider extends ItemModelProvider {
         basicItem(EWItems.SHARP_ICICLE.get());
         basicItem(EWItems.FROST_CHARGE.get());
         basicItem(EWItems.FROZEN_ARROW.get());
+
+        basicItem(EWItems.COLDPROOF_HAT.get());
+        basicItem(EWItems.COLDPROOF_COAT.get());
+        basicItem(EWItems.COLDPROOF_LEGGINGS.get());
+        basicItem(EWItems.COLDPROOF_BOOTS.get());
     }
 
     private void block(Item item) {
@@ -63,6 +68,16 @@ public class EWItemModelProvider extends ItemModelProvider {
         getBuilder(name(wall))
                 .parent(getExistingFile(mcLoc("block/wall_inventory")))
                 .texture("wall", blockTextureFromItem(stone));
+    }
+
+    private ItemModelBuilder handheld(Item item) {
+        return handheld(item, itemTexture(item));
+    }
+
+    private ItemModelBuilder handheld(Item item, ResourceLocation texture) {
+        return getBuilder(item.toString())
+                .parent(new ModelFile.UncheckedModelFile("item/handheld"))
+                .texture("layer0", texture);
     }
 
     private ItemModelBuilder basicItem(Item item, ResourceLocation texture) {

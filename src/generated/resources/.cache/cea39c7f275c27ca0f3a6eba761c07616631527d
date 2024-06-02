@@ -1,5 +1,9 @@
-// 1.20.1	2024-06-01T22:45:17.8923292	Item Models: bcs_expedition_world
-e10b7841897f44cc21c89796a81af7ea6fd9beb8 assets/bcs_expedition_world/models/item/brick_mimichest_knife.json
+// 1.20.1	2024-06-02T19:32:56.7833448	Item Models: bcs_expedition_world
+825b3a9ca4e8b31957302fe179b4638acba3092c assets/bcs_expedition_world/models/item/brick_mimichest_knife.json
+661894d381d5075a63e1ad8ebcfd1c8af58f14e4 assets/bcs_expedition_world/models/item/coldproof_boots.json
+74593eea3dd780db5e4e292f3977b74c9f2f3a87 assets/bcs_expedition_world/models/item/coldproof_coat.json
+75ff89a9c8598b85acb1f64dae9a77b3ff7a62f4 assets/bcs_expedition_world/models/item/coldproof_hat.json
+bcaea376526a528c250c58b337eea01ff2d15a55 assets/bcs_expedition_world/models/item/coldproof_leggings.json
 62429020a2d716aba0e21258c58a6ab87aea634d assets/bcs_expedition_world/models/item/fettered_chest.json
 fe08a7fd86d838d13585e333e36ede7a376182a2 assets/bcs_expedition_world/models/item/fettered_pot.json
 e1c4aec116ce4e9b8bfae5bf61b14edb82e62549 assets/bcs_expedition_world/models/item/frigid_gladiolus.json
@@ -24,5 +28,5 @@ a8de8772b708e1846f18ddb94702b4443eaa2b87 assets/bcs_expedition_world/models/item
 376a92ee6f8fbc73ddd4c691445b36642032a16d assets/bcs_expedition_world/models/item/pointed_ice.json
 ff02107b0b4eeec6e047b11470056494f53db577 assets/bcs_expedition_world/models/item/sculk_mint.json
 63d6434f0be95096cfda1bb82b967032c28acd7f assets/bcs_expedition_world/models/item/sharp_icicle.json
-fae6a9f4cfe39fa9655bd921176a23ec2a1fc2b1 assets/bcs_expedition_world/models/item/stone_mimichest_knife.json
+c51c393bcdc7f39b9b714d008835d17da8e17f5b assets/bcs_expedition_world/models/item/stone_mimichest_knife.json
 6e971c6166119b439c6dbbf629382e1594679094 assets/bcs_expedition_world/models/item/trapped_soul.json

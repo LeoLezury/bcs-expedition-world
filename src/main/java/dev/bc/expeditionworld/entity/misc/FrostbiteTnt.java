@@ -34,14 +34,14 @@ public class FrostbiteTnt extends PrimedTnt {
         super.explode();
         playSound(EWSoundEvents.FROSTBITE_TNT_EXPLODE.get());
         spawnLingeringCloud();
-        for (int x = -10; x <= 10; x++) {
-            for (int y = -10; y <= 10; y++) {
-                for (int z = -10; z <= 10; z++) {
+        for (int x = -7; x <= 7; x++) {
+            for (int y = -7; y <= 7; y++) {
+                for (int z = -7; z <= 7; z++) {
                     BlockPos pos = blockPosition().offset(x, y, z);
-                    if (level().getBlockState(pos).is(Blocks.WATER) && blockPosition().distSqr(pos) <= 10 * 10) {
+                    if (level().getBlockState(pos).is(Blocks.WATER) && blockPosition().distSqr(pos) <= 7 * 7) {
                         level().setBlockAndUpdate(pos, Blocks.ICE.defaultBlockState());
                     }
-                    if (level().getBlockState(pos).is(Blocks.LAVA) && blockPosition().distSqr(pos) <= 5 * 5) {
+                    if (level().getBlockState(pos).is(Blocks.LAVA) && blockPosition().distSqr(pos) <= 4 * 4) {
                         level().setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
                     }
                 }

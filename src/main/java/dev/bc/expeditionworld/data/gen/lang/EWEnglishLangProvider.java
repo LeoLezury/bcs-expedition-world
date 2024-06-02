@@ -51,6 +51,10 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWItems.SHARP_ICICLE.get(), "Sharp Icicle");
         add(EWItems.FROST_CHARGE.get(), "Frost Charge");
         add(EWItems.FROZEN_ARROW.get(), "Frozen Arrow");
+        add(EWItems.COLDPROOF_HAT.get(), "Coldproof Hat");
+        add(EWItems.COLDPROOF_COAT.get(), "Coldproof Coat");
+        add(EWItems.COLDPROOF_LEGGINGS.get(), "Coldproof Leggings");
+        add(EWItems.COLDPROOF_BOOTS.get(), "Coldproof Boots");
 
         add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "Trapped Soul Material");
 
@@ -75,7 +79,8 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWEntities.MIMICHEST.get(), "Mimichest");
         add(EWEntities.MIMIPOT.get(), "Mimipot");
 
-        add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "Frostbite TNT Explodes");
+        add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "Coldproof armor rustles");
+        add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "Frostbite TNT explodes");
 
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");
         addAdvancement("obtain_sculk_mint", "The sculk is salivating over it", "Obtain the sculk mint");

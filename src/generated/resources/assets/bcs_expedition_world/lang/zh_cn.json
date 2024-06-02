@@ -38,6 +38,10 @@
   "entity.bcs_expedition_world.mimichest_knife": "箱灵飞刃",
   "entity.bcs_expedition_world.mimipot": "匿罐灵",
   "item.bcs_expedition_world.brick_mimichest_knife": "罐灵飞刃",
+  "item.bcs_expedition_world.coldproof_boots": "防寒靴",
+  "item.bcs_expedition_world.coldproof_coat": "防寒上衣",
+  "item.bcs_expedition_world.coldproof_hat": "防寒帽",
+  "item.bcs_expedition_world.coldproof_leggings": "防寒护腿",
   "item.bcs_expedition_world.frost_charge": "霜冻弹",
   "item.bcs_expedition_world.frostbite_gunpowder": "冻伤火药",
   "item.bcs_expedition_world.frozen_arrow": "冰封箭",
@@ -56,5 +60,6 @@
   "item.minecraft.tipped_arrow.effect.fettered": "桎梏之箭",
   "item_group.bcs_expedition_world": "BC的远征物语",
   "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode": "冻伤TNT：爆炸",
+  "subtitles.item.armor.bcs_expedition_world.equip_coldproof": "防寒盔甲：摩擦",
   "trim_material.bcs_expedition_world.trapped_soul": "受困灵魂材料"
 }

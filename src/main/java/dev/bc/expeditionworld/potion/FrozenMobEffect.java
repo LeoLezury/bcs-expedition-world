@@ -17,13 +17,17 @@ public class FrozenMobEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity living, int amplifier) {
-        living.setIsInPowderSnow(true);
-        living.setTicksFrozen(living.getTicksFrozen() + amplifier);
+        if (living.canFreeze()) {
+            living.setIsInPowderSnow(true);
+            living.setTicksFrozen(living.getTicksFrozen() + amplifier);
+        }
     }
 
     @Override
     public void addAttributeModifiers(LivingEntity living, AttributeMap map, int i) {
         super.addAttributeModifiers(living, map, i);
-        living.setTicksFrozen(130);
+        if (living.canFreeze()) {
+            living.setTicksFrozen(130);
+        }
     }
 }

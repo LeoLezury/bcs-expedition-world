@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "minecraft:amethyst_shard"
+      "item": "bcs_expedition_world:frozen_grass_block"
     },
     "show_toast": false,
     "title": {

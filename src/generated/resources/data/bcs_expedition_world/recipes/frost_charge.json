@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "bcs_expedition_world:ice_crystal"
+    },
+    {
+      "item": "bcs_expedition_world:sharp_icicle"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "bcs_expedition_world:frost_charge"
+  }
+}

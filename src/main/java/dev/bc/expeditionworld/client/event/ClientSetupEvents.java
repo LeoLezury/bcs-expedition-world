@@ -1,6 +1,8 @@
 package dev.bc.expeditionworld.client.event;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
+import dev.bc.expeditionworld.client.model.armor.InnerColdproofArmorModel;
+import dev.bc.expeditionworld.client.model.armor.OuterColdproofArmorModel;
 import dev.bc.expeditionworld.client.model.entity.MimichestKnifeModel;
 import dev.bc.expeditionworld.client.renderer.entity.FrostbiteTntRenderer;
 import dev.bc.expeditionworld.client.renderer.entity.FrozenArrowRenderer;
@@ -35,6 +37,8 @@ public class ClientSetupEvents {
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(OuterColdproofArmorModel.LAYER_LOCATION, OuterColdproofArmorModel::createBodyLayer);
+        event.registerLayerDefinition(InnerColdproofArmorModel.LAYER_LOCATION, InnerColdproofArmorModel::createBodyLayer);
         event.registerLayerDefinition(MimichestKnifeModel.LAYER_LOCATION, MimichestKnifeModel::createBodyLayer);
     }
 

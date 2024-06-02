@@ -31,5 +31,11 @@ public class EWItemTagsProvider extends ItemTagsProvider {
         tag(ItemTags.ARROWS).add(
                 EWItems.FROZEN_ARROW.get()
         );
+        tag(ItemTags.FREEZE_IMMUNE_WEARABLES).add(
+                EWItems.COLDPROOF_HAT.get(),
+                EWItems.COLDPROOF_COAT.get(),
+                EWItems.COLDPROOF_LEGGINGS.get(),
+                EWItems.COLDPROOF_BOOTS.get()
+        );
     }
 }

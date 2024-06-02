@@ -51,6 +51,10 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWItems.SHARP_ICICLE.get(), "尖锐冰锥");
         add(EWItems.FROST_CHARGE.get(), "霜冻弹");
         add(EWItems.FROZEN_ARROW.get(), "冰封箭");
+        add(EWItems.COLDPROOF_HAT.get(), "防寒帽");
+        add(EWItems.COLDPROOF_COAT.get(), "防寒上衣");
+        add(EWItems.COLDPROOF_LEGGINGS.get(), "防寒护腿");
+        add(EWItems.COLDPROOF_BOOTS.get(), "防寒靴");
 
         add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "受困灵魂材料");
 
@@ -74,6 +78,8 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWEntities.FROZEN_ARROW.get(), "冰封箭");
         add(EWEntities.MIMICHEST.get(), "匿箱灵");
         add(EWEntities.MIMIPOT.get(), "匿罐灵");
+
+        add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "防寒盔甲：摩擦");
         add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "冻伤TNT：爆炸");
 
         addAdvancement("root", "BC的远征物语", "BC的远征物语");

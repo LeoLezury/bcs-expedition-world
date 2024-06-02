@@ -38,6 +38,10 @@
   "entity.bcs_expedition_world.mimichest_knife": "Mimichest Knife",
   "entity.bcs_expedition_world.mimipot": "Mimipot",
   "item.bcs_expedition_world.brick_mimichest_knife": "Brick Mimichest Knife",
+  "item.bcs_expedition_world.coldproof_boots": "Coldproof Boots",
+  "item.bcs_expedition_world.coldproof_coat": "Coldproof Coat",
+  "item.bcs_expedition_world.coldproof_hat": "Coldproof Hat",
+  "item.bcs_expedition_world.coldproof_leggings": "Coldproof Leggings",
   "item.bcs_expedition_world.frost_charge": "Frost Charge",
   "item.bcs_expedition_world.frostbite_gunpowder": "Frostbite Gunpowder",
   "item.bcs_expedition_world.frozen_arrow": "Frozen Arrow",
@@ -55,6 +59,7 @@
   "item.minecraft.tipped_arrow.effect.catwalk": "Arrow of Catwalk",
   "item.minecraft.tipped_arrow.effect.fettered": "Arrow of Fettered",
   "item_group.bcs_expedition_world": "BC's Expedition World",
-  "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode": "Frostbite TNT Explodes",
+  "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode": "Frostbite TNT explodes",
+  "subtitles.item.armor.bcs_expedition_world.equip_coldproof": "Coldproof armor rustles",
   "trim_material.bcs_expedition_world.trapped_soul": "Trapped Soul Material"
 }

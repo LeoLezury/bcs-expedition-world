@@ -3,6 +3,7 @@ package dev.bc.expeditionworld.item;
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.block.EWBlocks;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.StandingAndWallBlockItem;
@@ -46,4 +47,9 @@ public class EWItems {
     public static final RegistryObject<Item> SHARP_ICICLE = ITEMS.register("sharp_icicle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<FrostChargeItem> FROST_CHARGE = ITEMS.register("frost_charge", () -> new FrostChargeItem(new Item.Properties()));
     public static final RegistryObject<FrozenArrowItem> FROZEN_ARROW = ITEMS.register("frozen_arrow", () -> new FrozenArrowItem(new Item.Properties()));
+
+    public static final RegistryObject<ColdproofArmorItem> COLDPROOF_HAT = ITEMS.register("coldproof_hat", () -> new ColdproofArmorItem(EWArmorMaterials.COLDPROOF, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<ColdproofArmorItem> COLDPROOF_COAT = ITEMS.register("coldproof_coat", () -> new ColdproofArmorItem(EWArmorMaterials.COLDPROOF, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<ColdproofArmorItem> COLDPROOF_LEGGINGS = ITEMS.register("coldproof_leggings", () -> new ColdproofArmorItem(EWArmorMaterials.COLDPROOF, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<ColdproofArmorItem> COLDPROOF_BOOTS = ITEMS.register("coldproof_boots", () -> new ColdproofArmorItem(EWArmorMaterials.COLDPROOF, ArmorItem.Type.BOOTS, new Item.Properties()));
 }

@@ -8,6 +8,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class EWSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ExpeditionWorld.ID);
+    public static final RegistryObject<SoundEvent> ARMOR_EQUIP_COLDPROOF = register("item.armor.equip_coldproof");
     public static final RegistryObject<SoundEvent> FROSTBITE_TNT_EXPLODE = register("entity.frostbite_tnt.explode");
 
     public static RegistryObject<SoundEvent> register(String name) {

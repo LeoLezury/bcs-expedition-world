@@ -4,5 +4,16 @@
       "bcs_expedition_world:entity/frostbite_tnt/explode"
     ],
     "subtitle": "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode"
+  },
+  "item.armor.equip_coldproof": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.item.armor.bcs_expedition_world.equip_coldproof"
   }
 }

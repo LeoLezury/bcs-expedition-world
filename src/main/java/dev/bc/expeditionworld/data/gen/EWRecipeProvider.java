@@ -6,6 +6,7 @@ import dev.bc.expeditionworld.item.EWItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -64,7 +65,7 @@ public class EWRecipeProvider extends RecipeProvider {
                 .define('I', EWItems.ICE_CRYSTAL.get())
                 .unlockedBy("has_item", has(EWItems.FROSTBITE_GUNPOWDER.get()))
                 .save(recipeOutput);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EWItems.ICE_LANTERN.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, EWItems.ICE_LANTERN.get())
                 .pattern(" I ")
                 .pattern("IGI")
                 .pattern(" I ")
@@ -75,10 +76,46 @@ public class EWRecipeProvider extends RecipeProvider {
         addSingleConversion(recipeOutput, Items.LIGHT_BLUE_DYE, EWItems.ICE_FLOWER.get());
         addSingleConversion(recipeOutput, EWItems.ICE_CRYSTAL.get(), EWItems.FRIGID_GLADIOLUS.get());
         addSingleConversion(recipeOutput, EWItems.ICE_CRYSTAL.get(), EWItems.SHARP_ICICLE.get());
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, EWItems.FROST_CHARGE.get(), 3)
+                .requires(Items.SNOWBALL, 2)
+                .requires(EWItems.ICE_CRYSTAL.get())
+                .requires(EWItems.SHARP_ICICLE.get())
+                .unlockedBy("has_item", has(EWItems.SHARP_ICICLE.get()))
+                .save(recipeOutput);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, EWItems.FROZEN_ARROW.get(), 4)
                 .requires(Items.ARROW, 4)
                 .requires(EWItems.ICE_CRYSTAL.get())
                 .unlockedBy("has_item", has(EWItems.ICE_CRYSTAL.get()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.COLDPROOF_HAT.get())
+                .pattern("WWW")
+                .pattern("S S")
+                .define('S', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_item", has(ItemTags.WOOL))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.COLDPROOF_COAT.get())
+                .pattern("W W")
+                .pattern("WWW")
+                .pattern("SSS")
+                .define('S', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_item", has(ItemTags.WOOL))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.COLDPROOF_LEGGINGS.get())
+                .pattern("WWW")
+                .pattern("S S")
+                .pattern("W W")
+                .define('S', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_item", has(ItemTags.WOOL))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.COLDPROOF_BOOTS.get())
+                .pattern("S S")
+                .pattern("W W")
+                .define('S', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_item", has(ItemTags.WOOL))
                 .save(recipeOutput);
     }
 
