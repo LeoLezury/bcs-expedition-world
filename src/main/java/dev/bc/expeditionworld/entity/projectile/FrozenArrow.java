@@ -3,7 +3,6 @@ package dev.bc.expeditionworld.entity.projectile;
 import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWMobEffects;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
@@ -27,14 +26,7 @@ public class FrozenArrow extends AbstractArrow {
         super(EWEntities.FROZEN_ARROW.get(), x, y, z, level);
     }
 
-    public void tick() {
-        super.tick();
-        if (this.level().isClientSide && !this.inGround) {
-            this.level().addParticle(ParticleTypes.SNOWFLAKE, this.getX(), this.getY(), this.getZ(), 0.0, 0.0, 0.0);
-        }
-    }
-
-    protected ItemStack getPickupItem() {
+    public ItemStack getPickupItem() {
         return EWItems.FROZEN_ARROW.get().getDefaultInstance();
     }
 

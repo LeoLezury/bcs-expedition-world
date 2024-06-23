@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "bcs_expedition_world:item/glacier_dagger"
+  }
+}

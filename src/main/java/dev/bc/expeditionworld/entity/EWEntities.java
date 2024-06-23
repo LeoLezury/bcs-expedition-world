@@ -6,6 +6,7 @@ import dev.bc.expeditionworld.entity.misc.FrostbiteTnt;
 import dev.bc.expeditionworld.entity.projectile.FrostCharge;
 import dev.bc.expeditionworld.entity.projectile.FrozenArrow;
 import dev.bc.expeditionworld.entity.projectile.MimichestKnife;
+import dev.bc.expeditionworld.entity.projectile.MoaFeatherArrow;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +27,8 @@ public class EWEntities {
             () -> EntityType.Builder.<FrostCharge>of(FrostCharge::new, MobCategory.MISC).sized(0.25f, 0.25f).build("frost_charge"));
     public static final RegistryObject<EntityType<FrozenArrow>> FROZEN_ARROW = ENTITY_TYPES.register("frozen_arrow",
             () -> EntityType.Builder.<FrozenArrow>of(FrozenArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).build("frozen_arrow"));
+    public static final RegistryObject<EntityType<MoaFeatherArrow>> MOA_FEATHER_ARROW = ENTITY_TYPES.register("moa_feather_arrow",
+            () -> EntityType.Builder.<MoaFeatherArrow>of(MoaFeatherArrow::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).build("moa_feather_arrow"));
 
     // monsters
     public static final RegistryObject<EntityType<Mimichest>> MIMICHEST = ENTITY_TYPES.register("mimichest",

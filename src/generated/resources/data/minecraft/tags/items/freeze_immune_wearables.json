@@ -3,6 +3,10 @@
     "bcs_expedition_world:coldproof_hat",
     "bcs_expedition_world:coldproof_coat",
     "bcs_expedition_world:coldproof_leggings",
-    "bcs_expedition_world:coldproof_boots"
+    "bcs_expedition_world:coldproof_boots",
+    "bcs_expedition_world:glacier_helmet",
+    "bcs_expedition_world:glacier_chestplate",
+    "bcs_expedition_world:glacier_leggings",
+    "bcs_expedition_world:glacier_boots"
   ]
 }

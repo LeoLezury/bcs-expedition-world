@@ -23,6 +23,7 @@ public class EWSoundProvider extends SoundDefinitionsProvider {
     @Override
     public void registerSounds() {
         add(EWSoundEvents.ARMOR_EQUIP_COLDPROOF, definition().with(sound(mcLoc("item/armor/equip_leather1")), sound(mcLoc("item/armor/equip_leather2")), sound(mcLoc("item/armor/equip_leather3")), sound(mcLoc("item/armor/equip_leather4")), sound(mcLoc("item/armor/equip_leather5")), sound(mcLoc("item/armor/equip_leather6"))).subtitle("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof"));
+        add(EWSoundEvents.ARMOR_EQUIP_GLACIER, definition().with(sound(mcLoc("item/armor/equip_diamond1")), sound(mcLoc("item/armor/equip_diamond2")), sound(mcLoc("item/armor/equip_diamond3")), sound(mcLoc("item/armor/equip_diamond4")), sound(mcLoc("item/armor/equip_diamond5")), sound(mcLoc("item/armor/equip_diamond6"))).subtitle("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier"));
         add(EWSoundEvents.FROSTBITE_TNT_EXPLODE, definition().with(sound(loc("entity/frostbite_tnt/explode"))).subtitle("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode"));
     }
 }

@@ -6,6 +6,7 @@ import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import dev.bc.expeditionworld.potion.EWPotions;
+import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -51,10 +52,31 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWItems.SHARP_ICICLE.get(), "尖锐冰锥");
         add(EWItems.FROST_CHARGE.get(), "霜冻弹");
         add(EWItems.FROZEN_ARROW.get(), "冰封箭");
+        add(EWItems.FRIGID_BEAK.get(), "严寒鸟喙");
+        add(EWItems.FRIGID_BEAK.get().getDescriptionId() + ".desc", "其上散发着屡屡寒气");
+        add(EWItems.FRIGID_BEAK.get().getDescriptionId() + ".fail", "这个空间不太合适");
+        add(EWItems.FROSTY_MOA_LOOT_BAG.get(), "冰霜恐鸟战利品袋");
+        add(EWItems.MOA_FEATHER.get(), "恐鸟羽毛");
+        add(EWItems.MOA_SKULL.get(), "恐鸟头骨");
+        add(EWItems.FROSTY_MOA_EGG.get(), "冰霜恐鸟蛋");
+        add(EWItems.MOA_FEATHER_ARROW.get(), "恐羽箭");
+        add(EWItems.TOTEM_OF_ICE.get(), "冰之图腾");
         add(EWItems.COLDPROOF_HAT.get(), "防寒帽");
         add(EWItems.COLDPROOF_COAT.get(), "防寒上衣");
         add(EWItems.COLDPROOF_LEGGINGS.get(), "防寒护腿");
         add(EWItems.COLDPROOF_BOOTS.get(), "防寒靴");
+        add(Util.makeDescriptionId("upgrade", ExpeditionWorld.id("glacier_upgrade")), "冰川升级");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.applies_to")), "防寒装备");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.ingredients")), "恐鸟羽毛");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.base_slot_description")), "放入防寒装备或冰封匕首");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.additions_slot_description")), "放入恐鸟羽毛");
+        add(EWItems.GLACIER_HELMET.get(), "冰川头盔");
+        add(EWItems.GLACIER_CHESTPLATE.get(), "冰川胸甲");
+        add(EWItems.GLACIER_LEGGINGS.get(), "冰川护腿");
+        add(EWItems.GLACIER_BOOTS.get(), "冰川靴子");
+        add(EWItems.FROSTY_DAGGER.get(), "冰封匕首");
+        add(EWItems.GLACIER_DAGGER.get(), "冰河匕首");
+        add(EWItems.GLACIER_BOW.get(), "冰河弓");
 
         add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "受困灵魂材料");
 
@@ -76,10 +98,12 @@ public class EWChineseLangProvider extends LanguageProvider {
         add(EWEntities.MIMICHEST_KNIFE.get(), "箱灵飞刃");
         add(EWEntities.FROST_CHARGE.get(), "霜冻弹");
         add(EWEntities.FROZEN_ARROW.get(), "冰封箭");
+        add(EWEntities.MOA_FEATHER_ARROW.get(), "恐羽箭");
         add(EWEntities.MIMICHEST.get(), "匿箱灵");
         add(EWEntities.MIMIPOT.get(), "匿罐灵");
 
         add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "防寒盔甲：摩擦");
+        add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier", "冰川盔甲：摩擦");
         add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "冻伤TNT：爆炸");
 
         addAdvancement("root", "BC的远征物语", "BC的远征物语");

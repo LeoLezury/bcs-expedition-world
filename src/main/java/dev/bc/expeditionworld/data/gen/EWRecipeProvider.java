@@ -87,6 +87,24 @@ public class EWRecipeProvider extends RecipeProvider {
                 .requires(EWItems.ICE_CRYSTAL.get())
                 .unlockedBy("has_item", has(EWItems.ICE_CRYSTAL.get()))
                 .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, EWItems.FRIGID_BEAK.get())
+                .pattern(" FC")
+                .pattern("ILF")
+                .pattern("II ")
+                .define('F', Items.FEATHER)
+                .define('C', EWItems.FROST_CHARGE.get())
+                .define('I', EWItems.SHARP_ICICLE.get())
+                .define('L', EWItems.ICE_LANTERN.get())
+                .unlockedBy("has_item", has(EWItems.ICE_LANTERN.get()))
+                .save(recipeOutput);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.MOA_FEATHER_ARROW.get(), 8)
+                .pattern("AAA")
+                .pattern("AFA")
+                .pattern("AAA")
+                .define('A', EWItems.FROZEN_ARROW.get())
+                .define('F', EWItems.MOA_FEATHER.get())
+                .unlockedBy("has_item", has(EWItems.MOA_FEATHER.get()))
+                .save(recipeOutput);
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.COLDPROOF_HAT.get())
                 .pattern("WWW")
                 .pattern("S S")
@@ -116,6 +134,28 @@ public class EWRecipeProvider extends RecipeProvider {
                 .define('S', Items.STRING)
                 .define('W', ItemTags.WOOL)
                 .unlockedBy("has_item", has(ItemTags.WOOL))
+                .save(recipeOutput);
+        copySmithingTemplate(recipeOutput, EWItems.CRYO_SMITHING_TEMPLATE.get(), EWItems.MOA_FEATHER.get(), EWItems.FROZEN_STONE.get());
+        glacierSmithing(recipeOutput, EWItems.COLDPROOF_HAT.get(), RecipeCategory.COMBAT, EWItems.GLACIER_HELMET.get());
+        glacierSmithing(recipeOutput, EWItems.COLDPROOF_COAT.get(), RecipeCategory.COMBAT, EWItems.GLACIER_CHESTPLATE.get());
+        glacierSmithing(recipeOutput, EWItems.COLDPROOF_LEGGINGS.get(), RecipeCategory.COMBAT, EWItems.GLACIER_LEGGINGS.get());
+        glacierSmithing(recipeOutput, EWItems.COLDPROOF_BOOTS.get(), RecipeCategory.COMBAT, EWItems.GLACIER_BOOTS.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.FROSTY_DAGGER.get())
+                .pattern("I ")
+                .pattern(" S")
+                .define('I', EWItems.SHARP_ICICLE.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_item", has(EWItems.SHARP_ICICLE.get()))
+                .save(recipeOutput);
+        glacierSmithing(recipeOutput, EWItems.FROSTY_DAGGER.get(), RecipeCategory.COMBAT, EWItems.GLACIER_DAGGER.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.GLACIER_BOW.get())
+                .pattern(" F#")
+                .pattern("S #")
+                .pattern(" F#")
+                .define('S', EWItems.MOA_SKULL.get())
+                .define('F', EWItems.MOA_FEATHER.get())
+                .define('#', Items.STRING)
+                .unlockedBy("has_item", has(EWItems.MOA_SKULL.get()))
                 .save(recipeOutput);
     }
 
@@ -176,6 +216,14 @@ public class EWRecipeProvider extends RecipeProvider {
     protected void nineBlockStorage(Consumer<FinishedRecipe> recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String packName, String packGroup, String unpackName, String unpackGroup) {
         ShapelessRecipeBuilder.shapeless(unpackCategory, unpacked, 9).requires(packed).group(unpackGroup).unlockedBy(getHasName(packed), has(packed)).save(recipeOutput, ExpeditionWorld.id(unpackName));
         ShapedRecipeBuilder.shaped(packCategory, packed).define('#', unpacked).pattern("###").pattern("###").pattern("###").group(packGroup).unlockedBy(getHasName(unpacked), has(unpacked)).save(recipeOutput, ExpeditionWorld.id(packName));
+    }
+
+    protected static void copySmithingTemplate(Consumer<FinishedRecipe> recipeOutput, ItemLike template, ItemLike core, ItemLike others) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, template, 2).define('#', others).define('C', core).define('S', template).pattern("#S#").pattern("#C#").pattern("###").unlockedBy(getHasName(template), has(template)).save(recipeOutput);
+    }
+
+    protected static void glacierSmithing(Consumer<FinishedRecipe> recipeOutput, Item input, RecipeCategory category, Item output) {
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(EWItems.CRYO_SMITHING_TEMPLATE.get()), Ingredient.of(input), Ingredient.of(EWItems.MOA_FEATHER.get()), category, output).unlocks("has_moa_feather", has(EWItems.MOA_FEATHER.get())).save(recipeOutput, ExpeditionWorld.id(getItemName(output) + "_smithing"));
     }
 
     protected final String name(ItemLike item) {

@@ -2,6 +2,7 @@ package dev.bc.expeditionworld.data.gen;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.item.EWItems;
+import dev.bc.expeditionworld.item.IceTotemItem;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -50,10 +51,50 @@ public class EWItemModelProvider extends ItemModelProvider {
         basicItem(EWItems.FROST_CHARGE.get());
         basicItem(EWItems.FROZEN_ARROW.get());
 
+        basicItem(EWItems.FRIGID_BEAK.get());
+        basicItem(EWItems.FROSTY_MOA_LOOT_BAG.get());
+        basicItem(EWItems.MOA_FEATHER.get());
+        basicItem(EWItems.MOA_SKULL.get());
+        basicItem(EWItems.FROSTY_MOA_EGG.get());
+        basicItem(EWItems.MOA_FEATHER_ARROW.get());
+        iceTotem(EWItems.TOTEM_OF_ICE.get());
+
         basicItem(EWItems.COLDPROOF_HAT.get());
         basicItem(EWItems.COLDPROOF_COAT.get());
         basicItem(EWItems.COLDPROOF_LEGGINGS.get());
         basicItem(EWItems.COLDPROOF_BOOTS.get());
+
+        basicItem(EWItems.CRYO_SMITHING_TEMPLATE.get());
+
+        basicItem(EWItems.GLACIER_HELMET.get());
+        basicItem(EWItems.GLACIER_CHESTPLATE.get());
+        basicItem(EWItems.GLACIER_LEGGINGS.get());
+        basicItem(EWItems.GLACIER_BOOTS.get());
+
+        handheld(EWItems.FROSTY_DAGGER.get());
+        handheld(EWItems.GLACIER_DAGGER.get());
+
+        bow(EWItems.GLACIER_BOW.get());
+    }
+
+    private void iceTotem(Item item) {
+        ModelFile brokenModel = withExistingParent(name(item) + "_broken", "item/generated")
+                .texture("layer0", itemTexture(item).withSuffix("_broken"));
+        basicItem(item).override().predicate(IceTotemItem.BROKEN, 1).model(brokenModel).end();
+    }
+
+    private void bow(Item item) {
+        ModelFile pull0 = withExistingParent(name(item) + "_pulling_0", "item/bow")
+                .texture("layer0", itemTexture(item).withSuffix("_pulling_0"));
+        ModelFile pull1 = withExistingParent(name(item) + "_pulling_1", "item/bow")
+                .texture("layer0", itemTexture(item).withSuffix("_pulling_1"));
+        ModelFile pull2 = withExistingParent(name(item) + "_pulling_2", "item/bow")
+                .texture("layer0", itemTexture(item).withSuffix("_pulling_2"));
+        withExistingParent(name(item), "item/bow")
+                .texture("layer0", itemTexture(item))
+                .override().predicate(new ResourceLocation("pulling"), 1).model(pull0).end()
+                .override().predicate(new ResourceLocation("pulling"), 1).predicate(new ResourceLocation("pull"), (float) 0.65).model(pull1).end()
+                .override().predicate(new ResourceLocation("pulling"), 1).predicate(new ResourceLocation("pull"), (float) 0.9).model(pull2).end();
     }
 
     private void block(Item item) {

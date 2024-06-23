@@ -1,6 +1,7 @@
 package dev.bc.expeditionworld.entity.misc;
 
 import dev.bc.expeditionworld.entity.EWEntities;
+import dev.bc.expeditionworld.particle.EWParticles;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import dev.bc.expeditionworld.sound.EWSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -21,7 +22,7 @@ public class FrostbiteTnt extends PrimedTnt {
         this(EWEntities.FROSTBITE_TNT.get(), level);
         this.setPos(x, y, z);
         double d0 = igniter.getRandom().nextDouble() * (Math.PI * 2F);
-        this.setDeltaMovement(-Math.sin(d0) * 0.02D, (double)0.2F, -Math.cos(d0) * 0.02D);
+        this.setDeltaMovement(-Math.sin(d0) * 0.02D, 0.2F, -Math.cos(d0) * 0.02D);
         this.setFuse(80);
         this.xo = x;
         this.yo = y;
@@ -34,14 +35,14 @@ public class FrostbiteTnt extends PrimedTnt {
         super.explode();
         playSound(EWSoundEvents.FROSTBITE_TNT_EXPLODE.get());
         spawnLingeringCloud();
-        for (int x = -7; x <= 7; x++) {
-            for (int y = -7; y <= 7; y++) {
-                for (int z = -7; z <= 7; z++) {
+        for (int x = -4; x <= 4; x++) {
+            for (int y = -4; y <= 4; y++) {
+                for (int z = -4; z <= 4; z++) {
                     BlockPos pos = blockPosition().offset(x, y, z);
-                    if (level().getBlockState(pos).is(Blocks.WATER) && blockPosition().distSqr(pos) <= 7 * 7) {
+                    if (level().getBlockState(pos).is(Blocks.WATER) && blockPosition().distSqr(pos) <= 4 * 4) {
                         level().setBlockAndUpdate(pos, Blocks.ICE.defaultBlockState());
                     }
-                    if (level().getBlockState(pos).is(Blocks.LAVA) && blockPosition().distSqr(pos) <= 4 * 4) {
+                    if (level().getBlockState(pos).is(Blocks.LAVA) && blockPosition().distSqr(pos) <= 2 * 2) {
                         level().setBlockAndUpdate(pos, Blocks.OBSIDIAN.defaultBlockState());
                     }
                 }
@@ -51,11 +52,11 @@ public class FrostbiteTnt extends PrimedTnt {
 
     private void spawnLingeringCloud() {
         AreaEffectCloud cloud = new AreaEffectCloud(this.level(), this.getX(), this.getY(), this.getZ());
-        cloud.setRadius(2.5F);
+        cloud.setRadius(5F);
         cloud.setRadiusOnUse(-0.5F);
         cloud.setWaitTime(10);
-        cloud.setDuration(cloud.getDuration() / 2);
         cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
+        cloud.setParticle(EWParticles.SNOWFLAKE.get());
         cloud.addEffect(new MobEffectInstance(new MobEffectInstance(EWMobEffects.FROZEN.get(), 60)));
         this.level().addFreshEntity(cloud);
     }

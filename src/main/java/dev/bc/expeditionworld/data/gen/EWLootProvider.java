@@ -1,9 +1,6 @@
 package dev.bc.expeditionworld.data.gen;
 
-import dev.bc.expeditionworld.data.gen.sub.EWBlockLootSubProvider;
-import dev.bc.expeditionworld.data.gen.sub.EWChestLootSubProvider;
-import dev.bc.expeditionworld.data.gen.sub.EWEntityLootSubProvider;
-import dev.bc.expeditionworld.data.gen.sub.EWEntityModifiedLootSubProvider;
+import dev.bc.expeditionworld.data.gen.sub.*;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
@@ -17,7 +14,8 @@ public class EWLootProvider extends LootTableProvider {
                 new SubProviderEntry(EWBlockLootSubProvider::new, LootContextParamSets.BLOCK),
                 new SubProviderEntry(EWEntityLootSubProvider::new, LootContextParamSets.ENTITY),
                 new SubProviderEntry(EWChestLootSubProvider::new, LootContextParamSets.CHEST),
-                new SubProviderEntry(EWEntityModifiedLootSubProvider::new, LootContextParamSets.ENTITY)
+                new SubProviderEntry(EWEntityModifiedLootSubProvider::new, LootContextParamSets.ENTITY),
+                new SubProviderEntry(EWBossLootSubProvider::new, LootContextParamSets.EMPTY)
         ));
     }
 }

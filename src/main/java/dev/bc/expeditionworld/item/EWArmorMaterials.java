@@ -18,7 +18,13 @@ public enum EWArmorMaterials implements ArmorMaterial {
         map.put(ArmorItem.Type.LEGGINGS, 4);
         map.put(ArmorItem.Type.CHESTPLATE, 5);
         map.put(ArmorItem.Type.HELMET, 2);
-    }), 9, EWSoundEvents.ARMOR_EQUIP_COLDPROOF.get(), 0F, 0F, () -> Ingredient.EMPTY);
+    }), 9, EWSoundEvents.ARMOR_EQUIP_COLDPROOF.get(), 0F, 0F, () -> Ingredient.EMPTY),
+    GLACIER(ExpeditionWorld.ID + ":glacier", 35, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+        map.put(ArmorItem.Type.BOOTS, 3);
+        map.put(ArmorItem.Type.LEGGINGS, 6);
+        map.put(ArmorItem.Type.CHESTPLATE, 8);
+        map.put(ArmorItem.Type.HELMET, 3);
+    }), 9, EWSoundEvents.ARMOR_EQUIP_GLACIER.get(), 1F, 0F, () -> Ingredient.EMPTY);
 
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
         map.put(ArmorItem.Type.BOOTS, 13);

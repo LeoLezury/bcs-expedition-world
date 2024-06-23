@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bcs_expedition_world:moa_feather"
+  },
+  "base": {
+    "item": "bcs_expedition_world:coldproof_coat"
+  },
+  "result": {
+    "item": "bcs_expedition_world:glacier_chestplate"
+  },
+  "template": {
+    "item": "bcs_expedition_world:cryo_smithing_template"
+  }
+}

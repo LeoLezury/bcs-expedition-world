@@ -1,9 +1,11 @@
-// 1.20.1	2024-06-02T17:34:47.4648072	Tags for minecraft:item mod id bcs_expedition_world
-676c96134e3992341da4ada67aefda8cf32766df data/minecraft/tags/items/arrows.json
-b1850821185c652d3d75a491c942825f4d047d43 data/minecraft/tags/items/freeze_immune_wearables.json
+// 1.20.1	2024-06-23T12:10:14.8359202	Tags for minecraft:item mod id bcs_expedition_world
+52413a870520da3227b0d97b44e5455211b16e49 data/bcs_expedition_world/tags/items/repairs_totem_of_ice.json
+4af4c933385095081a2283f8f18d924cf2e9b310 data/minecraft/tags/items/arrows.json
+105e587211a0e22f63587fd0f0efe2a111da482a data/minecraft/tags/items/freeze_immune_wearables.json
 18f6ec4ad2ed7aa82086fa35dd695f87db5e957a data/minecraft/tags/items/slabs.json
 4b0a17666008ce0b86126a94942d3ac2e78d4df5 data/minecraft/tags/items/small_flowers.json
 0a21c4e33fa2a1f95b13b32e14514d56be89c8b7 data/minecraft/tags/items/stairs.json
+c9ad363e1aa7ee02d7ce43de0b63cf2b6d7ec362 data/minecraft/tags/items/swords.json
 832962a660be53b0c7024c0b5e810eb1004b424c data/minecraft/tags/items/tall_flowers.json
 5c07f482a4b4802a76760654483d8c2c38d94d37 data/minecraft/tags/items/trim_materials.json
 76e2b4830dabb7535bc136b7d83d8ea4d515d28e data/minecraft/tags/items/walls.json

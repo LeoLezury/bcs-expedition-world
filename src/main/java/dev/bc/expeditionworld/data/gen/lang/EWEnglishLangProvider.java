@@ -6,6 +6,7 @@ import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import dev.bc.expeditionworld.potion.EWPotions;
+import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -51,10 +52,31 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWItems.SHARP_ICICLE.get(), "Sharp Icicle");
         add(EWItems.FROST_CHARGE.get(), "Frost Charge");
         add(EWItems.FROZEN_ARROW.get(), "Frozen Arrow");
+        add(EWItems.FRIGID_BEAK.get(), "Frigid Beak");
+        add(EWItems.FRIGID_BEAK.get().getDescriptionId() + ".desc", "It's emitting cold air...");
+        add(EWItems.FRIGID_BEAK.get().getDescriptionId() + ".fail", "It's not a very good location");
+        add(EWItems.FROSTY_MOA_LOOT_BAG.get(), "Frosty Moa Loot Bag");
+        add(EWItems.MOA_FEATHER.get(), "Moa Feather");
+        add(EWItems.MOA_SKULL.get(), "Moa Skull");
+        add(EWItems.FROSTY_MOA_EGG.get(), "Frosty Moa Egg");
+        add(EWItems.MOA_FEATHER_ARROW.get(), "Moa Feather Arrow");
+        add(EWItems.TOTEM_OF_ICE.get(), "Totem of Ice");
         add(EWItems.COLDPROOF_HAT.get(), "Coldproof Hat");
         add(EWItems.COLDPROOF_COAT.get(), "Coldproof Coat");
         add(EWItems.COLDPROOF_LEGGINGS.get(), "Coldproof Leggings");
         add(EWItems.COLDPROOF_BOOTS.get(), "Coldproof Boots");
+        add(Util.makeDescriptionId("upgrade", ExpeditionWorld.id("glacier_upgrade")), "Glacier Upgrade");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.applies_to")), "Coldproof Equipment");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.ingredients")), "Moa Feather");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.base_slot_description")), "Add coldproof armor or frosty dagger");
+        add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.additions_slot_description")), "Add Moa Feather");
+        add(EWItems.GLACIER_HELMET.get(), "Glacier Helmet");
+        add(EWItems.GLACIER_CHESTPLATE.get(), "Glacier Chestplate");
+        add(EWItems.GLACIER_LEGGINGS.get(), "Glacier Leggings");
+        add(EWItems.GLACIER_BOOTS.get(), "Glacier Boots");
+        add(EWItems.FROSTY_DAGGER.get(), "Frosty Dagger");
+        add(EWItems.GLACIER_DAGGER.get(), "Glacier Dagger");
+        add(EWItems.GLACIER_BOW.get(), "Glacier Bow");
 
         add("trim_material." + ExpeditionWorld.ID + ".trapped_soul", "Trapped Soul Material");
 
@@ -76,10 +98,12 @@ public class EWEnglishLangProvider extends LanguageProvider {
         add(EWEntities.MIMICHEST_KNIFE.get(), "Mimichest Knife");
         add(EWEntities.FROST_CHARGE.get(), "Frost Charge");
         add(EWEntities.FROZEN_ARROW.get(), "Frozen Arrow");
+        add(EWEntities.MOA_FEATHER_ARROW.get(), "Moa Feather Arrow");
         add(EWEntities.MIMICHEST.get(), "Mimichest");
         add(EWEntities.MIMIPOT.get(), "Mimipot");
 
         add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "Coldproof armor rustles");
+        add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier", "Glacier armor clings");
         add("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode", "Frostbite TNT explodes");
 
         addAdvancement("root", "BC's Expedition World", "BC's Expedition World");

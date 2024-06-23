@@ -150,7 +150,7 @@ public class MimichestKnife extends AbstractArrow {
     }
 
     @Override
-    protected ItemStack getPickupItem() {
+    public ItemStack getPickupItem() {
         return isBrick() ? EWItems.BRICK_MIMICHEST_KNIFE.get().getDefaultInstance() : EWItems.STONE_MIMICHEST_KNIFE.get().getDefaultInstance();
     }
 

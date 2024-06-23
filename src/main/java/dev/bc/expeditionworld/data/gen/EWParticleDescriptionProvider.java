@@ -15,6 +15,7 @@ public class EWParticleDescriptionProvider extends ParticleDescriptionProvider {
     @Override
     protected void addDescriptions() {
         spriteSet(EWParticles.TRAPPED_SOUL.get(), loc("trapped_soul"), 11, false);
+        spriteSet(EWParticles.SNOWFLAKE.get(), loc("snowflake"), 4, false);
     }
 
     private ResourceLocation loc(String s) {
