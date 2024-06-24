@@ -10,14 +10,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class FrozenArrowRenderer extends ArrowRenderer<FrozenArrow> {
-    public static final ResourceLocation FROZEN_ARROW_LOCATION = ExpeditionWorld.id("textures/entity/frozen_arrow.png");
+	public static final ResourceLocation FROZEN_ARROW_LOCATION = ExpeditionWorld.id("textures/entity/frozen_arrow.png");
 
-    public FrozenArrowRenderer(EntityRendererProvider.Context context) {
-        super(context);
-    }
+	public FrozenArrowRenderer(EntityRendererProvider.Context context) {
+		super(context);
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(FrozenArrow frozenArrow) {
-        return FROZEN_ARROW_LOCATION;
-    }
+	@Override
+	public ResourceLocation getTextureLocation(FrozenArrow frozenArrow) {
+		return FROZEN_ARROW_LOCATION;
+	}
 }

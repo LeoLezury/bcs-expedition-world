@@ -7,7 +7,9 @@ import net.minecraft.world.level.biome.Biome;
 import java.util.Map;
 
 public interface ExtendedBiomeSource {
-    void setBiomes(Map<ResourceKey<Biome>, Holder<Biome>> biomes);
-    Map<ResourceKey<Biome>, Holder<Biome>> getBiomes();
-    Holder<Biome> getBiome(ResourceKey<Biome> key);
+	void setBiomes(Map<ResourceKey<Biome>, Holder<Biome>> biomes);
+
+	Map<ResourceKey<Biome>, Holder<Biome>> getBiomes();
+
+	Holder<Biome> getBiome(ResourceKey<Biome> key);
 }

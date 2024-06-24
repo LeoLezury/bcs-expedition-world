@@ -21,24 +21,24 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStatePr
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 
 public class EWConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_CRYSTAL_ORE = create("ice_crystal_ore");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_SPIKE = create("ice_spike");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_CAVES_FLOWERS = create("frozen_caves_flowers");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_CAVES_VEGETATION = create("frozen_caves_vegetation");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_CRYSTAL_ORE = create("ice_crystal_ore");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_SPIKE = create("ice_spike");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_CAVES_FLOWERS = create("frozen_caves_flowers");
+	public static final ResourceKey<ConfiguredFeature<?, ?>> FROZEN_CAVES_VEGETATION = create("frozen_caves_vegetation");
 
-    public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
-        FeatureUtils.register(context, ICE_CRYSTAL_ORE, Feature.ORE, new OreConfiguration(new BlockMatchTest(EWBlocks.FROZEN_STONE.get()), EWBlocks.ICE_CRYSTAL_ORE.get().defaultBlockState(), 8));
-        FeatureUtils.register(context, ICE_SPIKE, EWFeatures.ICE_SPIKE.get(), new NoneFeatureConfiguration());
-        FeatureUtils.register(context, FROZEN_CAVES_FLOWERS, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(EWBlocks.ICE_FLOWER.get().defaultBlockState(), 10).add(EWBlocks.FRIGID_GLADIOLUS.get().defaultBlockState(), 3).build()), 32));
-        FeatureUtils.register(context, FROZEN_CAVES_VEGETATION, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(EWBlocks.FROZEN_GRASS.get().defaultBlockState(), 10).build()), 128));
-    }
+	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+		FeatureUtils.register(context, ICE_CRYSTAL_ORE, Feature.ORE, new OreConfiguration(new BlockMatchTest(EWBlocks.FROZEN_STONE.get()), EWBlocks.ICE_CRYSTAL_ORE.get().defaultBlockState(), 8));
+		FeatureUtils.register(context, ICE_SPIKE, EWFeatures.ICE_SPIKE.get(), new NoneFeatureConfiguration());
+		FeatureUtils.register(context, FROZEN_CAVES_FLOWERS, Feature.FLOWER, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(EWBlocks.ICE_FLOWER.get().defaultBlockState(), 10).add(EWBlocks.FRIGID_GLADIOLUS.get().defaultBlockState(), 3).build()), 32));
+		FeatureUtils.register(context, FROZEN_CAVES_VEGETATION, Feature.RANDOM_PATCH, grassPatch(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(EWBlocks.FROZEN_GRASS.get().defaultBlockState(), 10).build()), 128));
+	}
 
 
-    public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, ExpeditionWorld.id(name));
-    }
+	public static ResourceKey<ConfiguredFeature<?, ?>> create(String name) {
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ExpeditionWorld.id(name));
+	}
 
-    private static RandomPatchConfiguration grassPatch(BlockStateProvider stateProvider, int tries) {
-        return FeatureUtils.simpleRandomPatchConfiguration(tries, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider)));
-    }
+	private static RandomPatchConfiguration grassPatch(BlockStateProvider stateProvider, int tries) {
+		return FeatureUtils.simpleRandomPatchConfiguration(tries, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(stateProvider)));
+	}
 }

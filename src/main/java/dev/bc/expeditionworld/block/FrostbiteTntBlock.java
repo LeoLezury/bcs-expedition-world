@@ -15,25 +15,25 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import javax.annotation.Nullable;
 
 public class FrostbiteTntBlock extends TntBlock {
-    public FrostbiteTntBlock(Properties properties) {
-        super(properties);
-    }
+	public FrostbiteTntBlock(Properties properties) {
+		super(properties);
+	}
 
-    public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-        if (!level.isClientSide) {
-            FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
-            int i = frostbiteTnt.getFuse();
-            frostbiteTnt.setFuse(level.random.nextInt(i / 4) + i / 8);
-            level.addFreshEntity(frostbiteTnt);
-        }
-    }
+	public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
+		if (!level.isClientSide) {
+			FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
+			int i = frostbiteTnt.getFuse();
+			frostbiteTnt.setFuse(level.random.nextInt(i / 4) + i / 8);
+			level.addFreshEntity(frostbiteTnt);
+		}
+	}
 
-    public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
-        if (!level.isClientSide) {
-            FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, igniter);
-            level.addFreshEntity(frostbiteTnt);
-            level.playSound(null, frostbiteTnt.getX(), frostbiteTnt.getY(), frostbiteTnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
-            level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
-        }
-    }
+	public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
+		if (!level.isClientSide) {
+			FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, igniter);
+			level.addFreshEntity(frostbiteTnt);
+			level.playSound(null, frostbiteTnt.getX(), frostbiteTnt.getY(), frostbiteTnt.getZ(), SoundEvents.TNT_PRIMED, SoundSource.BLOCKS, 1.0F, 1.0F);
+			level.gameEvent(igniter, GameEvent.PRIME_FUSE, pos);
+		}
+	}
 }

@@ -10,14 +10,14 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MoaFeatherArrowRenderer extends ArrowRenderer<MoaFeatherArrow> {
-    public static final ResourceLocation MOA_FEATHER_ARROW_LOCATION = ExpeditionWorld.id("textures/entity/moa_feather_arrow.png");
+	public static final ResourceLocation MOA_FEATHER_ARROW_LOCATION = ExpeditionWorld.id("textures/entity/moa_feather_arrow.png");
 
-    public MoaFeatherArrowRenderer(EntityRendererProvider.Context context) {
-        super(context);
-    }
+	public MoaFeatherArrowRenderer(EntityRendererProvider.Context context) {
+		super(context);
+	}
 
-    @Override
-    public ResourceLocation getTextureLocation(MoaFeatherArrow frozenArrow) {
-        return MOA_FEATHER_ARROW_LOCATION;
-    }
+	@Override
+	public ResourceLocation getTextureLocation(MoaFeatherArrow frozenArrow) {
+		return MOA_FEATHER_ARROW_LOCATION;
+	}
 }

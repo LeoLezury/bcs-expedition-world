@@ -13,12 +13,12 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.function.BiConsumer;
 
 public class EWChestLootSubProvider implements LootTableSubProvider {
-    @Override
-    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
-        consumer.accept(ExpeditionWorld.id("chests/ancient_city"),
-                LootTable.lootTable()
-                        .withPool(LootPool.lootPool()
-                                .setRolls(UniformGenerator.between(0, 1))
-                                .add(LootItem.lootTableItem(EWItems.SCULK_MINT.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
-    }
+	@Override
+	public void generate(BiConsumer<ResourceLocation, LootTable.Builder> consumer) {
+		consumer.accept(ExpeditionWorld.id("chests/ancient_city"),
+			LootTable.lootTable()
+				.withPool(LootPool.lootPool()
+					.setRolls(UniformGenerator.between(0, 1))
+					.add(LootItem.lootTableItem(EWItems.SCULK_MINT.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2))))));
+	}
 }

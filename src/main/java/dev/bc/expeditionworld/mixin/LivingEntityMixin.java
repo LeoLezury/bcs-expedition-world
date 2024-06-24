@@ -21,39 +21,44 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin {
-    @Shadow public abstract boolean canFreeze();
+	@Shadow
+	public abstract boolean canFreeze();
 
-    @Shadow public abstract boolean isHolding(Item item);
+	@Shadow
+	public abstract boolean isHolding(Item item);
 
-    @Shadow public abstract ItemStack getMainHandItem();
+	@Shadow
+	public abstract ItemStack getMainHandItem();
 
-    @Shadow public abstract ItemStack getOffhandItem();
+	@Shadow
+	public abstract ItemStack getOffhandItem();
 
-    @Unique private int expeditionWorld$lastExtinguishSound;
+	@Unique
+	private int expeditionWorld$lastExtinguishSound;
 
-    @Inject(method = "canBeAffected", at = @At("TAIL"), cancellable = true)
-    private void expeditionWorld$canBeAffected(MobEffectInstance instance, CallbackInfoReturnable<Boolean> cir) {
-        if (instance.getEffect() == EWMobEffects.FROZEN.get() && !canFreeze()) {
-            cir.setReturnValue(false);
-        }
-    }
+	@Inject(method = "canBeAffected", at = @At("TAIL"), cancellable = true)
+	private void expeditionWorld$canBeAffected(MobEffectInstance instance, CallbackInfoReturnable<Boolean> cir) {
+		if (instance.getEffect() == EWMobEffects.FROZEN.get() && !canFreeze()) {
+			cir.setReturnValue(false);
+		}
+	}
 
-    @Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V", shift = At.Shift.BEFORE), cancellable = true)
-    private void expeditionWorld$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (isHolding(EWItems.TOTEM_OF_ICE.get()) && source.is(DamageTypeTags.IS_FIRE)) {
-            ItemStack stack = getMainHandItem().is(EWItems.TOTEM_OF_ICE.get()) ? getMainHandItem() : getOffhandItem();
-            if (IceTotemItem.tryDamage(stack)) {
-                LivingEntity living = (LivingEntity) (Object) this;
-                cir.setReturnValue(false);
-                living.setRemainingFireTicks(0);
-                if (living.tickCount - expeditionWorld$lastExtinguishSound > 20) {
-                    expeditionWorld$lastExtinguishSound = living.tickCount;
-                    living.level().playSound(null, living.blockPosition(), SoundEvents.FIRE_EXTINGUISH, living.getSoundSource());
-                }
-                if (living.level() instanceof ServerLevel serverLevel) {
-                    serverLevel.sendParticles(EWParticles.SNOWFLAKE.get(), living.getRandomX(0.5D), living.getRandomY(), living.getRandomZ(0.5D), 15, 0.2, 0.2, 0.2, 0);
-                }
-            }
-        }
-    }
+	@Inject(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V", shift = At.Shift.BEFORE), cancellable = true)
+	private void expeditionWorld$hurt(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+		if (isHolding(EWItems.TOTEM_OF_ICE.get()) && source.is(DamageTypeTags.IS_FIRE)) {
+			ItemStack stack = getMainHandItem().is(EWItems.TOTEM_OF_ICE.get()) ? getMainHandItem() : getOffhandItem();
+			if (IceTotemItem.tryDamage(stack)) {
+				LivingEntity living = (LivingEntity) (Object) this;
+				cir.setReturnValue(false);
+				living.setRemainingFireTicks(0);
+				if (living.tickCount - expeditionWorld$lastExtinguishSound > 20) {
+					expeditionWorld$lastExtinguishSound = living.tickCount;
+					living.level().playSound(null, living.blockPosition(), SoundEvents.FIRE_EXTINGUISH, living.getSoundSource());
+				}
+				if (living.level() instanceof ServerLevel serverLevel) {
+					serverLevel.sendParticles(EWParticles.SNOWFLAKE.get(), living.getRandomX(0.5D), living.getRandomY(), living.getRandomZ(0.5D), 15, 0.2, 0.2, 0.2, 0);
+				}
+			}
+		}
+	}
 }

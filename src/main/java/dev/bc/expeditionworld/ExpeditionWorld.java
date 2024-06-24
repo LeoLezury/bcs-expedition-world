@@ -20,27 +20,27 @@ import software.bernie.geckolib.GeckoLib;
 
 @Mod(ExpeditionWorld.ID)
 public class ExpeditionWorld {
-    public static final String ID = "bcs_expedition_world";
-    public static final Logger LOGGER = LogUtils.getLogger();
+	public static final String ID = "bcs_expedition_world";
+	public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ExpeditionWorld() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public ExpeditionWorld() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        EWFeatures.FEATURES.register(modEventBus);
-        EWEntities.ENTITY_TYPES.register(modEventBus);
-        EWBlocks.BLOCKS.register(modEventBus);
-        EWItems.ITEMS.register(modEventBus);
-        EWCreativeModeTabs.TABS.register(modEventBus);
-        EWLootModifiers.LOOT_MODIFIERS.register(modEventBus);
-        EWParticles.PARTICLE_TYPES.register(modEventBus);
-        EWMobEffects.MOB_EFFECTS.register(modEventBus);
-        EWPotions.POTIONS.register(modEventBus);
-        EWSoundEvents.SOUND_EVENTS.register(modEventBus);
+		EWFeatures.FEATURES.register(modEventBus);
+		EWEntities.ENTITY_TYPES.register(modEventBus);
+		EWBlocks.BLOCKS.register(modEventBus);
+		EWItems.ITEMS.register(modEventBus);
+		EWCreativeModeTabs.TABS.register(modEventBus);
+		EWLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+		EWParticles.PARTICLE_TYPES.register(modEventBus);
+		EWMobEffects.MOB_EFFECTS.register(modEventBus);
+		EWPotions.POTIONS.register(modEventBus);
+		EWSoundEvents.SOUND_EVENTS.register(modEventBus);
 
-        GeckoLib.initialize();
-    }
+		GeckoLib.initialize();
+	}
 
-    public static ResourceLocation id(String string) {
-        return new ResourceLocation(ID, string);
-    }
+	public static ResourceLocation id(String string) {
+		return new ResourceLocation(ID, string);
+	}
 }

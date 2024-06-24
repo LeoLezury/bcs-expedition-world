@@ -8,21 +8,21 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.ParticleDescriptionProvider;
 
 public class EWParticleDescriptionProvider extends ParticleDescriptionProvider {
-    public EWParticleDescriptionProvider(PackOutput output, ExistingFileHelper fileHelper) {
-        super(output, fileHelper);
-    }
+	public EWParticleDescriptionProvider(PackOutput output, ExistingFileHelper fileHelper) {
+		super(output, fileHelper);
+	}
 
-    @Override
-    protected void addDescriptions() {
-        spriteSet(EWParticles.TRAPPED_SOUL.get(), loc("trapped_soul"), 11, false);
-        spriteSet(EWParticles.SNOWFLAKE.get(), loc("snowflake"), 4, false);
-    }
+	@Override
+	protected void addDescriptions() {
+		spriteSet(EWParticles.TRAPPED_SOUL.get(), loc("trapped_soul"), 11, false);
+		spriteSet(EWParticles.SNOWFLAKE.get(), loc("snowflake"), 4, false);
+	}
 
-    private ResourceLocation loc(String s) {
-        return ExpeditionWorld.id(s);
-    }
+	private ResourceLocation loc(String s) {
+		return ExpeditionWorld.id(s);
+	}
 
-    private ResourceLocation mcLoc(String s) {
-        return new ResourceLocation(s);
-    }
+	private ResourceLocation mcLoc(String s) {
+		return new ResourceLocation(s);
+	}
 }

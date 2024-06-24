@@ -22,18 +22,18 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Block.class)
 public abstract class BlockMixin {
-    @Inject(method = "dropResources(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)V", at = @At("HEAD"), cancellable = true)
-    private static void expeditionWorld$dropResources(BlockState state, Level level, BlockPos pos, BlockEntity blockEntity, Entity entity, ItemStack stack, CallbackInfo ci) {
-        if (level instanceof ServerLevel && state.getBlock() instanceof FetteredChestBlock && state.getValue(FetteredChestBlock.HALF) == DoubleBlockHalf.LOWER && level.getRandom().nextBoolean()) {
-            ci.cancel();
-            Mimichest mimichest = state.is(EWBlocks.FETTERED_CHEST.get()) ? new Mimichest(EWEntities.MIMICHEST.get(), level) : new Mimichest(EWEntities.MIMIPOT.get(), level);
-            mimichest.setPos(pos.getCenter().add(0, -0.5, 0));
-            mimichest.setFixedYRot(state.getValue(FetteredChestBlock.FACING).toYRot() + 90);
-            level.addFreshEntity(mimichest);
-            mimichest.triggerSpawn();
-            if (entity instanceof ServerPlayer serverPlayer) {
-                EWCriteriaTriggers.WAKE_MIMICHEST.trigger(serverPlayer);
-            }
-        }
-    }
+	@Inject(method = "dropResources(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/BlockEntity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)V", at = @At("HEAD"), cancellable = true)
+	private static void expeditionWorld$dropResources(BlockState state, Level level, BlockPos pos, BlockEntity blockEntity, Entity entity, ItemStack stack, CallbackInfo ci) {
+		if (level instanceof ServerLevel && state.getBlock() instanceof FetteredChestBlock && state.getValue(FetteredChestBlock.HALF) == DoubleBlockHalf.LOWER && level.getRandom().nextBoolean()) {
+			ci.cancel();
+			Mimichest mimichest = state.is(EWBlocks.FETTERED_CHEST.get()) ? new Mimichest(EWEntities.MIMICHEST.get(), level) : new Mimichest(EWEntities.MIMIPOT.get(), level);
+			mimichest.setPos(pos.getCenter().add(0, -0.5, 0));
+			mimichest.setFixedYRot(state.getValue(FetteredChestBlock.FACING).toYRot() + 90);
+			level.addFreshEntity(mimichest);
+			mimichest.triggerSpawn();
+			if (entity instanceof ServerPlayer serverPlayer) {
+				EWCriteriaTriggers.WAKE_MIMICHEST.trigger(serverPlayer);
+			}
+		}
+	}
 }

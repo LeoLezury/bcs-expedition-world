@@ -12,13 +12,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FrostedIceBlock.class)
 public abstract class FrostedIceBlockMixin {
-    @Inject(method = "slightlyMelt", at = @At("HEAD"), cancellable = true)
-    private void expeditionWorld$melt(BlockState state, Level level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        for (BlockPos blockPos : BlockPos.withinManhattan(pos, 7, 7, 7)) {
-            if (level.getBlockState(blockPos).is(EWBlockTags.PREVENTS_MELTING)) {
-                cir.cancel();
-                cir.setReturnValue(false);
-            }
-        }
-    }
+	@Inject(method = "slightlyMelt", at = @At("HEAD"), cancellable = true)
+	private void expeditionWorld$melt(BlockState state, Level level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+		for (BlockPos blockPos : BlockPos.withinManhattan(pos, 7, 7, 7)) {
+			if (level.getBlockState(blockPos).is(EWBlockTags.PREVENTS_MELTING)) {
+				cir.cancel();
+				cir.setReturnValue(false);
+			}
+		}
+	}
 }

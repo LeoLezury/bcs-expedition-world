@@ -20,40 +20,40 @@ import java.util.stream.Stream;
 
 @Mixin(MultiNoiseBiomeSource.class)
 public abstract class MultiNoiseBiomeSourceMixin implements ExtendedBiomeSource {
-    @Unique
-    private final Map<ResourceKey<Biome>, Holder<Biome>> biomesMap = new HashMap<>();
+	@Unique
+	private final Map<ResourceKey<Biome>, Holder<Biome>> biomesMap = new HashMap<>();
 
-    @Inject(method = "getNoiseBiome(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;", at = @At("TAIL"), cancellable = true)
-    private void expeditionWorld$getNoiseBiome(int x, int y, int z, Climate.Sampler sampler, CallbackInfoReturnable<Holder<Biome>> cir) {
-        Holder<Biome> original = cir.getReturnValue();
-        Holder<Biome> replaced = EWExtendedBiomes.replaceBiome(this, original, x, y, z, sampler);
-        if (original != replaced) {
-            cir.setReturnValue(replaced);
-        }
-    }
+	@Inject(method = "getNoiseBiome(IIILnet/minecraft/world/level/biome/Climate$Sampler;)Lnet/minecraft/core/Holder;", at = @At("TAIL"), cancellable = true)
+	private void expeditionWorld$getNoiseBiome(int x, int y, int z, Climate.Sampler sampler, CallbackInfoReturnable<Holder<Biome>> cir) {
+		Holder<Biome> original = cir.getReturnValue();
+		Holder<Biome> replaced = EWExtendedBiomes.replaceBiome(this, original, x, y, z, sampler);
+		if (original != replaced) {
+			cir.setReturnValue(replaced);
+		}
+	}
 
-    @Inject(method = "collectPossibleBiomes", at = @At("TAIL"), cancellable = true)
-    private void expeditionWorld$collectPossibleBiomes(CallbackInfoReturnable<Stream<Holder<Biome>>> cir) {
-        Stream<Holder<Biome>> stream = cir.getReturnValue();
-        ArrayList<Holder<Biome>> list = new ArrayList<>(stream.toList());
-        list.addAll(biomesMap.values());
-        cir.setReturnValue(list.stream());
-    }
+	@Inject(method = "collectPossibleBiomes", at = @At("TAIL"), cancellable = true)
+	private void expeditionWorld$collectPossibleBiomes(CallbackInfoReturnable<Stream<Holder<Biome>>> cir) {
+		Stream<Holder<Biome>> stream = cir.getReturnValue();
+		ArrayList<Holder<Biome>> list = new ArrayList<>(stream.toList());
+		list.addAll(biomesMap.values());
+		cir.setReturnValue(list.stream());
+	}
 
-    @Override
-    public void setBiomes(Map<ResourceKey<Biome>, Holder<Biome>> biomes) {
-        if (biomesMap.isEmpty()) {
-            biomesMap.putAll(biomes);
-        }
-    }
+	@Override
+	public void setBiomes(Map<ResourceKey<Biome>, Holder<Biome>> biomes) {
+		if (biomesMap.isEmpty()) {
+			biomesMap.putAll(biomes);
+		}
+	}
 
-    @Override
-    public Map<ResourceKey<Biome>, Holder<Biome>> getBiomes() {
-        return biomesMap;
-    }
+	@Override
+	public Map<ResourceKey<Biome>, Holder<Biome>> getBiomes() {
+		return biomesMap;
+	}
 
-    @Override
-    public Holder<Biome> getBiome(ResourceKey<Biome> key) {
-        return biomesMap.get(key);
-    }
+	@Override
+	public Holder<Biome> getBiome(ResourceKey<Biome> key) {
+		return biomesMap.get(key);
+	}
 }

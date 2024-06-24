@@ -14,19 +14,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
-    public EWEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, ExpeditionWorld.ID, existingFileHelper);
-    }
+	public EWEntityTypeTagsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+		super(output, lookupProvider, ExpeditionWorld.ID, existingFileHelper);
+	}
 
-    @Override
-    protected void addTags(HolderLookup.Provider lookupProvider) {
-        tag(EWEntityTags.CAN_SPAWN_IN_FROZEN_CAVES).add(
-                EntityType.BAT
-        );
+	@Override
+	protected void addTags(HolderLookup.Provider lookupProvider) {
+		tag(EWEntityTags.CAN_SPAWN_IN_FROZEN_CAVES).add(
+			EntityType.BAT
+		);
 
-        tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
-                EWEntities.MIMICHEST.get(),
-                EWEntities.MIMIPOT.get()
-        );
-    }
+		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
+			EWEntities.MIMICHEST.get(),
+			EWEntities.MIMIPOT.get()
+		);
+	}
 }

@@ -9,13 +9,13 @@ import net.minecraftforge.common.data.GlobalLootModifierProvider;
 import net.minecraftforge.common.loot.LootTableIdCondition;
 
 public class EWLootModifierProvider extends GlobalLootModifierProvider {
-    public EWLootModifierProvider(PackOutput output) {
-        super(output, ExpeditionWorld.ID);
-    }
+	public EWLootModifierProvider(PackOutput output) {
+		super(output, ExpeditionWorld.ID);
+	}
 
-    @Override
-    protected void start() {
-        add("chest_ancient_city", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build()}, ExpeditionWorld.id("chests/ancient_city")));
-        add("entity_warden", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("entities/warden")).build()}, ExpeditionWorld.id("entities/warden")));
-    }
+	@Override
+	protected void start() {
+		add("chest_ancient_city", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("chests/ancient_city")).build()}, ExpeditionWorld.id("chests/ancient_city")));
+		add("entity_warden", new AppendLootModifier(new LootItemCondition[]{new LootTableIdCondition.Builder(new ResourceLocation("entities/warden")).build()}, ExpeditionWorld.id("entities/warden")));
+	}
 }

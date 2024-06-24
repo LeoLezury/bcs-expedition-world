@@ -15,21 +15,21 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 
 public class FrostyMoaLootBagItem extends Item {
-    private static final ResourceLocation LOOT_TABLE = ExpeditionWorld.id("boss/frosty_moa");
+	private static final ResourceLocation LOOT_TABLE = ExpeditionWorld.id("boss/frosty_moa");
 
-    public FrostyMoaLootBagItem(Properties properties) {
-        super(properties);
-    }
+	public FrostyMoaLootBagItem(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (level instanceof ServerLevel serverLevel) {
-            LootTable lootTable = level.getServer().getLootData().getLootTable(LOOT_TABLE);
-            LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, player.position());
-            LootParams params = builder.create(LootContextParamSets.EMPTY);
-            lootTable.getRandomItems(params, player.getLootTableSeed(), player::spawnAtLocation);
-        }
-        return InteractionResultHolder.consume(stack);
-    }
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+		ItemStack stack = player.getItemInHand(hand);
+		if (level instanceof ServerLevel serverLevel) {
+			LootTable lootTable = level.getServer().getLootData().getLootTable(LOOT_TABLE);
+			LootParams.Builder builder = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, player.position());
+			LootParams params = builder.create(LootContextParamSets.EMPTY);
+			lootTable.getRandomItems(params, player.getLootTableSeed(), player::spawnAtLocation);
+		}
+		return InteractionResultHolder.consume(stack);
+	}
 }

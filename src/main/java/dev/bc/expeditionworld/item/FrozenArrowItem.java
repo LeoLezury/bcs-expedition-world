@@ -8,12 +8,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class FrozenArrowItem extends ArrowItem {
-    public FrozenArrowItem(Properties properties) {
-        super(properties);
-    }
+	public FrozenArrowItem(Properties properties) {
+		super(properties);
+	}
 
-    @Override
-    public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity living) {
-        return new FrozenArrow(level, living);
-    }
+	@Override
+	public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity living) {
+		return new FrozenArrow(level, living);
+	}
 }

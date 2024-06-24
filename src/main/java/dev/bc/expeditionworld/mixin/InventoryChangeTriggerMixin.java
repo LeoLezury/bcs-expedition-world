@@ -16,18 +16,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mixin(InventoryChangeTrigger.class)
 public abstract class InventoryChangeTriggerMixin {
-    @Inject(method = "trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/item/ItemStack;)V", at = @At("TAIL"))
-    private void expeditionWorld$trigger(ServerPlayer player, Inventory inventory, ItemStack stack, CallbackInfo ci) {
-        AtomicBoolean shouldTrigger = new AtomicBoolean(true);
-        for (ItemStack armor : player.getArmorSlots()) {
-            ArmorTrim.getTrim(player.level().registryAccess(), armor).ifPresentOrElse((armorTrim -> {
-                if (!armorTrim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
-                    shouldTrigger.set(false);
-                }
-            }), () -> shouldTrigger.set(false));
-        }
-        if (shouldTrigger.get()) {
-            EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.trigger(player);
-        }
-    }
+	@Inject(method = "trigger(Lnet/minecraft/server/level/ServerPlayer;Lnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/item/ItemStack;)V", at = @At("TAIL"))
+	private void expeditionWorld$trigger(ServerPlayer player, Inventory inventory, ItemStack stack, CallbackInfo ci) {
+		AtomicBoolean shouldTrigger = new AtomicBoolean(true);
+		for (ItemStack armor : player.getArmorSlots()) {
+			ArmorTrim.getTrim(player.level().registryAccess(), armor).ifPresentOrElse((armorTrim -> {
+				if (!armorTrim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
+					shouldTrigger.set(false);
+				}
+			}), () -> shouldTrigger.set(false));
+		}
+		if (shouldTrigger.get()) {
+			EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.trigger(player);
+		}
+	}
 }

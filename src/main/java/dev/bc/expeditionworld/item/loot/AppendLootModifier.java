@@ -12,23 +12,23 @@ import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
 public class AppendLootModifier extends LootModifier {
-    public static final Codec<AppendLootModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).and(ResourceLocation.CODEC.fieldOf("loot").forGetter(modifier -> modifier.loot)).apply(instance, AppendLootModifier::new));
+	public static final Codec<AppendLootModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance).and(ResourceLocation.CODEC.fieldOf("loot").forGetter(modifier -> modifier.loot)).apply(instance, AppendLootModifier::new));
 
-    private final ResourceLocation loot;
+	private final ResourceLocation loot;
 
-    public AppendLootModifier(LootItemCondition[] conditionsIn, ResourceLocation location) {
-        super(conditionsIn);
-        this.loot = location;
-    }
+	public AppendLootModifier(LootItemCondition[] conditionsIn, ResourceLocation location) {
+		super(conditionsIn);
+		this.loot = location;
+	}
 
-    @Override
-    protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        context.getLevel().getServer().getLootData().getLootTable(loot).getRandomItemsRaw(context, (generatedLoot::add));
-        return generatedLoot;
-    }
+	@Override
+	protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+		context.getLevel().getServer().getLootData().getLootTable(loot).getRandomItemsRaw(context, (generatedLoot::add));
+		return generatedLoot;
+	}
 
-    @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
-        return CODEC;
-    }
+	@Override
+	public Codec<? extends IGlobalLootModifier> codec() {
+		return CODEC;
+	}
 }
