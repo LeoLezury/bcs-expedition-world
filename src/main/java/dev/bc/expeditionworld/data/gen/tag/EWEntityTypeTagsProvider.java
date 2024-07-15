@@ -21,6 +21,7 @@ public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 	@Override
 	protected void addTags(HolderLookup.Provider lookupProvider) {
 		tag(EWEntityTags.CAN_SPAWN_IN_FROZEN_CAVES).add(
+			EWEntities.CHILLED.get(),
 			EntityType.BAT
 		);
 

@@ -1,6 +1,7 @@
 package dev.bc.expeditionworld.data;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
+import dev.bc.expeditionworld.entity.EWEntities;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
@@ -13,6 +14,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.carver.ConfiguredWorldCarver;
@@ -31,6 +33,7 @@ public class EWBiomes {
 	public static Biome frozenCaves(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
 		MobSpawnSettings.Builder mobSpawns = new MobSpawnSettings.Builder();
 		BiomeDefaultFeatures.commonSpawns(mobSpawns);
+		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.CHILLED.get(), 90, 4, 4));
 		BiomeGenerationSettings.Builder genSettings = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
 
 		genSettings.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);

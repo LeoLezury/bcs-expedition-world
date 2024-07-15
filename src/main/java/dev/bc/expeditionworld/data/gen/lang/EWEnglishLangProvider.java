@@ -43,6 +43,10 @@ public class EWEnglishLangProvider extends LanguageProvider {
 		add(EWBlocks.POTTED_ICE_FLOWER.get(), "Potted Ice Flower");
 		add(EWBlocks.FRIGID_GLADIOLUS.get(), "Frigid Gladiolus");
 
+		add(EWItems.MIMICHEST_SPAWN_EGG.get(), "Mimichest Spawn Egg");
+		add(EWItems.MIMIPOT_SPAWN_EGG.get(), "Mimipot Spawn Egg");
+		add(EWItems.CHILLED_SPAWN_EGG.get(), "Chilled Spawn Egg");
+
 		add(EWItems.SCULK_MINT.get(), "Sculk Mint");
 		add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");
 		add(EWItems.STONE_MIMICHEST_KNIFE.get(), "Stone Mimichest Knife");
@@ -101,6 +105,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 		add(EWEntities.MOA_FEATHER_ARROW.get(), "Moa Feather Arrow");
 		add(EWEntities.MIMICHEST.get(), "Mimichest");
 		add(EWEntities.MIMIPOT.get(), "Mimipot");
+		add(EWEntities.CHILLED.get(), "Chilled");
 
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "Coldproof armor rustles");
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier", "Glacier armor clings");

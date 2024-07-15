@@ -43,6 +43,10 @@ public class EWChineseLangProvider extends LanguageProvider {
 		add(EWBlocks.POTTED_ICE_FLOWER.get(), "盆装冰花");
 		add(EWBlocks.FRIGID_GLADIOLUS.get(), "凛剑兰");
 
+		add(EWItems.MIMICHEST_SPAWN_EGG.get(), "匿箱灵刷怪蛋");
+		add(EWItems.MIMIPOT_SPAWN_EGG.get(), "匿罐灵刷怪蛋");
+		add(EWItems.CHILLED_SPAWN_EGG.get(), "羽绒僵尸刷怪蛋");
+
 		add(EWItems.SCULK_MINT.get(), "幽匿薄荷");
 		add(EWItems.TRAPPED_SOUL.get(), "受困灵魂");
 		add(EWItems.STONE_MIMICHEST_KNIFE.get(), "箱灵飞刃");
@@ -101,6 +105,7 @@ public class EWChineseLangProvider extends LanguageProvider {
 		add(EWEntities.MOA_FEATHER_ARROW.get(), "恐羽箭");
 		add(EWEntities.MIMICHEST.get(), "匿箱灵");
 		add(EWEntities.MIMIPOT.get(), "匿罐灵");
+		add(EWEntities.CHILLED.get(), "羽绒僵尸");
 
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "防寒盔甲：摩擦");
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier", "冰川盔甲：摩擦");

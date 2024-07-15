@@ -2,6 +2,7 @@ package dev.bc.expeditionworld.item;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.block.EWBlocks;
+import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.potion.EWMobEffects;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
@@ -9,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -30,6 +32,11 @@ public class EWItems {
 	private static final ResourceLocation EMPTY_SLOT_LEGGINGS = new ResourceLocation("item/empty_armor_slot_leggings");
 	private static final ResourceLocation EMPTY_SLOT_BOOTS = new ResourceLocation("item/empty_armor_slot_boots");
 	private static final ResourceLocation EMPTY_SLOT_INGOT = new ResourceLocation("item/empty_slot_ingot");
+
+	// spawn eggs
+	public static final RegistryObject<ForgeSpawnEggItem> MIMICHEST_SPAWN_EGG = ITEMS.register("mimichest_spawn_egg", () -> new ForgeSpawnEggItem(EWEntities.MIMICHEST, 0x818181, 0x4b5e4a, new Item.Properties()));
+	public static final RegistryObject<ForgeSpawnEggItem> MIMIPOT_SPAWN_EGG = ITEMS.register("mimipot_spawn_egg", () -> new ForgeSpawnEggItem(EWEntities.MIMIPOT, 0x8b4e40, 0x585e4a, new Item.Properties()));
+	public static final RegistryObject<ForgeSpawnEggItem> CHILLED_SPAWN_EGG = ITEMS.register("chilled_spawn_egg", () -> new ForgeSpawnEggItem(EWEntities.CHILLED, 0x607791, 0x3e5945, new Item.Properties()));
 
 	// sculk mint
 	public static final RegistryObject<Item> SCULK_MINT = ITEMS.register("sculk_mint", () -> new Item(new Item.Properties()));

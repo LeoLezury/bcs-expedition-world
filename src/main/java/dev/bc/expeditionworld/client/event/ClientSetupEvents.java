@@ -5,6 +5,7 @@ import dev.bc.expeditionworld.client.model.armor.InnerColdproofArmorModel;
 import dev.bc.expeditionworld.client.model.armor.InnerGlacierArmorModel;
 import dev.bc.expeditionworld.client.model.armor.OuterColdproofArmorModel;
 import dev.bc.expeditionworld.client.model.armor.OuterGlacierArmorModel;
+import dev.bc.expeditionworld.client.model.entity.ChilledModel;
 import dev.bc.expeditionworld.client.model.entity.MimichestKnifeModel;
 import dev.bc.expeditionworld.client.particle.SnowflakeParticle;
 import dev.bc.expeditionworld.client.renderer.entity.*;
@@ -12,6 +13,9 @@ import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.item.IceTotemItem;
 import dev.bc.expeditionworld.particle.EWParticles;
+import net.minecraft.client.model.HumanoidArmorModel;
+import net.minecraft.client.model.geom.builders.CubeDeformation;
+import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.SoulParticle;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -52,7 +56,12 @@ public class ClientSetupEvents {
 			context, new DefaultedEntityGeoModel<>(EWEntities.MIMICHEST.getId(), true)));
 		event.registerEntityRenderer(EWEntities.MIMIPOT.get(), context -> new MimichestRenderer<>(
 			context, new DefaultedEntityGeoModel<>(EWEntities.MIMIPOT.getId(), true)));
+		event.registerEntityRenderer(EWEntities.CHILLED.get(), ChilledRenderer::new);
 	}
+
+	public static final CubeDeformation OUTER_ARMOR_DEFORMATION = new CubeDeformation(1.0F);
+	public static final CubeDeformation INNER_ARMOR_DEFORMATION = new CubeDeformation(0.5F);
+
 
 	@SubscribeEvent
 	public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
@@ -61,6 +70,9 @@ public class ClientSetupEvents {
 		event.registerLayerDefinition(OuterGlacierArmorModel.LAYER_LOCATION, OuterGlacierArmorModel::createBodyLayer);
 		event.registerLayerDefinition(InnerGlacierArmorModel.LAYER_LOCATION, InnerGlacierArmorModel::createBodyLayer);
 		event.registerLayerDefinition(MimichestKnifeModel.LAYER_LOCATION, MimichestKnifeModel::createBodyLayer);
+		event.registerLayerDefinition(ChilledRenderer.MAIN_LAYER, () -> LayerDefinition.create(ChilledModel.createMesh(CubeDeformation.NONE), 64, 64));
+		event.registerLayerDefinition(ChilledRenderer.INNER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidArmorModel.createBodyLayer(INNER_ARMOR_DEFORMATION), 64, 32));
+		event.registerLayerDefinition(ChilledRenderer.OUTER_ARMOR_LAYER, () -> LayerDefinition.create(HumanoidArmorModel.createBodyLayer(OUTER_ARMOR_DEFORMATION), 64, 32));
 	}
 
 	@SubscribeEvent

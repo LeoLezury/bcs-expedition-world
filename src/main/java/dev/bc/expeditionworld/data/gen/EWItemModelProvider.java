@@ -20,6 +20,10 @@ public class EWItemModelProvider extends ItemModelProvider {
 
 	@Override
 	protected void registerModels() {
+		spawnEgg(EWItems.MIMICHEST_SPAWN_EGG.get());
+		spawnEgg(EWItems.MIMIPOT_SPAWN_EGG.get());
+		spawnEgg(EWItems.CHILLED_SPAWN_EGG.get());
+
 		basicItem(EWItems.SCULK_MINT.get());
 
 		basicItem(EWItems.TRAPPED_SOUL.get());
@@ -125,6 +129,11 @@ public class EWItemModelProvider extends ItemModelProvider {
 		return getBuilder(item.toString())
 			.parent(new ModelFile.UncheckedModelFile("item/generated"))
 			.texture("layer0", texture);
+	}
+
+	private void spawnEgg(Item item) {
+		getBuilder(item.toString())
+			.parent(new ModelFile.UncheckedModelFile("item/template_spawn_egg"));
 	}
 
 	public ResourceLocation blockTextureFromItem(Item item) {

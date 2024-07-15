@@ -9,6 +9,7 @@ import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWPotions;
 import dev.bc.expeditionworld.potion.recipe.ExactBrewingRecipe;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
@@ -45,11 +46,13 @@ public class CommonSetupEvents {
 	public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
 		event.register(EWEntities.MIMICHEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(EWEntities.MIMIPOT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(EWEntities.CHILLED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
 	public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
 		event.put(EWEntities.MIMICHEST.get(), Mimichest.createChestAttributes().build());
 		event.put(EWEntities.MIMIPOT.get(), Mimichest.createPotAttributes().build());
+		event.put(EWEntities.CHILLED.get(), Zombie.createAttributes().build());
 	}
 }

@@ -118,6 +118,12 @@
         "maxCount": 1,
         "minCount": 1,
         "weight": 5
+      },
+      {
+        "type": "bcs_expedition_world:chilled",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 90
       }
     ],
     "underground_water_creature": [
