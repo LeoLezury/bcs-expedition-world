@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-15T14:06:11.9443994	Loot Tables
+// 1.20.1	2024-07-16T11:22:22.5721738	Loot Tables
 83c548e211e9828ea046d7a0a4e6bbf0502ddff7 data/bcs_expedition_world/loot_tables/blocks/fettered_chest.json
 292616e69f9c07e31e075d211bc94b6f71d2a80a data/bcs_expedition_world/loot_tables/blocks/fettered_pot.json
 cdeba18504144774728e6ac0a59bb2bd0e181ef8 data/bcs_expedition_world/loot_tables/blocks/frigid_gladiolus.json
@@ -22,6 +22,7 @@ d3527a7db6b7fe2694bbbeee505370e2b7dceeb8 data/bcs_expedition_world/loot_tables/b
 2d95d982d5633914beed044e932a72b0e958a666 data/bcs_expedition_world/loot_tables/boss/frosty_moa.json
 37547c7b31c7c1ecb4f94bb4cb3e30745f6dab68 data/bcs_expedition_world/loot_tables/chests/ancient_city.json
 a3f390446f10129590157edde1d8042d9ced1650 data/bcs_expedition_world/loot_tables/entities/chilled.json
+6ca7ab84cd11684958cb4a9894cbc7748c996d86 data/bcs_expedition_world/loot_tables/entities/ice_creeper.json
 82ad8ad0bf7f2dabd124c117e6316c88e1745ee6 data/bcs_expedition_world/loot_tables/entities/mimichest.json
 9a281c15b7f73b54b3c0693714db43c6b40479a3 data/bcs_expedition_world/loot_tables/entities/mimipot.json
 85552ec5c4bc25fc65743f0c48f296e7de618685 data/bcs_expedition_world/loot_tables/entities/warden.json

@@ -34,6 +34,7 @@ public class EWBiomes {
 		MobSpawnSettings.Builder mobSpawns = new MobSpawnSettings.Builder();
 		BiomeDefaultFeatures.commonSpawns(mobSpawns);
 		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.CHILLED.get(), 90, 4, 4));
+		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.ICE_CREEPER.get(), 90, 3, 4));
 		BiomeGenerationSettings.Builder genSettings = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
 
 		genSettings.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);

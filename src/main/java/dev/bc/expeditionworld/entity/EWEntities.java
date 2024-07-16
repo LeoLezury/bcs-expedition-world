@@ -2,6 +2,7 @@ package dev.bc.expeditionworld.entity;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.entity.living.frozencaves.Chilled;
+import dev.bc.expeditionworld.entity.living.frozencaves.IceCreeper;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import dev.bc.expeditionworld.entity.misc.FrostbiteTnt;
 import dev.bc.expeditionworld.entity.projectile.FrostCharge;
@@ -38,4 +39,6 @@ public class EWEntities {
 		() -> EntityType.Builder.of(Mimichest::new, MobCategory.MONSTER).sized(0.9f, 1.5f).build("mimipot"));
 	public static final RegistryObject<EntityType<Chilled>> CHILLED = ENTITY_TYPES.register("chilled",
 		() -> EntityType.Builder.<Chilled>of(Chilled::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("chilled"));
+	public static final RegistryObject<EntityType<IceCreeper>> ICE_CREEPER = ENTITY_TYPES.register("ice_creeper",
+		() -> EntityType.Builder.of(IceCreeper::new, MobCategory.MONSTER).sized(0.6F, 1.95F).build("ice_creeper"));
 }

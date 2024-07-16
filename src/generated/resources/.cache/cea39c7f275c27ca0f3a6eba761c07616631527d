@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-15T14:06:11.9469059	Item Models: bcs_expedition_world
+// 1.20.1	2024-07-16T11:22:22.5741741	Item Models: bcs_expedition_world
 825b3a9ca4e8b31957302fe179b4638acba3092c assets/bcs_expedition_world/models/item/brick_mimichest_knife.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/bcs_expedition_world/models/item/chilled_spawn_egg.json
 661894d381d5075a63e1ad8ebcfd1c8af58f14e4 assets/bcs_expedition_world/models/item/coldproof_boots.json
@@ -33,6 +33,7 @@ ff9c64b0bcfbc85cb618c252b4f2547f252caecb assets/bcs_expedition_world/models/item
 d953140c26135f00dc2fda5f8af79f40c210c732 assets/bcs_expedition_world/models/item/glacier_dagger.json
 72453f22122ce6fca85660a5404e0164c93443a0 assets/bcs_expedition_world/models/item/glacier_helmet.json
 c9d6e4df132d395909a5f51dbb3fb6cdf55603b4 assets/bcs_expedition_world/models/item/glacier_leggings.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/bcs_expedition_world/models/item/ice_creeper_spawn_egg.json
 c7a95a5300d9c32123bfd2010b7495dfb6152ba9 assets/bcs_expedition_world/models/item/ice_crystal.json
 a8de8772b708e1846f18ddb94702b4443eaa2b87 assets/bcs_expedition_world/models/item/ice_crystal_block.json
 301ea9184f650fd7aa4491c2dea9fbd24002feca assets/bcs_expedition_world/models/item/ice_crystal_ore.json

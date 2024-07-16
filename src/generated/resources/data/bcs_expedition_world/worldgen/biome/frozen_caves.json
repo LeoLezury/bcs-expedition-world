@@ -124,6 +124,12 @@
         "maxCount": 4,
         "minCount": 4,
         "weight": 90
+      },
+      {
+        "type": "bcs_expedition_world:ice_creeper",
+        "maxCount": 4,
+        "minCount": 3,
+        "weight": 90
       }
     ],
     "underground_water_creature": [

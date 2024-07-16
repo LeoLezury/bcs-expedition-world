@@ -31,7 +31,7 @@ public class Chilled extends Zombie {
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		if (level().canSeeSky(BlockPos.containing(getX(), getEyeY(), getZ())) || isInWaterRainOrBubble()) {
+		if ((level().isDay() && level().canSeeSky(BlockPos.containing(getX(), getEyeY(), getZ()))) || isInWaterRainOrBubble()) {
 			unfreezeTime++;
 			if (unfreezeTime > 300) {
 				convertToZombieType(EntityType.ZOMBIE);

@@ -1,159 +1,663 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.unknown",
-				"texture_width": 64,
-				"texture_height": 64,
-				"visible_bounds_width": 4,
-				"visible_bounds_height": 3.5,
-				"visible_bounds_offset": [0, 1.25, 0]
-			},
-			"bones": [
-				{
-					"name": "root",
-					"pivot": [0, 0, 0]
-				},
-				{
-					"name": "knife",
-					"parent": "root",
-					"pivot": [0, -14, 0]
-				},
-				{
-					"name": "knife1",
-					"parent": "knife",
-					"pivot": [-15, -1, 0],
-					"cubes": [
-						{"origin": [-16, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [-16.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife2",
-					"parent": "knife",
-					"pivot": [15, -1, 0],
-					"rotation": [0, 180, 0],
-					"cubes": [
-						{"origin": [14, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [13.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife34",
-					"parent": "knife",
-					"pivot": [0, -14, 0],
-					"rotation": [0, 90, 0]
-				},
-				{
-					"name": "knife3",
-					"parent": "knife34",
-					"pivot": [-15, -1, 0],
-					"cubes": [
-						{"origin": [-16, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [-16.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife4",
-					"parent": "knife34",
-					"pivot": [15, -1, 0],
-					"rotation": [0, 180, 0],
-					"cubes": [
-						{"origin": [14, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [13.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife5678",
-					"parent": "knife",
-					"pivot": [0, -14, 0],
-					"rotation": [0, 45, 0]
-				},
-				{
-					"name": "knife5",
-					"parent": "knife5678",
-					"pivot": [-15, -1, 0],
-					"cubes": [
-						{"origin": [-16, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [-16.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife6",
-					"parent": "knife5678",
-					"pivot": [15, -1, 0],
-					"rotation": [0, 180, 0],
-					"cubes": [
-						{"origin": [14, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [13.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife78",
-					"parent": "knife5678",
-					"pivot": [0, -14, 0],
-					"rotation": [0, 90, 0]
-				},
-				{
-					"name": "knife7",
-					"parent": "knife78",
-					"pivot": [-15, -1, 0],
-					"cubes": [
-						{"origin": [-16, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [-16.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "knife8",
-					"parent": "knife78",
-					"pivot": [15, -1, 0],
-					"rotation": [0, 180, 0],
-					"cubes": [
-						{"origin": [14, -1, -1], "size": [2, 4, 2], "uv": [47, 58]},
-						{"origin": [13.5, 2, 0], "size": [3, 8, 0], "uv": [58, 56]}
-					]
-				},
-				{
-					"name": "body",
-					"parent": "root",
-					"pivot": [0, 6, 0],
-					"cubes": [
-						{"origin": [-5, 0, -5], "size": [10, 11, 10], "uv": [24, 0]},
-						{"origin": [-2, 11, -2], "size": [4, 1, 4], "uv": [0, 8]},
-						{"origin": [-3, 12, -3], "size": [6, 2, 6], "uv": [0, 13]}
-					]
-				},
-				{
-					"name": "head",
-					"parent": "body",
-					"pivot": [0, 14, 0],
-					"cubes": [
-						{"origin": [-4, 14, -4], "size": [8, 8, 8], "uv": [0, 48]},
-						{"origin": [-4, 14, -4], "size": [8, 8, 8], "inflate": 0.2, "uv": [0, 32]}
-					]
-				},
-				{
-					"name": "flower1",
-					"parent": "head",
-					"pivot": [2.5, 22, 2],
-					"rotation": [-2.5, 45, 5],
-					"cubes": [
-						{"origin": [1, 21, 2], "size": [3, 6, 0], "uv": [32, 42]},
-						{"origin": [1, 21, 2], "size": [3, 6, 0], "pivot": [2.5, 25, 2], "rotation": [0, 90, 0], "uv": [32, 42]}
-					]
-				},
-				{
-					"name": "flower2",
-					"parent": "head",
-					"pivot": [-2.5, 22, -1],
-					"rotation": [10, 45, 0],
-					"cubes": [
-						{"origin": [-3, 21, -1], "size": [1, 3, 0], "uv": [39, 45]},
-						{"origin": [-3, 21, -1], "size": [1, 3, 0], "pivot": [-2.5, 25, -1], "rotation": [0, 90, 0], "uv": [39, 45]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.unknown",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 4,
+        "visible_bounds_height": 3.5,
+        "visible_bounds_offset": [
+          0,
+          1.25,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "root",
+          "pivot": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "knife",
+          "parent": "root",
+          "pivot": [
+            0,
+            -14,
+            0
+          ]
+        },
+        {
+          "name": "knife1",
+          "parent": "knife",
+          "pivot": [
+            -15,
+            -1,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                -16.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife2",
+          "parent": "knife",
+          "pivot": [
+            15,
+            -1,
+            0
+          ],
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                14,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                13.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife34",
+          "parent": "knife",
+          "pivot": [
+            0,
+            -14,
+            0
+          ],
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "knife3",
+          "parent": "knife34",
+          "pivot": [
+            -15,
+            -1,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                -16.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife4",
+          "parent": "knife34",
+          "pivot": [
+            15,
+            -1,
+            0
+          ],
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                14,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                13.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife5678",
+          "parent": "knife",
+          "pivot": [
+            0,
+            -14,
+            0
+          ],
+          "rotation": [
+            0,
+            45,
+            0
+          ]
+        },
+        {
+          "name": "knife5",
+          "parent": "knife5678",
+          "pivot": [
+            -15,
+            -1,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                -16.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife6",
+          "parent": "knife5678",
+          "pivot": [
+            15,
+            -1,
+            0
+          ],
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                14,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                13.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife78",
+          "parent": "knife5678",
+          "pivot": [
+            0,
+            -14,
+            0
+          ],
+          "rotation": [
+            0,
+            90,
+            0
+          ]
+        },
+        {
+          "name": "knife7",
+          "parent": "knife78",
+          "pivot": [
+            -15,
+            -1,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -16,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                -16.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "knife8",
+          "parent": "knife78",
+          "pivot": [
+            15,
+            -1,
+            0
+          ],
+          "rotation": [
+            0,
+            180,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                14,
+                -1,
+                -1
+              ],
+              "size": [
+                2,
+                4,
+                2
+              ],
+              "uv": [
+                47,
+                58
+              ]
+            },
+            {
+              "origin": [
+                13.5,
+                2,
+                0
+              ],
+              "size": [
+                3,
+                8,
+                0
+              ],
+              "uv": [
+                58,
+                56
+              ]
+            }
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "pivot": [
+            0,
+            6,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -5,
+                0,
+                -5
+              ],
+              "size": [
+                10,
+                11,
+                10
+              ],
+              "uv": [
+                24,
+                0
+              ]
+            },
+            {
+              "origin": [
+                -2,
+                11,
+                -2
+              ],
+              "size": [
+                4,
+                1,
+                4
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            },
+            {
+              "origin": [
+                -3,
+                12,
+                -3
+              ],
+              "size": [
+                6,
+                2,
+                6
+              ],
+              "uv": [
+                0,
+                13
+              ]
+            }
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "pivot": [
+            0,
+            14,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -4,
+                14,
+                -4
+              ],
+              "size": [
+                8,
+                8,
+                8
+              ],
+              "uv": [
+                0,
+                48
+              ]
+            },
+            {
+              "origin": [
+                -4,
+                14,
+                -4
+              ],
+              "size": [
+                8,
+                8,
+                8
+              ],
+              "inflate": 0.2,
+              "uv": [
+                0,
+                32
+              ]
+            }
+          ]
+        },
+        {
+          "name": "flower1",
+          "parent": "head",
+          "pivot": [
+            2.5,
+            22,
+            2
+          ],
+          "rotation": [
+            -2.5,
+            45,
+            5
+          ],
+          "cubes": [
+            {
+              "origin": [
+                1,
+                21,
+                2
+              ],
+              "size": [
+                3,
+                6,
+                0
+              ],
+              "uv": [
+                32,
+                42
+              ]
+            },
+            {
+              "origin": [
+                1,
+                21,
+                2
+              ],
+              "size": [
+                3,
+                6,
+                0
+              ],
+              "pivot": [
+                2.5,
+                25,
+                2
+              ],
+              "rotation": [
+                0,
+                90,
+                0
+              ],
+              "uv": [
+                32,
+                42
+              ]
+            }
+          ]
+        },
+        {
+          "name": "flower2",
+          "parent": "head",
+          "pivot": [
+            -2.5,
+            22,
+            -1
+          ],
+          "rotation": [
+            10,
+            45,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                21,
+                -1
+              ],
+              "size": [
+                1,
+                3,
+                0
+              ],
+              "uv": [
+                39,
+                45
+              ]
+            },
+            {
+              "origin": [
+                -3,
+                21,
+                -1
+              ],
+              "size": [
+                1,
+                3,
+                0
+              ],
+              "pivot": [
+                -2.5,
+                25,
+                -1
+              ],
+              "rotation": [
+                0,
+                90,
+                0
+              ],
+              "uv": [
+                39,
+                45
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

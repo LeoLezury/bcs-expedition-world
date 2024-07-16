@@ -4,11 +4,14 @@ import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.advancement.EWCriteriaTriggers;
 import dev.bc.expeditionworld.block.EWBlocks;
 import dev.bc.expeditionworld.entity.EWEntities;
+import dev.bc.expeditionworld.entity.living.frozencaves.Chilled;
+import dev.bc.expeditionworld.entity.living.frozencaves.IceCreeper;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.potion.EWPotions;
 import dev.bc.expeditionworld.potion.recipe.ExactBrewingRecipe;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -46,7 +49,8 @@ public class CommonSetupEvents {
 	public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
 		event.register(EWEntities.MIMICHEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 		event.register(EWEntities.MIMIPOT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
-		event.register(EWEntities.CHILLED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(EWEntities.CHILLED.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Chilled::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
+		event.register(EWEntities.ICE_CREEPER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, IceCreeper::checkAnyLightMonsterSpawnRules, SpawnPlacementRegisterEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
@@ -54,5 +58,6 @@ public class CommonSetupEvents {
 		event.put(EWEntities.MIMICHEST.get(), Mimichest.createChestAttributes().build());
 		event.put(EWEntities.MIMIPOT.get(), Mimichest.createPotAttributes().build());
 		event.put(EWEntities.CHILLED.get(), Zombie.createAttributes().build());
+		event.put(EWEntities.ICE_CREEPER.get(), Creeper.createAttributes().build());
 	}
 }

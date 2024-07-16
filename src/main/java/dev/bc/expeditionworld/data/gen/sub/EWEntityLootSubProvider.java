@@ -56,6 +56,14 @@ public class EWEntityLootSubProvider extends EntityLootSubProvider {
 				.add(LootItem.lootTableItem(EWItems.COLDPROOF_BOOTS.get()).when(LootItemRandomChanceCondition.randomChance(0.125F)).apply(SetItemDamageFunction.setDamage(UniformGenerator.between(0.75F, 0.85F)))))
 			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 				.add(LootItem.lootTableItem(Items.ROTTEN_FLESH).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))))));
+
+		add(EWEntities.ICE_CREEPER.get(), LootTable.lootTable()
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(EWItems.FROSTBITE_GUNPOWDER.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 2.0F)))))
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(EWItems.FRIGID_BEAK.get()).when(LootItemRandomChanceCondition.randomChance(0.02F))))
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(Items.GUNPOWDER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 2.0F))))));
 	}
 
 	@Override

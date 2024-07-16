@@ -22,12 +22,18 @@ public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 	protected void addTags(HolderLookup.Provider lookupProvider) {
 		tag(EWEntityTags.CAN_SPAWN_IN_FROZEN_CAVES).add(
 			EWEntities.CHILLED.get(),
+			EWEntities.ICE_CREEPER.get(),
 			EntityType.BAT
 		);
 
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
 			EWEntities.MIMICHEST.get(),
 			EWEntities.MIMIPOT.get()
+		);
+
+		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(
+			EWEntities.CHILLED.get(),
+			EWEntities.ICE_CREEPER.get()
 		);
 	}
 }
