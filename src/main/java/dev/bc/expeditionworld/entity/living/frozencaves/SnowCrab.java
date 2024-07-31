@@ -70,7 +70,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(1, new MoveToTargetGoal(this, 1.0));
+		this.goalSelector.addGoal(1, new MoveToTargetGoal(this, 0.6f));
 		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0));
 		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0f));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
@@ -88,7 +88,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes()
-			.add(Attributes.MOVEMENT_SPEED, 0.35F)
+			.add(Attributes.MOVEMENT_SPEED, 0.25F)
 			.add(Attributes.FOLLOW_RANGE, 200.0D)
 			.add(Attributes.MAX_HEALTH, 30.0D)
 			.add(Attributes.ATTACK_DAMAGE, 5.0D)

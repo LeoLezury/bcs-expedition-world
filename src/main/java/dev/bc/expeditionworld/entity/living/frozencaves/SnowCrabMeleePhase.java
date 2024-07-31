@@ -23,7 +23,7 @@ public class SnowCrabMeleePhase extends AttackPhase<SnowCrab> {
 	@Override
 	public void tick(SnowCrab entity) {
 		if (entity.getAttackTicks() == 8) {
-			EWEntityUtil.performMeleeAttack(entity, 2.5);
+			EWEntityUtil.performMeleeAttack(entity, 3.2f);
 		}
 	}
 
