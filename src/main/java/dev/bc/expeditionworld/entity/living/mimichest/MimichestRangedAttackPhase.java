@@ -17,8 +17,8 @@ public class MimichestRangedAttackPhase extends AttackPhase<Mimichest> {
 	}
 
 	@Override
-	public boolean canStart(Mimichest entity, boolean coolDownOver) {
-		return EWEntityUtil.targetValid(entity) && coolDownOver && !EWEntityUtil.canReachTarget(entity, 5);
+	public boolean canStart(Mimichest entity, boolean cooldownOver) {
+		return cooldownOver && EWEntityUtil.targetValid(entity) && !EWEntityUtil.canReachTarget(entity, 5);
 	}
 
 	@Override

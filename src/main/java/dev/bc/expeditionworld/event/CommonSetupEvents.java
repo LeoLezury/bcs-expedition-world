@@ -3,6 +3,7 @@ package dev.bc.expeditionworld.event;
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.entity.living.frozencaves.Chilled;
 import dev.bc.expeditionworld.entity.living.frozencaves.IceCreeper;
+import dev.bc.expeditionworld.entity.living.frozencaves.SnowCrab;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import dev.bc.expeditionworld.registry.EWBlocks;
 import dev.bc.expeditionworld.registry.EWEntities;
@@ -31,6 +32,7 @@ public class CommonSetupEvents {
 		event.register(EWEntities.MIMIPOT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mimichest::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(EWEntities.CHILLED.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Chilled::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 		event.register(EWEntities.ICE_CREEPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, IceCreeper::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		event.register(EWEntities.SNOW_CRAB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, SnowCrab::checkAnyLightMonsterSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
 	}
 
 	@SubscribeEvent
@@ -39,5 +41,6 @@ public class CommonSetupEvents {
 		event.put(EWEntities.MIMIPOT.get(), Mimichest.createPotAttributes().build());
 		event.put(EWEntities.CHILLED.get(), Zombie.createAttributes().build());
 		event.put(EWEntities.ICE_CREEPER.get(), Creeper.createAttributes().build());
+		event.put(EWEntities.SNOW_CRAB.get(), SnowCrab.createAttributes().build());
 	}
 }

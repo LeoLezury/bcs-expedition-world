@@ -94,6 +94,7 @@ public class ClientSetupEvents {
 				return super.getPackedOverlay(animatable, (int) (swelling * 10.0F) % 2 == 0 ? 0.0F : Mth.clamp(swelling, 0.5F, 1.0F), partialTick);
 			}
 		});
+		event.registerEntityRenderer(EWEntities.SNOW_CRAB.get(), context -> new GeoEntityRenderer<>(context, new DefaultedEntityGeoModel<>(EWEntities.SNOW_CRAB.getId(), false)));
 	}
 
 	private static final CubeDeformation OUTER_ARMOR_DEFORMATION = new CubeDeformation(1.0F);

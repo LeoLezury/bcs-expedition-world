@@ -3,6 +3,7 @@ package dev.bc.expeditionworld.registry;
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.entity.living.frozencaves.Chilled;
 import dev.bc.expeditionworld.entity.living.frozencaves.IceCreeper;
+import dev.bc.expeditionworld.entity.living.frozencaves.SnowCrab;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
 import dev.bc.expeditionworld.entity.misc.FrostbiteTnt;
 import dev.bc.expeditionworld.entity.projectile.FrostCharge;
@@ -41,4 +42,6 @@ public class EWEntities {
 		() -> EntityType.Builder.of(Chilled::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("chilled"));
 	public static final DeferredHolder<EntityType<?>, EntityType<IceCreeper>> ICE_CREEPER = ENTITY_TYPES.register("ice_creeper",
 		() -> EntityType.Builder.of(IceCreeper::new, MobCategory.MONSTER).sized(0.6F, 1.95F).build("ice_creeper"));
+	public static final DeferredHolder<EntityType<?>, EntityType<SnowCrab>> SNOW_CRAB = ENTITY_TYPES.register("snow_crab",
+		() -> EntityType.Builder.of(SnowCrab::new, MobCategory.MONSTER).sized(0.9f, 1.5f).build("snow_crab"));
 }
