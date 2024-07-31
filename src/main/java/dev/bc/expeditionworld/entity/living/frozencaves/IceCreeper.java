@@ -1,16 +1,16 @@
 package dev.bc.expeditionworld.entity.living.frozencaves;
 
-import dev.bc.expeditionworld.particle.EWParticles;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWParticles;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class IceCreeper extends Creeper implements GeoEntity {
@@ -29,7 +29,7 @@ public class IceCreeper extends Creeper implements GeoEntity {
 		cloud.setWaitTime(10);
 		cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
 		cloud.setParticle(EWParticles.SNOWFLAKE.get());
-		cloud.addEffect(new MobEffectInstance(new MobEffectInstance(EWMobEffects.FROZEN.get(), 80)));
+		cloud.addEffect(new MobEffectInstance(new MobEffectInstance(EWMobEffects.FROZEN, 80)));
 		this.level().addFreshEntity(cloud);
 	}
 

@@ -1,5 +1,6 @@
 package dev.bc.expeditionworld.block;
 
+import com.mojang.serialization.MapCodec;
 import dev.bc.expeditionworld.entity.misc.FrostbiteTnt;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,6 +16,8 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import javax.annotation.Nullable;
 
 public class FrostbiteTntBlock extends TntBlock {
+	public static final MapCodec<FrostbiteTntBlock> CODEC = simpleCodec(FrostbiteTntBlock::new);
+
 	public FrostbiteTntBlock(Properties properties) {
 		super(properties);
 	}

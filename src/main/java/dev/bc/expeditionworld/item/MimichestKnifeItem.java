@@ -1,8 +1,8 @@
 package dev.bc.expeditionworld.item;
 
 import dev.bc.expeditionworld.entity.projectile.MimichestKnife;
+import dev.bc.expeditionworld.registry.EWItems;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,8 +20,8 @@ public class MimichestKnifeItem extends Item {
 
 	@Override
 	public void releaseUsing(ItemStack stack, Level level, LivingEntity living, int time) {
-		MimichestKnife knife = new MimichestKnife(living, level);
-		int usedTime = this.getUseDuration(stack) - time;
+		MimichestKnife knife = new MimichestKnife(level, living, stack, stack);
+		int usedTime = this.getUseDuration(stack, living) - time;
 		knife.shootFromRotation(living, living.getXRot(), living.getYRot(), 0.0F, 3F * (Math.min(usedTime, 50F) / 50F), 1.0F);
 		if (living instanceof Player player && player.getAbilities().instabuild) {
 			knife.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
@@ -30,7 +30,7 @@ public class MimichestKnifeItem extends Item {
 			knife.setBrick(true);
 		}
 		level.addFreshEntity(knife);
-		level.playSound(null, knife, SoundEvents.TRIDENT_THROW, living instanceof Player ? SoundSource.PLAYERS : SoundSource.HOSTILE, 1.0F, 1.0F);
+		knife.playSound(SoundEvents.TRIDENT_THROW.value());
 		if (!(living instanceof Player player && player.getAbilities().instabuild)) {
 			stack.shrink(1);
 		}
@@ -42,7 +42,7 @@ public class MimichestKnifeItem extends Item {
 	}
 
 	@Override
-	public int getUseDuration(ItemStack stack) {
+	public int getUseDuration(ItemStack stack, LivingEntity entity) {
 		return 72000;
 	}
 

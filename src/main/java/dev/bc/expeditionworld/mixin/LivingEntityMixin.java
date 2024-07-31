@@ -1,9 +1,9 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.item.IceTotemItem;
-import dev.bc.expeditionworld.particle.EWParticles;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWParticles;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;

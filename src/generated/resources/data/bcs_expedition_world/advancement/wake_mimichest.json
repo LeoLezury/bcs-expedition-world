@@ -1,0 +1,27 @@
+{
+  "parent": "bcs_expedition_world:root",
+  "criteria": {
+    "wake": {
+      "trigger": "bcs_expedition_world:wake_mimichest"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.bcs_expedition_world.wake_mimichest.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bcs_expedition_world:fettered_chest"
+    },
+    "title": {
+      "translate": "advancements.bcs_expedition_world.wake_mimichest.title"
+    }
+  },
+  "requirements": [
+    [
+      "wake"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

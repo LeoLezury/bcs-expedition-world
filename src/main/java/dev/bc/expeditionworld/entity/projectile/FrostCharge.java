@@ -1,8 +1,8 @@
 package dev.bc.expeditionworld.entity.projectile;
 
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.item.EWItems;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -37,7 +37,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 	}
 
 	private ParticleOptions getParticle() {
-		ItemStack stack = this.getItemRaw();
+		ItemStack stack = this.getItem();
 		return stack.isEmpty() ? new ItemParticleOption(ParticleTypes.ITEM, getDefaultItem().getDefaultInstance()) : new ItemParticleOption(ParticleTypes.ITEM, stack);
 	}
 
@@ -55,7 +55,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 		Entity entity = hitResult.getEntity();
 		entity.hurt(this.damageSources().thrown(this, this.getOwner()), 0);
 		if (entity instanceof LivingEntity living) {
-			living.addEffect(new MobEffectInstance(EWMobEffects.FROZEN.get(), 120));
+			living.addEffect(new MobEffectInstance(EWMobEffects.FROZEN, 120));
 		}
 	}
 

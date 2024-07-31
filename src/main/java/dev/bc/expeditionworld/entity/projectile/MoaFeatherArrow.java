@@ -1,9 +1,9 @@
 package dev.bc.expeditionworld.entity.projectile;
 
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.item.EWItems;
-import dev.bc.expeditionworld.particle.EWParticles;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWParticles;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
@@ -11,25 +11,21 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class MoaFeatherArrow extends AbstractArrow {
 	private int duration = 160;
-	private ItemStack pickupStack = ItemStack.EMPTY;
 
-	public MoaFeatherArrow(EntityType<? extends MoaFeatherArrow> type, Level level) {
-		super(type, level);
+	public MoaFeatherArrow(EntityType<? extends MoaFeatherArrow> entityType, Level level) {
+		super(entityType, level);
 	}
 
-	public MoaFeatherArrow(Level level, LivingEntity owner) {
-		super(EWEntities.MOA_FEATHER_ARROW.get(), owner, level);
+	public MoaFeatherArrow(Level level, double x, double y, double z, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.MOA_FEATHER_ARROW.get(), x, y, z, level, pickupItemStack, firedFromWeapon);
 	}
 
-	public MoaFeatherArrow(Level level, double x, double y, double z) {
-		super(EWEntities.MOA_FEATHER_ARROW.get(), x, y, z, level);
-	}
-
-	public void setPickupStack(ItemStack pickupStack) {
-		this.pickupStack = pickupStack;
+	public MoaFeatherArrow(Level level, LivingEntity owner, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.MOA_FEATHER_ARROW.get(), owner, level, pickupItemStack, firedFromWeapon);
 	}
 
 	public void tick() {
@@ -39,13 +35,14 @@ public class MoaFeatherArrow extends AbstractArrow {
 		}
 	}
 
-	public ItemStack getPickupItem() {
-		return pickupStack.isEmpty() ? EWItems.MOA_FEATHER_ARROW.get().getDefaultInstance() : pickupStack;
+	@Override
+	protected ItemStack getDefaultPickupItem() {
+		return EWItems.MOA_FEATHER_ARROW.get().getDefaultInstance();
 	}
 
 	protected void doPostHurtEffects(LivingEntity living) {
 		super.doPostHurtEffects(living);
-		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN.get(), this.duration, 1);
+		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN, this.duration, 1);
 		living.addEffect(instance, this.getEffectSource());
 	}
 
@@ -54,16 +51,10 @@ public class MoaFeatherArrow extends AbstractArrow {
 		if (tag.contains("Duration")) {
 			this.duration = tag.getInt("Duration");
 		}
-		if (tag.contains("PickupStack", CompoundTag.TAG_COMPOUND)) {
-			this.pickupStack = ItemStack.of(tag.getCompound("PickupStack"));
-		}
 	}
 
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putInt("Duration", this.duration);
-		if (!pickupStack.isEmpty()) {
-			tag.put("PickupStack", pickupStack.save(new CompoundTag()));
-		}
 	}
 }

@@ -1,10 +1,10 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.advancement.EWCriteriaTriggers;
-import dev.bc.expeditionworld.block.EWBlocks;
 import dev.bc.expeditionworld.block.FetteredChestBlock;
-import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.entity.living.mimichest.Mimichest;
+import dev.bc.expeditionworld.registry.EWBlocks;
+import dev.bc.expeditionworld.registry.EWCriteriaTriggers;
+import dev.bc.expeditionworld.registry.EWEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -32,7 +32,7 @@ public abstract class BlockMixin {
 			level.addFreshEntity(mimichest);
 			mimichest.triggerSpawn();
 			if (entity instanceof ServerPlayer serverPlayer) {
-				EWCriteriaTriggers.WAKE_MIMICHEST.trigger(serverPlayer);
+				EWCriteriaTriggers.WAKE_MIMICHEST.get().trigger(serverPlayer);
 			}
 		}
 	}

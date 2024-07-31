@@ -1,8 +1,10 @@
 package dev.bc.expeditionworld.data.gen;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.block.EWBlocks;
-import dev.bc.expeditionworld.item.EWItems;
+import dev.bc.expeditionworld.registry.EWBlocks;
+import dev.bc.expeditionworld.registry.EWItems;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
@@ -12,17 +14,16 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class EWRecipeProvider extends RecipeProvider {
-	public EWRecipeProvider(PackOutput output) {
-		super(output);
+	public EWRecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+		super(output, registries);
 	}
 
 	@Override
-	protected void buildRecipes(Consumer<FinishedRecipe> recipeOutput) {
+	protected void buildRecipes(RecipeOutput recipeOutput) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, EWItems.STONE_MIMICHEST_KNIFE.get())
 			.pattern("N")
 			.pattern("X")
@@ -159,7 +160,7 @@ public class EWRecipeProvider extends RecipeProvider {
 			.save(recipeOutput);
 	}
 
-	protected final void addSingleConversion(Consumer<FinishedRecipe> recipeOutput, Item to, Item from) {
+	protected final void addSingleConversion(RecipeOutput recipeOutput, Item to, Item from) {
 		ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, to)
 			.requires(from)
 			.unlockedBy("has_item", has(from))
@@ -167,7 +168,7 @@ public class EWRecipeProvider extends RecipeProvider {
 	}
 
 	// stone
-	protected final void addStoneCompress(Consumer<FinishedRecipe> recipeOutput, Block output, Block input) {
+	protected final void addStoneCompress(RecipeOutput recipeOutput, Block output, Block input) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 4)
 			.pattern("##")
 			.pattern("##")
@@ -176,7 +177,7 @@ public class EWRecipeProvider extends RecipeProvider {
 			.save(recipeOutput);
 	}
 
-	protected final void addSlab(Consumer<FinishedRecipe> recipeOutput, Block output, Block input) {
+	protected final void addSlab(RecipeOutput recipeOutput, Block output, Block input) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 6)
 			.pattern("###")
 			.define('#', input)
@@ -184,7 +185,7 @@ public class EWRecipeProvider extends RecipeProvider {
 			.save(recipeOutput);
 	}
 
-	protected final void addStairs(Consumer<FinishedRecipe> recipeOutput, Block output, Block input) {
+	protected final void addStairs(RecipeOutput recipeOutput, Block output, Block input) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, output, 2)
 			.pattern("#  ")
 			.pattern("## ")
@@ -195,34 +196,34 @@ public class EWRecipeProvider extends RecipeProvider {
 	}
 
 	// vanilla copies
-	protected void stonecutting(Consumer<FinishedRecipe> recipeOutput, RecipeCategory category, ItemLike output, ItemLike input) {
+	protected void stonecutting(RecipeOutput recipeOutput, RecipeCategory category, ItemLike output, ItemLike input) {
 		stonecutting(recipeOutput, category, output, input, 1);
 	}
 
-	protected void stonecutting(Consumer<FinishedRecipe> recipeOutput, RecipeCategory category, ItemLike output, ItemLike input, int count) {
+	protected void stonecutting(RecipeOutput recipeOutput, RecipeCategory category, ItemLike output, ItemLike input, int count) {
 		SingleItemRecipeBuilder builder = SingleItemRecipeBuilder.stonecutting(Ingredient.of(input), category, output, count).unlockedBy(getHasName(input), has(input));
 		String name = getConversionRecipeName(output, input);
 		builder.save(recipeOutput, ExpeditionWorld.id(name + "_stonecutting"));
 	}
 
-	protected void nineBlockStorageCustomPacking(Consumer<FinishedRecipe> recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String packName, String packGroup) {
+	protected void nineBlockStorageCustomPacking(RecipeOutput recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String packName, String packGroup) {
 		nineBlockStorage(recipeOutput, unpackCategory, unpacked, packCategory, packed, packName, packGroup, getSimpleRecipeName(unpacked), null);
 	}
 
-	protected void nineBlockStorageCustomUnpacking(Consumer<FinishedRecipe> recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String unpackName, String unpackGroup) {
+	protected void nineBlockStorageCustomUnpacking(RecipeOutput recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String unpackName, String unpackGroup) {
 		nineBlockStorage(recipeOutput, unpackCategory, unpacked, packCategory, packed, getSimpleRecipeName(packed), null, unpackName, unpackGroup);
 	}
 
-	protected void nineBlockStorage(Consumer<FinishedRecipe> recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String packName, String packGroup, String unpackName, String unpackGroup) {
+	protected void nineBlockStorage(RecipeOutput recipeOutput, RecipeCategory unpackCategory, ItemLike unpacked, RecipeCategory packCategory, ItemLike packed, String packName, String packGroup, String unpackName, String unpackGroup) {
 		ShapelessRecipeBuilder.shapeless(unpackCategory, unpacked, 9).requires(packed).group(unpackGroup).unlockedBy(getHasName(packed), has(packed)).save(recipeOutput, ExpeditionWorld.id(unpackName));
 		ShapedRecipeBuilder.shaped(packCategory, packed).define('#', unpacked).pattern("###").pattern("###").pattern("###").group(packGroup).unlockedBy(getHasName(unpacked), has(unpacked)).save(recipeOutput, ExpeditionWorld.id(packName));
 	}
 
-	protected static void copySmithingTemplate(Consumer<FinishedRecipe> recipeOutput, ItemLike template, ItemLike core, ItemLike others) {
+	protected static void copySmithingTemplate(RecipeOutput recipeOutput, ItemLike template, ItemLike core, ItemLike others) {
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, template, 2).define('#', others).define('C', core).define('S', template).pattern("#S#").pattern("#C#").pattern("###").unlockedBy(getHasName(template), has(template)).save(recipeOutput);
 	}
 
-	protected static void glacierSmithing(Consumer<FinishedRecipe> recipeOutput, Item input, RecipeCategory category, Item output) {
+	protected static void glacierSmithing(RecipeOutput recipeOutput, Item input, RecipeCategory category, Item output) {
 		SmithingTransformRecipeBuilder.smithing(Ingredient.of(EWItems.CRYO_SMITHING_TEMPLATE.get()), Ingredient.of(input), Ingredient.of(EWItems.MOA_FEATHER.get()), category, output).unlocks("has_moa_feather", has(EWItems.MOA_FEATHER.get())).save(recipeOutput, ExpeditionWorld.id(getItemName(output) + "_smithing"));
 	}
 
@@ -231,6 +232,6 @@ public class EWRecipeProvider extends RecipeProvider {
 	}
 
 	protected final ResourceLocation key(ItemLike item) {
-		return ForgeRegistries.ITEMS.getKey(item.asItem());
+		return BuiltInRegistries.ITEM.getKey(item.asItem());
 	}
 }

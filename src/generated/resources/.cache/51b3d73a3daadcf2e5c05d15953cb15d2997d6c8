@@ -1,11 +1,17 @@
-// 1.20.1	2024-06-23T12:10:14.8359202	Tags for minecraft:item mod id bcs_expedition_world
-52413a870520da3227b0d97b44e5455211b16e49 data/bcs_expedition_world/tags/items/repairs_totem_of_ice.json
-4af4c933385095081a2283f8f18d924cf2e9b310 data/minecraft/tags/items/arrows.json
-105e587211a0e22f63587fd0f0efe2a111da482a data/minecraft/tags/items/freeze_immune_wearables.json
-18f6ec4ad2ed7aa82086fa35dd695f87db5e957a data/minecraft/tags/items/slabs.json
-4b0a17666008ce0b86126a94942d3ac2e78d4df5 data/minecraft/tags/items/small_flowers.json
-0a21c4e33fa2a1f95b13b32e14514d56be89c8b7 data/minecraft/tags/items/stairs.json
-c9ad363e1aa7ee02d7ce43de0b63cf2b6d7ec362 data/minecraft/tags/items/swords.json
-832962a660be53b0c7024c0b5e810eb1004b424c data/minecraft/tags/items/tall_flowers.json
-5c07f482a4b4802a76760654483d8c2c38d94d37 data/minecraft/tags/items/trim_materials.json
-76e2b4830dabb7535bc136b7d83d8ea4d515d28e data/minecraft/tags/items/walls.json
+// 1.21	2024-07-31T14:53:24.8234261	Tags for minecraft:item mod id bcs_expedition_world
+52413a870520da3227b0d97b44e5455211b16e49 data/bcs_expedition_world/tags/item/repairs_totem_of_ice.json
+4af4c933385095081a2283f8f18d924cf2e9b310 data/minecraft/tags/item/arrows.json
+f84f53318e3c238e0809b120606ed69c0605a9f5 data/minecraft/tags/item/chest_armor.json
+822bffae6426da6520f08a0adbc09c987053850f data/minecraft/tags/item/enchantable/bow.json
+822bffae6426da6520f08a0adbc09c987053850f data/minecraft/tags/item/enchantable/durability.json
+34ff74a8b6433bfc9a398dd8f298143b7acfa354 data/minecraft/tags/item/foot_armor.json
+105e587211a0e22f63587fd0f0efe2a111da482a data/minecraft/tags/item/freeze_immune_wearables.json
+6cbf05878e6503b7433206cb80962c71d8a45f62 data/minecraft/tags/item/head_armor.json
+fa991e570b01abcd0daa8b9adb8ff02b5fef2cd3 data/minecraft/tags/item/leg_armor.json
+18f6ec4ad2ed7aa82086fa35dd695f87db5e957a data/minecraft/tags/item/slabs.json
+4b0a17666008ce0b86126a94942d3ac2e78d4df5 data/minecraft/tags/item/small_flowers.json
+0a21c4e33fa2a1f95b13b32e14514d56be89c8b7 data/minecraft/tags/item/stairs.json
+581add81d7ee0c8df604a080149af119627b3287 data/minecraft/tags/item/swords.json
+832962a660be53b0c7024c0b5e810eb1004b424c data/minecraft/tags/item/tall_flowers.json
+5c07f482a4b4802a76760654483d8c2c38d94d37 data/minecraft/tags/item/trim_materials.json
+76e2b4830dabb7535bc136b7d83d8ea4d515d28e data/minecraft/tags/item/walls.json

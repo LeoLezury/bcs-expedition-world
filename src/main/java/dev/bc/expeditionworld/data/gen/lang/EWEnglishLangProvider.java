@@ -1,18 +1,16 @@
 package dev.bc.expeditionworld.data.gen.lang;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.block.EWBlocks;
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.item.EWItems;
-import dev.bc.expeditionworld.potion.EWMobEffects;
-import dev.bc.expeditionworld.potion.EWPotions;
+import dev.bc.expeditionworld.registry.*;
 import net.minecraft.Util;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
-import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.common.data.LanguageProvider;
+
+import java.util.Objects;
 
 public class EWEnglishLangProvider extends LanguageProvider {
 	public EWEnglishLangProvider(PackOutput output) {
@@ -70,6 +68,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 		add(EWItems.COLDPROOF_COAT.get(), "Coldproof Coat");
 		add(EWItems.COLDPROOF_LEGGINGS.get(), "Coldproof Leggings");
 		add(EWItems.COLDPROOF_BOOTS.get(), "Coldproof Boots");
+		add(EWItems.CRYO_SMITHING_TEMPLATE.get(), "Smithing Template");
 		add(Util.makeDescriptionId("upgrade", ExpeditionWorld.id("glacier_upgrade")), "Glacier Upgrade");
 		add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.applies_to")), "Coldproof Equipment");
 		add(Util.makeDescriptionId("item", ExpeditionWorld.id("smithing_template.glacier_upgrade.ingredients")), "Moa Feather");
@@ -121,7 +120,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 	}
 
 	public void add(Item item, Potion key, String name) {
-		add(item.getDescriptionId() + ".effect." + ForgeRegistries.POTIONS.getKey(key).getPath(), name);
+		add(item.getDescriptionId() + ".effect." + Objects.requireNonNull(BuiltInRegistries.POTION.getKey(key)).getPath(), name);
 	}
 
 	public void addAdvancement(String advancement, String name, String desc) {

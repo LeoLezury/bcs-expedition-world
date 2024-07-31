@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_cryo_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "bcs_expedition_world:cryo_smithing_template"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "bcs_expedition_world:cryo_smithing_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_cryo_smithing_template"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "bcs_expedition_world:cryo_smithing_template"
+    ]
+  }
+}

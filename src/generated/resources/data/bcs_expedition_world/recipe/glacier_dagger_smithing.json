@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "bcs_expedition_world:moa_feather"
+  },
+  "base": {
+    "item": "bcs_expedition_world:frosty_dagger"
+  },
+  "result": {
+    "count": 1,
+    "id": "bcs_expedition_world:glacier_dagger"
+  },
+  "template": {
+    "item": "bcs_expedition_world:cryo_smithing_template"
+  }
+}

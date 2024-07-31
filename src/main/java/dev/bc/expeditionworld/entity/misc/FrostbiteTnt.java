@@ -1,9 +1,9 @@
 package dev.bc.expeditionworld.entity.misc;
 
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.particle.EWParticles;
-import dev.bc.expeditionworld.potion.EWMobEffects;
-import dev.bc.expeditionworld.sound.EWSoundEvents;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWParticles;
+import dev.bc.expeditionworld.registry.EWSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.AreaEffectCloud;
@@ -57,7 +57,7 @@ public class FrostbiteTnt extends PrimedTnt {
 		cloud.setWaitTime(10);
 		cloud.setRadiusPerTick(-cloud.getRadius() / (float) cloud.getDuration());
 		cloud.setParticle(EWParticles.SNOWFLAKE.get());
-		cloud.addEffect(new MobEffectInstance(new MobEffectInstance(EWMobEffects.FROZEN.get(), 60)));
+		cloud.addEffect(new MobEffectInstance(new MobEffectInstance(EWMobEffects.FROZEN, 60)));
 		this.level().addFreshEntity(cloud);
 	}
 }

@@ -11,12 +11,14 @@ import dev.bc.expeditionworld.client.model.entity.ChilledModel;
 import dev.bc.expeditionworld.client.model.entity.MimichestKnifeModel;
 import dev.bc.expeditionworld.client.particle.SnowflakeParticle;
 import dev.bc.expeditionworld.client.renderer.entity.*;
-import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.entity.living.frozencaves.IceCreeper;
-import dev.bc.expeditionworld.item.EWItems;
 import dev.bc.expeditionworld.item.IceTotemItem;
-import dev.bc.expeditionworld.particle.EWParticles;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWParticles;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidArmorModel;
+import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.particle.SoulParticle;
@@ -25,35 +27,42 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.cache.object.BakedGeoModel;
 import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-@Mod.EventBusSubscriber(modid = ExpeditionWorld.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExpeditionWorld.ID, bus = EventBusSubscriber.Bus.MOD)
 public class ClientSetupEvents {
 	@SubscribeEvent
-	public static void clientSetup(FMLClientSetupEvent event) {
+	private static void onClientSetup(FMLClientSetupEvent event) {
 		ItemProperties.register(EWItems.TOTEM_OF_ICE.get(), IceTotemItem.BROKEN, (stack, level, entity, i) -> IceTotemItem.isBroken(stack) ? 1 : 0);
-		ItemProperties.register(EWItems.GLACIER_BOW.get(), new ResourceLocation("pull"), (stack, level, entity, i) -> {
+		ItemProperties.register(EWItems.GLACIER_BOW.get(), ResourceLocation.withDefaultNamespace("pull"), (stack, level, entity, i) -> {
 			if (entity == null) {
 				return 0.0F;
 			} else {
-				return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 20.0F;
+				return entity.getUseItem() != stack ? 0.0F : (float) (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
 			}
 		});
-		ItemProperties.register(EWItems.GLACIER_BOW.get(), new ResourceLocation("pulling"), (stack, level, entity, i) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
+		ItemProperties.register(EWItems.GLACIER_BOW.get(), ResourceLocation.withDefaultNamespace("pulling"), (stack, level, entity, i) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F);
 	}
 
 	@SubscribeEvent
-	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+	private static void onRegisterEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
 		event.registerEntityRenderer(EWEntities.FROSTBITE_TNT.get(), FrostbiteTntRenderer::new);
 		event.registerEntityRenderer(EWEntities.MIMICHEST_KNIFE.get(), MimichestKnifeRenderer::new);
 		event.registerEntityRenderer(EWEntities.FROST_CHARGE.get(), ThrownItemRenderer::new);
@@ -67,7 +76,7 @@ public class ClientSetupEvents {
 		event.registerEntityRenderer(EWEntities.ICE_CREEPER.get(), context -> new GeoEntityRenderer<>(
 			context, new DefaultedEntityGeoModel<>(EWEntities.ICE_CREEPER.getId(), true)) {
 			@Override
-			public void preRender(PoseStack poseStack, IceCreeper animatable, BakedGeoModel model, MultiBufferSource bufferSource, VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+			public void preRender(PoseStack poseStack, IceCreeper animatable, BakedGeoModel model, @Nullable MultiBufferSource bufferSource, @Nullable VertexConsumer buffer, boolean isReRender, float partialTick, int packedLight, int packedOverlay, int colour) {
 				float swelling = animatable.getSwelling(partialTick);
 				float factor = 1.0F + Mth.sin(swelling * 100.0F) * swelling * 0.01F;
 				swelling = Mth.clamp(swelling, 0.0F, 1.0F);
@@ -76,7 +85,7 @@ public class ClientSetupEvents {
 				float xzScale = (1.0F + swelling * 0.4F) * factor;
 				float yScale = (1.0F + swelling * 0.1F) / factor;
 				withScale(xzScale, yScale);
-				super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, red, green, blue, alpha);
+				super.preRender(poseStack, animatable, model, bufferSource, buffer, isReRender, partialTick, packedLight, packedOverlay, colour);
 			}
 
 			@Override
@@ -87,12 +96,12 @@ public class ClientSetupEvents {
 		});
 	}
 
-	public static final CubeDeformation OUTER_ARMOR_DEFORMATION = new CubeDeformation(1.0F);
-	public static final CubeDeformation INNER_ARMOR_DEFORMATION = new CubeDeformation(0.5F);
+	private static final CubeDeformation OUTER_ARMOR_DEFORMATION = new CubeDeformation(1.0F);
+	private static final CubeDeformation INNER_ARMOR_DEFORMATION = new CubeDeformation(0.5F);
 
 
 	@SubscribeEvent
-	public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+	private static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(OuterColdproofArmorModel.LAYER_LOCATION, OuterColdproofArmorModel::createBodyLayer);
 		event.registerLayerDefinition(InnerColdproofArmorModel.LAYER_LOCATION, InnerColdproofArmorModel::createBodyLayer);
 		event.registerLayerDefinition(OuterGlacierArmorModel.LAYER_LOCATION, OuterGlacierArmorModel::createBodyLayer);
@@ -104,8 +113,52 @@ public class ClientSetupEvents {
 	}
 
 	@SubscribeEvent
-	public static void registerParticles(RegisterParticleProvidersEvent event) {
+	private static void onRegisterParticles(RegisterParticleProvidersEvent event) {
 		event.registerSpriteSet(EWParticles.TRAPPED_SOUL.get(), SoulParticle.EmissiveProvider::new);
 		event.registerSpriteSet(EWParticles.SNOWFLAKE.get(), SnowflakeParticle.Provider::new);
+	}
+
+	@SubscribeEvent
+	private static void onRegisterClientExtensions(RegisterClientExtensionsEvent event) {
+		event.registerItem(new IClientItemExtensions() {
+			private InnerGlacierArmorModel<LivingEntity> innerModel;
+			private OuterGlacierArmorModel<LivingEntity> outerModel;
+
+			@Override
+			public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+				if (innerModel == null || outerModel == null) {
+					innerModel = new InnerGlacierArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(InnerGlacierArmorModel.LAYER_LOCATION));
+					outerModel = new OuterGlacierArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(OuterGlacierArmorModel.LAYER_LOCATION));
+				}
+
+				if (itemStack.is(EWItems.GLACIER_HELMET.get()) || itemStack.is(EWItems.GLACIER_CHESTPLATE.get()) || itemStack.is(EWItems.GLACIER_BOOTS.get())) {
+					return outerModel;
+				} else if (itemStack.is(EWItems.GLACIER_LEGGINGS.get())) {
+					return innerModel;
+				}
+
+				return IClientItemExtensions.super.getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
+			}
+		}, EWItems.GLACIER_HELMET.get(), EWItems.GLACIER_CHESTPLATE.get(), EWItems.GLACIER_LEGGINGS.get(), EWItems.GLACIER_BOOTS.get());
+		event.registerItem(new IClientItemExtensions() {
+			private InnerColdproofArmorModel<LivingEntity> innerModel;
+			private OuterColdproofArmorModel<LivingEntity> outerModel;
+
+			@Override
+			public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
+				if (innerModel == null || outerModel == null) {
+					innerModel = new InnerColdproofArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(InnerColdproofArmorModel.LAYER_LOCATION));
+					outerModel = new OuterColdproofArmorModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(OuterColdproofArmorModel.LAYER_LOCATION));
+				}
+
+				if (itemStack.is(EWItems.COLDPROOF_HAT.get()) || itemStack.is(EWItems.COLDPROOF_COAT.get()) || itemStack.is(EWItems.COLDPROOF_BOOTS.get())) {
+					return outerModel;
+				} else if (itemStack.is(EWItems.COLDPROOF_LEGGINGS.get())) {
+					return innerModel;
+				}
+
+				return IClientItemExtensions.super.getHumanoidArmorModel(livingEntity, itemStack, equipmentSlot, original);
+			}
+		}, EWItems.COLDPROOF_HAT.get(), EWItems.COLDPROOF_COAT.get(), EWItems.COLDPROOF_LEGGINGS.get(), EWItems.COLDPROOF_BOOTS.get());
 	}
 }

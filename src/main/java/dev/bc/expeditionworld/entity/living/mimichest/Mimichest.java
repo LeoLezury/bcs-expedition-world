@@ -3,8 +3,8 @@ package dev.bc.expeditionworld.entity.living.mimichest;
 import dev.bc.expeditionworld.entity.ai.AttackManager;
 import dev.bc.expeditionworld.entity.ai.MoveToTargetGoal;
 import dev.bc.expeditionworld.entity.ai.MultiPhaseAttacker;
-import dev.bc.expeditionworld.item.EWItems;
-import dev.bc.expeditionworld.particle.EWParticles;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWParticles;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -16,7 +16,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
@@ -37,13 +36,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
 import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
 import software.bernie.geckolib.constant.DefaultAnimations;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
-import software.bernie.geckolib.core.animation.AnimationController;
-import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.List;
@@ -67,13 +66,13 @@ public class Mimichest extends Monster implements GeoEntity, MultiPhaseAttacker 
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(ATTACK_STATE, 0);
-		this.entityData.define(ATTACK_TICKS, 0);
-		this.entityData.define(SPAWN_TICKS, 0);
-		this.entityData.define(FIXED_Y_ROT, 0f);
-		this.entityData.define(MOSSFLORA, true);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(ATTACK_STATE, 0)
+			.define(ATTACK_TICKS, 0)
+			.define(SPAWN_TICKS, 0)
+			.define(FIXED_Y_ROT, 0f)
+			.define(MOSSFLORA, true);
 	}
 
 	protected void registerGoals() {
@@ -193,7 +192,7 @@ public class Mimichest extends Monster implements GeoEntity, MultiPhaseAttacker 
 
 	@Override
 	protected InteractionResult mobInteract(Player player, InteractionHand hand) {
-		if (player.getItemInHand(hand).canPerformAction(ToolActions.SHEARS_HARVEST) && hasMossflora()) {
+		if (player.getItemInHand(hand).canPerformAction(ItemAbilities.SHEARS_HARVEST) && hasMossflora()) {
 			setHasMossflora(false);
 			playSound(SoundEvents.SHEEP_SHEAR);
 			spawnAtLocation(new ItemStack(EWItems.MOSSFLORA.get(), this.getRandom().nextInt(2) + 1));
@@ -230,11 +229,6 @@ public class Mimichest extends Monster implements GeoEntity, MultiPhaseAttacker 
 	@Override
 	public AnimatableInstanceCache getAnimatableInstanceCache() {
 		return this.cache;
-	}
-
-	@Override
-	public MobType getMobType() {
-		return MobType.UNDEAD;
 	}
 
 	@Override

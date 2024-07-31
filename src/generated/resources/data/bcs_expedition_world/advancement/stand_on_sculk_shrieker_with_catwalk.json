@@ -1,0 +1,30 @@
+{
+  "parent": "bcs_expedition_world:obtain_sculk_mint",
+  "criteria": {
+    "stand_with_effect": {
+      "trigger": "bcs_expedition_world:stand_on_sculk_shrieker_with_catwalk"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.bcs_expedition_world.stand_on_sculk_shrieker_with_catwalk.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "minecraft:sculk_shrieker"
+    },
+    "title": {
+      "translate": "advancements.bcs_expedition_world.stand_on_sculk_shrieker_with_catwalk.title"
+    }
+  },
+  "requirements": [
+    [
+      "stand_with_effect"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  },
+  "sends_telemetry_event": true
+}

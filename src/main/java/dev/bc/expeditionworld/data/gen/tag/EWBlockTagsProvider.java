@@ -2,12 +2,12 @@ package dev.bc.expeditionworld.data.gen.tag;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.block.EWBlockTags;
-import dev.bc.expeditionworld.block.EWBlocks;
+import dev.bc.expeditionworld.registry.EWBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
-import net.minecraftforge.common.data.BlockTagsProvider;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -23,7 +23,6 @@ public class EWBlockTagsProvider extends BlockTagsProvider {
 			EWBlocks.ICE_LANTERN.get(),
 			EWBlocks.ICE_CRYSTAL_TORCH.get()
 		);
-
 		tag(BlockTags.DIRT).add(
 			EWBlocks.FROZEN_DIRT.get(),
 			EWBlocks.FROZEN_GRASS_BLOCK.get()

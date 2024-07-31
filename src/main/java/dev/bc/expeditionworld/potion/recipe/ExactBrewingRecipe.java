@@ -1,9 +1,10 @@
 package dev.bc.expeditionworld.potion.recipe;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.PotionContents;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.brewing.IBrewingRecipe;
+import net.neoforged.neoforge.common.brewing.IBrewingRecipe;
 import org.jetbrains.annotations.NotNull;
 
 public class ExactBrewingRecipe implements IBrewingRecipe {
@@ -22,7 +23,15 @@ public class ExactBrewingRecipe implements IBrewingRecipe {
 
 	@Override
 	public boolean isInput(@NotNull ItemStack stack) {
-		return stack.is(input.getItem()) && PotionUtils.getPotion(stack) == PotionUtils.getPotion(input);
+		PotionContents contents = stack.get(DataComponents.POTION_CONTENTS);
+		PotionContents inputContents = input.get(DataComponents.POTION_CONTENTS);
+		boolean potionCheck;
+		if (contents == null) {
+			potionCheck = inputContents == null;
+		} else {
+			potionCheck = inputContents != null && inputContents.potion().isPresent() && contents.is(inputContents.potion().get());
+		}
+		return stack.is(input.getItem()) && potionCheck;
 	}
 
 	@Override

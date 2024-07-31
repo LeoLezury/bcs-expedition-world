@@ -1,4 +1,5 @@
-// 1.20.1	2024-07-16T11:22:22.5771746	Tags for minecraft:entity_type mod id bcs_expedition_world
-594f4a685d416e96a49ad418714c0597c4cf2891 data/bcs_expedition_world/tags/entity_types/can_spawn_in_frozen_caves.json
-4582805cbec8c73377531b7ab93bde4a9be2a163 data/minecraft/tags/entity_types/fall_damage_immune.json
-7d7847844e91aa11056ba4f0df5dd97cb75728e9 data/minecraft/tags/entity_types/freeze_immune_entity_types.json
+// 1.21	2024-07-31T14:34:53.1811593	Tags for minecraft:entity_type mod id bcs_expedition_world
+594f4a685d416e96a49ad418714c0597c4cf2891 data/bcs_expedition_world/tags/entity_type/can_spawn_in_frozen_caves.json
+4582805cbec8c73377531b7ab93bde4a9be2a163 data/minecraft/tags/entity_type/fall_damage_immune.json
+7d7847844e91aa11056ba4f0df5dd97cb75728e9 data/minecraft/tags/entity_type/freeze_immune_entity_types.json
+d12494712b5e5b4b94bd20f1c153a149d487b0c6 data/minecraft/tags/entity_type/undead.json

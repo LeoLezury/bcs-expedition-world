@@ -1,5 +1,6 @@
 package dev.bc.expeditionworld.block;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -20,12 +21,19 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import javax.annotation.Nullable;
 
 public class MossfloraBlock extends BushBlock {
+	public static final MapCodec<MossfloraBlock> CODEC = simpleCodec(MossfloraBlock::new);
+
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
 	public static final VoxelShape BOUNDING_BOX = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D);
 
 	public MossfloraBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0));
+	}
+
+	@Override
+	protected MapCodec<? extends BushBlock> codec() {
+		return CODEC;
 	}
 
 	@Nullable

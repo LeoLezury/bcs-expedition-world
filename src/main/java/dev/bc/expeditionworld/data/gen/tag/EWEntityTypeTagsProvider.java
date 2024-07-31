@@ -1,14 +1,14 @@
 package dev.bc.expeditionworld.data.gen.tag;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.entity.EWEntityTags;
+import dev.bc.expeditionworld.registry.EWEntities;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,15 +25,18 @@ public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 			EWEntities.ICE_CREEPER.get(),
 			EntityType.BAT
 		);
-
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
 			EWEntities.MIMICHEST.get(),
 			EWEntities.MIMIPOT.get()
 		);
-
 		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(
 			EWEntities.CHILLED.get(),
 			EWEntities.ICE_CREEPER.get()
+		);
+		tag(EntityTypeTags.UNDEAD).add(
+			EWEntities.MIMICHEST.get(),
+			EWEntities.MIMIPOT.get(),
+			EWEntities.CHILLED.get()
 		);
 	}
 }

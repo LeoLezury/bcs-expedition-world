@@ -4,7 +4,7 @@ import dev.bc.expeditionworld.ExpeditionWorld;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
@@ -21,7 +21,7 @@ public class EWPlacedFeatures {
 	public static final ResourceKey<PlacedFeature> FROZEN_CAVES_FLOWERS = create("frozen_caves_flowers");
 	public static final ResourceKey<PlacedFeature> FROZEN_CAVES_VEGETATION = create("frozen_caves_vegetation");
 
-	public static void bootstrap(BootstapContext<PlacedFeature> context) {
+	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
 		PlacementUtils.register(context, ICE_CRYSTAL_ORE, configuredFeatures.getOrThrow(EWConfiguredFeatures.ICE_CRYSTAL_ORE), commonOrePlacement(15, HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(80))));

@@ -1,0 +1,27 @@
+{
+  "parent": "bcs_expedition_world:wake_mimichest",
+  "criteria": {
+    "armor_set": {
+      "trigger": "bcs_expedition_world:full_armor_set_with_trapped_soul_trim"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.bcs_expedition_world.full_armor_set_with_trapped_soul_trim.description"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "bcs_expedition_world:trapped_soul"
+    },
+    "title": {
+      "translate": "advancements.bcs_expedition_world.full_armor_set_with_trapped_soul_trim.title"
+    }
+  },
+  "requirements": [
+    [
+      "armor_set"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

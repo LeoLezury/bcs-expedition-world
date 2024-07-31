@@ -1,6 +1,6 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWMobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,7 +13,7 @@ public abstract class EntityMixin {
 	@Inject(method = "dampensVibrations", at = @At("TAIL"), cancellable = true)
 	private void expeditionWorld$dampensVibrations(CallbackInfoReturnable<Boolean> cir) {
 		Entity entity = (Entity) (Object) this;
-		if (entity instanceof LivingEntity living && living.hasEffect(EWMobEffects.CATWALK.get())) {
+		if (entity instanceof LivingEntity living && living.hasEffect(EWMobEffects.CATWALK)) {
 			cir.setReturnValue(true);
 		}
 	}

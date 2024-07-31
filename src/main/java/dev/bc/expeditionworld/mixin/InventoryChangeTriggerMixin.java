@@ -1,8 +1,9 @@
 package dev.bc.expeditionworld.mixin;
 
-import dev.bc.expeditionworld.advancement.EWCriteriaTriggers;
 import dev.bc.expeditionworld.data.EWTrimMaterials;
+import dev.bc.expeditionworld.registry.EWCriteriaTriggers;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
@@ -20,14 +21,17 @@ public abstract class InventoryChangeTriggerMixin {
 	private void expeditionWorld$trigger(ServerPlayer player, Inventory inventory, ItemStack stack, CallbackInfo ci) {
 		AtomicBoolean shouldTrigger = new AtomicBoolean(true);
 		for (ItemStack armor : player.getArmorSlots()) {
-			ArmorTrim.getTrim(player.level().registryAccess(), armor).ifPresentOrElse((armorTrim -> {
-				if (!armorTrim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
+			ArmorTrim trim = armor.get(DataComponents.TRIM);
+			if (trim != null) {
+				if (!trim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
 					shouldTrigger.set(false);
 				}
-			}), () -> shouldTrigger.set(false));
+			} else {
+				shouldTrigger.set(false);
+			}
 		}
 		if (shouldTrigger.get()) {
-			EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.trigger(player);
+			EWCriteriaTriggers.FULL_ARMOR_SET_WITH_TRAPPED_SOUL_TRIM.get().trigger(player);
 		}
 	}
 }

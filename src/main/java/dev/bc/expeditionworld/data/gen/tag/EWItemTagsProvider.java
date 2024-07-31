@@ -2,7 +2,7 @@ package dev.bc.expeditionworld.data.gen.tag;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
 import dev.bc.expeditionworld.item.EWItemTags;
-import dev.bc.expeditionworld.item.EWItems;
+import dev.bc.expeditionworld.registry.EWItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -10,7 +10,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -52,6 +52,32 @@ public class EWItemTagsProvider extends ItemTagsProvider {
 			EWItems.GLACIER_CHESTPLATE.get(),
 			EWItems.GLACIER_LEGGINGS.get(),
 			EWItems.GLACIER_BOOTS.get()
+		);
+		tag(ItemTags.SWORDS).add(
+			EWItems.FROSTY_DAGGER.get(),
+			EWItems.GLACIER_DAGGER.get()
+		);
+		tag(ItemTags.HEAD_ARMOR).add(
+			EWItems.COLDPROOF_HAT.get(),
+			EWItems.GLACIER_HELMET.get()
+		);
+		tag(ItemTags.CHEST_ARMOR).add(
+			EWItems.COLDPROOF_COAT.get(),
+			EWItems.GLACIER_CHESTPLATE.get()
+		);
+		tag(ItemTags.LEG_ARMOR).add(
+			EWItems.COLDPROOF_LEGGINGS.get(),
+			EWItems.GLACIER_LEGGINGS.get()
+		);
+		tag(ItemTags.FOOT_ARMOR).add(
+			EWItems.COLDPROOF_BOOTS.get(),
+			EWItems.GLACIER_BOOTS.get()
+		);
+		tag(ItemTags.DURABILITY_ENCHANTABLE).add(
+			EWItems.GLACIER_BOW.get()
+		);
+		tag(ItemTags.BOW_ENCHANTABLE).add(
+			EWItems.GLACIER_BOW.get()
 		);
 	}
 }

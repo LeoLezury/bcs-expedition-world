@@ -1,11 +1,11 @@
 package dev.bc.expeditionworld.data.gen;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.sound.EWSoundEvents;
+import dev.bc.expeditionworld.registry.EWSoundEvents;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 public class EWSoundProvider extends SoundDefinitionsProvider {
 	public EWSoundProvider(PackOutput output, ExistingFileHelper helper) {
@@ -13,7 +13,7 @@ public class EWSoundProvider extends SoundDefinitionsProvider {
 	}
 
 	private ResourceLocation mcLoc(String s) {
-		return new ResourceLocation(s);
+		return ResourceLocation.withDefaultNamespace(s);
 	}
 
 	private ResourceLocation loc(String s) {

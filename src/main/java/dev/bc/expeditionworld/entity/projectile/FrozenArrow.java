@@ -1,8 +1,8 @@
 package dev.bc.expeditionworld.entity.projectile;
 
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.item.EWItems;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWMobEffects;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EntityType;
@@ -10,29 +10,31 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class FrozenArrow extends AbstractArrow {
 	private int duration = 120;
 
-	public FrozenArrow(EntityType<? extends FrozenArrow> type, Level level) {
-		super(type, level);
+	public FrozenArrow(EntityType<? extends FrozenArrow> entityType, Level level) {
+		super(entityType, level);
 	}
 
-	public FrozenArrow(Level level, LivingEntity owner) {
-		super(EWEntities.FROZEN_ARROW.get(), owner, level);
+	public FrozenArrow(Level level, double x, double y, double z, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.FROZEN_ARROW.get(), x, y, z, level, pickupItemStack, firedFromWeapon);
 	}
 
-	public FrozenArrow(Level level, double x, double y, double z) {
-		super(EWEntities.FROZEN_ARROW.get(), x, y, z, level);
+	public FrozenArrow(Level level, LivingEntity owner, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.FROZEN_ARROW.get(), owner, level, pickupItemStack, firedFromWeapon);
 	}
 
-	public ItemStack getPickupItem() {
+	@Override
+	protected ItemStack getDefaultPickupItem() {
 		return EWItems.FROZEN_ARROW.get().getDefaultInstance();
 	}
 
 	protected void doPostHurtEffects(LivingEntity living) {
 		super.doPostHurtEffects(living);
-		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN.get(), this.duration, 0);
+		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN, this.duration, 0);
 		living.addEffect(instance, this.getEffectSource());
 	}
 

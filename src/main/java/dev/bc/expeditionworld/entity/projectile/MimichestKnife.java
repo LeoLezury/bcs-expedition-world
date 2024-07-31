@@ -1,12 +1,14 @@
 package dev.bc.expeditionworld.entity.projectile;
 
 import dev.bc.expeditionworld.data.EWTrimMaterials;
-import dev.bc.expeditionworld.entity.EWEntities;
-import dev.bc.expeditionworld.item.EWItems;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -31,18 +33,22 @@ public class MimichestKnife extends AbstractArrow {
 	private boolean dealtDamage;
 	public int clientSideReturnTickCount;
 
-	public MimichestKnife(EntityType<? extends AbstractArrow> type, Level level) {
-		super(type, level);
+	public MimichestKnife(EntityType<? extends MimichestKnife> entityType, Level level) {
+		super(entityType, level);
 	}
 
-	public MimichestKnife(LivingEntity living, Level level) {
-		super(EWEntities.MIMICHEST_KNIFE.get(), living, level);
+	public MimichestKnife(Level level, double x, double y, double z, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.MIMICHEST_KNIFE.get(), x, y, z, level, pickupItemStack, firedFromWeapon);
+	}
+
+	public MimichestKnife(Level level, LivingEntity owner, ItemStack pickupItemStack, @Nullable ItemStack firedFromWeapon) {
+		super(EWEntities.MIMICHEST_KNIFE.get(), owner, level, pickupItemStack, firedFromWeapon);
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(BRICK, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(BRICK, false);
 	}
 
 	public boolean isBrick() {
@@ -62,11 +68,12 @@ public class MimichestKnife extends AbstractArrow {
 		AtomicInteger loyaltyLevel = new AtomicInteger(0);
 		if (entity instanceof LivingEntity living) {
 			for (ItemStack stack : living.getArmorSlots()) {
-				ArmorTrim.getTrim(level().registryAccess(), stack).ifPresent((armorTrim -> {
-					if (armorTrim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
+				ArmorTrim trim = stack.get(DataComponents.TRIM);
+				if (trim != null) {
+					if (trim.material().is(EWTrimMaterials.TRAPPED_SOUL)) {
 						loyaltyLevel.set(3);
 					}
-				}));
+				}
 			}
 		}
 		if (loyaltyLevel.get() > 0 && (this.dealtDamage || this.isNoPhysics()) && entity != null) {
@@ -115,34 +122,34 @@ public class MimichestKnife extends AbstractArrow {
 		return this.dealtDamage ? null : super.findHitEntity(vec3, vec32);
 	}
 
-	protected void onHitEntity(EntityHitResult entityHitResult) {
-		Entity entity = entityHitResult.getEntity();
+	@Override
+	protected void onHitEntity(EntityHitResult result) {
+		Entity entity = result.getEntity();
 		float f = 5.0F;
-		if (entity instanceof LivingEntity livingEntity) {
-			f += EnchantmentHelper.getDamageBonus(this.getPickupItem()/*getPickupItemStackOrigin()*/, livingEntity.getMobType());
+		Entity entity1 = this.getOwner();
+		DamageSource damagesource = this.damageSources().trident(this, entity1 == null ? this : entity1);
+		if (this.level() instanceof ServerLevel serverlevel && getWeaponItem() != null) {
+			f = EnchantmentHelper.modifyDamage(serverlevel, this.getWeaponItem(), entity, damagesource, f);
 		}
 
-		Entity entity2 = this.getOwner();
-		DamageSource damageSource = level().damageSources().mobProjectile(this, entity2 instanceof LivingEntity livingEntity ? livingEntity : null);
 		this.dealtDamage = true;
-		if (entity.hurt(damageSource, f)) {
+		if (entity.hurt(damagesource, f)) {
 			if (entity.getType() == EntityType.ENDERMAN) {
 				return;
 			}
 
-			if (entity instanceof LivingEntity livingEntity2) {
-				if (entity2 instanceof LivingEntity) {
-					EnchantmentHelper.doPostHurtEffects(livingEntity2, entity2);
-					EnchantmentHelper.doPostDamageEffects((LivingEntity) entity2, livingEntity2);
-				}
+			if (this.level() instanceof ServerLevel serverlevel1) {
+				EnchantmentHelper.doPostAttackEffectsWithItemSource(serverlevel1, entity, damagesource, this.getWeaponItem());
+			}
 
-				this.doPostHurtEffects(livingEntity2);
+			if (entity instanceof LivingEntity livingentity) {
+				this.doKnockback(livingentity, damagesource);
+				this.doPostHurtEffects(livingentity);
 			}
 		}
 
 		this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
-		float g = 1.0F;
-		this.playSound(SoundEvents.PLAYER_ATTACK_CRIT, g, 1.0F);
+		this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
 	}
 
 	protected boolean tryPickup(Player player) {
@@ -150,7 +157,7 @@ public class MimichestKnife extends AbstractArrow {
 	}
 
 	@Override
-	public ItemStack getPickupItem() {
+	protected ItemStack getDefaultPickupItem() {
 		return isBrick() ? EWItems.BRICK_MIMICHEST_KNIFE.get().getDefaultInstance() : EWItems.STONE_MIMICHEST_KNIFE.get().getDefaultInstance();
 	}
 

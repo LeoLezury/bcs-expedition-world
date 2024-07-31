@@ -1,6 +1,6 @@
 package dev.bc.expeditionworld.potion;
 
-import dev.bc.expeditionworld.advancement.EWCriteriaTriggers;
+import dev.bc.expeditionworld.registry.EWCriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -16,15 +16,16 @@ public class CatwalkMobEffect extends MobEffect {
 	}
 
 	@Override
-	public boolean isDurationEffectTick(int duration, int amplifier) {
+	public boolean shouldApplyEffectTickThisTick(int duration, int amplifier) {
 		return true;
 	}
 
 	@Override
-	public void applyEffectTick(LivingEntity living, int amplifier) {
+	public boolean applyEffectTick(LivingEntity living, int amplifier) {
 		if (living instanceof ServerPlayer serverPlayer && serverPlayer.hasEffect(MobEffects.DARKNESS) && (isValid(living.level().getBlockState(living.blockPosition().below())) || isValid(living.level().getBlockState(living.blockPosition())))) {
-			EWCriteriaTriggers.STAND_ON_SCULK_SHRIEKER_WITH_CATWALK.trigger(serverPlayer);
+			EWCriteriaTriggers.STAND_ON_SCULK_SHRIEKER_WITH_CATWALK.get().trigger(serverPlayer);
 		}
+		return true;
 	}
 
 	private boolean isValid(BlockState state) {

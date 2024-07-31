@@ -1,8 +1,9 @@
 package dev.bc.expeditionworld.entity.living.mimichest;
 
-import dev.bc.expeditionworld.entity.EWEntities;
 import dev.bc.expeditionworld.entity.ai.AttackPhase;
 import dev.bc.expeditionworld.entity.projectile.MimichestKnife;
+import dev.bc.expeditionworld.registry.EWEntities;
+import dev.bc.expeditionworld.registry.EWItems;
 import dev.bc.expeditionworld.util.EWEntityUtil;
 import dev.bc.expeditionworld.util.EWMathUtil;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,8 +44,9 @@ public class MimichestRangedAttackPhase extends AttackPhase<Mimichest> {
 	}
 
 	private void shootAt(Mimichest entity, Vec3 pos) {
-		MimichestKnife knife = new MimichestKnife(entity, entity.level());
-		if (entity.getType() == EWEntities.MIMIPOT.get()) {
+		boolean brick = entity.getType() == EWEntities.MIMIPOT.get();
+		MimichestKnife knife = new MimichestKnife(entity.level(), entity, (brick ? EWItems.BRICK_MIMICHEST_KNIFE.get() : EWItems.STONE_MIMICHEST_KNIFE.get()).getDefaultInstance(), null);
+		if (brick) {
 			knife.setBrick(true);
 		}
 		knife.setPos(knife.getX(), entity.getY() + entity.getBbHeight() * 0.1, knife.getZ());

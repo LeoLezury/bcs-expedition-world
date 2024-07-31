@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "bcs_expedition_world:frozen_arrow"
+    },
+    "F": {
+      "item": "bcs_expedition_world:moa_feather"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AFA",
+    "AAA"
+  ],
+  "result": {
+    "count": 8,
+    "id": "bcs_expedition_world:moa_feather_arrow"
+  }
+}

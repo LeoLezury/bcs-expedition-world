@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "count": 1,
-  "ingredient": {
-    "item": "bcs_expedition_world:frozen_stone"
-  },
-  "result": "bcs_expedition_world:frozen_stone_wall"
-}

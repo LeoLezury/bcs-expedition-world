@@ -13,8 +13,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
@@ -41,7 +41,7 @@ public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
 		this.model.setupAnim(knife, 0, 0, bob, 0, xRot);
 		RenderType renderType = this.model.renderType(getTextureLocation(knife));
 		VertexConsumer vertexConsumer = multiBufferSource.getBuffer(renderType);
-		this.model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+		this.model.renderToBuffer(poseStack, vertexConsumer, i, OverlayTexture.NO_OVERLAY, -1);
 
 		poseStack.popPose();
 		super.render(knife, f, g, poseStack, multiBufferSource, i);

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "bcs_expedition_world:frozen_stone"
+  },
+  "result": {
+    "count": 1,
+    "id": "bcs_expedition_world:frozen_stone_stairs"
+  }
+}

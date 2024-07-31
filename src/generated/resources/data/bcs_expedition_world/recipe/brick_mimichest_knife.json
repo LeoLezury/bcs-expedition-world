@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "N": {
+      "item": "minecraft:iron_nugget"
+    },
+    "S": {
+      "item": "bcs_expedition_world:trapped_soul"
+    },
+    "X": {
+      "item": "minecraft:bricks"
+    }
+  },
+  "pattern": [
+    "N",
+    "X",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "bcs_expedition_world:brick_mimichest_knife"
+  }
+}

@@ -1,7 +1,10 @@
 package dev.bc.expeditionworld.block;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.server.level.ServerLevel;
@@ -11,6 +14,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.SnowyDirtBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
@@ -20,12 +24,21 @@ import java.util.List;
 import java.util.Optional;
 
 public class EWGrassBlock extends EWSpreadingSnowyDirtBlock implements BonemealableBlock {
+	public static final MapCodec<EWGrassBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
+		instance.group(BuiltInRegistries.BLOCK.byNameCodec().fieldOf("spreads_on").forGetter(o -> o.spreadsOn)).and(propertiesCodec())
+			.apply(instance, EWGrassBlock::new));
+
 	public EWGrassBlock(Block spreadOn, Properties properties) {
 		super(spreadOn, properties);
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, boolean b) {
+	protected MapCodec<? extends SnowyDirtBlock> codec() {
+		return CODEC;
+	}
+
+	@Override
+	public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState) {
 		return levelReader.getBlockState(blockPos.above()).isAir();
 	}
 
@@ -35,7 +48,7 @@ public class EWGrassBlock extends EWSpreadingSnowyDirtBlock implements Bonemeala
 
 	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos pos, BlockState state) {
 		BlockPos blockpos = pos.above();
-		BlockState blockstate = Blocks.GRASS.defaultBlockState();
+		BlockState blockstate = Blocks.SHORT_GRASS.defaultBlockState();
 		Optional<Holder.Reference<PlacedFeature>> optional = serverLevel.registryAccess().registryOrThrow(Registries.PLACED_FEATURE).getHolder(VegetationPlacements.GRASS_BONEMEAL);
 
 		label46:

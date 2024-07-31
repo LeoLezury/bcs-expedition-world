@@ -6,6 +6,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
 
 public class FrozenArrowItem extends ArrowItem {
 	public FrozenArrowItem(Properties properties) {
@@ -13,7 +14,7 @@ public class FrozenArrowItem extends ArrowItem {
 	}
 
 	@Override
-	public AbstractArrow createArrow(Level level, ItemStack stack, LivingEntity living) {
-		return new FrozenArrow(level, living);
+	public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, @Nullable ItemStack weapon) {
+		return new FrozenArrow(level, shooter, ammo, weapon);
 	}
 }

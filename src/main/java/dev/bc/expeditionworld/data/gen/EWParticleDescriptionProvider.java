@@ -1,11 +1,11 @@
 package dev.bc.expeditionworld.data.gen;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.particle.EWParticles;
+import dev.bc.expeditionworld.registry.EWParticles;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.ParticleDescriptionProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ParticleDescriptionProvider;
 
 public class EWParticleDescriptionProvider extends ParticleDescriptionProvider {
 	public EWParticleDescriptionProvider(PackOutput output, ExistingFileHelper fileHelper) {
@@ -20,9 +20,5 @@ public class EWParticleDescriptionProvider extends ParticleDescriptionProvider {
 
 	private ResourceLocation loc(String s) {
 		return ExpeditionWorld.id(s);
-	}
-
-	private ResourceLocation mcLoc(String s) {
-		return new ResourceLocation(s);
 	}
 }

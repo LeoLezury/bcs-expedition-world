@@ -1,5 +1,8 @@
 package dev.bc.expeditionworld.block;
 
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,6 +32,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class FetteredChestBlock extends HorizontalDirectionalBlock implements SimpleWaterloggedBlock {
+	public static final MapCodec<FetteredChestBlock> CODEC = RecordCodecBuilder.mapCodec(instance ->
+		instance.group(Codec.BOOL.fieldOf("chest").forGetter(o -> o.chest)).and(propertiesCodec())
+			.apply(instance, FetteredChestBlock::new));
+
 	public static final EnumProperty<DoubleBlockHalf> HALF = BlockStateProperties.DOUBLE_BLOCK_HALF;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 	private static final VoxelShape BOUNDING_BOX_LOWER = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
@@ -83,7 +90,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		return blockState.hasProperty(BlockStateProperties.WATERLOGGED) ? blockState.setValue(BlockStateProperties.WATERLOGGED, levelReader.isWaterAt(blockPos)) : blockState;
 	}
 
-	public void playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
+	public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
 		if (!level.isClientSide) {
 			if (player.isCreative()) {
 				preventDropFromBottomPart(level, blockPos, blockState, player);
@@ -92,7 +99,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 			}
 		}
 
-		super.playerWillDestroy(level, blockPos, blockState, player);
+		return super.playerWillDestroy(level, blockPos, blockState, player);
 	}
 
 	public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
@@ -124,5 +131,10 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 
 	public FluidState getFluidState(BlockState state) {
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+	}
+
+	@Override
+	protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+		return CODEC;
 	}
 }

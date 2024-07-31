@@ -1,5 +1,7 @@
 package dev.bc.expeditionworld.block;
 
+import com.mojang.serialization.MapCodec;
+import dev.bc.expeditionworld.registry.EWBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,6 +21,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class PointedIceBlock extends Block {
+	public static final MapCodec<PointedIceBlock> CODEC = simpleCodec(PointedIceBlock::new);
+
 	public static final DirectionProperty DIRECTION = BlockStateProperties.VERTICAL_DIRECTION;
 	private static final VoxelShape TIP_SHAPE_UP = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 11.0D, 11.0D);
 	private static final VoxelShape TIP_SHAPE_DOWN = Block.box(5.0D, 5.0D, 5.0D, 11.0D, 16.0D, 11.0D);
@@ -26,6 +30,11 @@ public class PointedIceBlock extends Block {
 	public PointedIceBlock(Properties properties) {
 		super(properties);
 		this.registerDefaultState(this.stateDefinition.any().setValue(DIRECTION, Direction.UP));
+	}
+
+	@Override
+	protected MapCodec<? extends Block> codec() {
+		return CODEC;
 	}
 
 	@Override

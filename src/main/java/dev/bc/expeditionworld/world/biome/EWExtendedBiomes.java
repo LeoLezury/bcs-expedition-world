@@ -1,7 +1,7 @@
 package dev.bc.expeditionworld.world.biome;
 
-import dev.bc.expeditionworld.block.EWBlocks;
 import dev.bc.expeditionworld.data.EWBiomes;
+import dev.bc.expeditionworld.registry.EWBlocks;
 import dev.bc.expeditionworld.world.ExtendedBiomeSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;

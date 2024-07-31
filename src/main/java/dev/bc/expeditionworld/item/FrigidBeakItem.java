@@ -11,7 +11,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -50,8 +49,8 @@ public class FrigidBeakItem extends Item {
 	}
 
 	@Override
-	public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-		super.appendHoverText(stack, level, components, flag);
-		components.add(Component.translatable(getDescriptionId() + ".desc").withStyle(Style.EMPTY.withColor(0x6b7c86)));
+	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+		super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+		tooltipComponents.add(Component.translatable(getDescriptionId() + ".desc").withStyle(Style.EMPTY.withColor(0x6b7c86)));
 	}
 }

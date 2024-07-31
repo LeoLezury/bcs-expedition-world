@@ -1,32 +1,47 @@
 package dev.bc.expeditionworld.event;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.particle.EWParticles;
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.potion.recipe.ExactBrewingRecipe;
+import dev.bc.expeditionworld.registry.EWItems;
+import dev.bc.expeditionworld.registry.EWPotions;
 import dev.bc.expeditionworld.world.ExtendedBiomeSource;
 import dev.bc.expeditionworld.world.biome.EWExtendedBiomes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.dimension.BuiltinDimensionTypes;
 import net.minecraft.world.level.dimension.LevelStem;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.server.ServerAboutToStartEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
+import net.neoforged.neoforge.event.server.ServerAboutToStartEvent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Mod.EventBusSubscriber(modid = ExpeditionWorld.ID)
+@EventBusSubscriber(modid = ExpeditionWorld.ID)
 public class CommonEvents {
 	@SubscribeEvent
-	public static void serverAboutToStart(ServerAboutToStartEvent event) {
+	private static void onRegisterBrewingRecipes(RegisterBrewingRecipesEvent event) {
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, Potions.AWKWARD), Ingredient.of(EWItems.SCULK_MINT.get()), PotionContents.createItemStack(Items.POTION, EWPotions.CATWALK)));
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, EWPotions.CATWALK), Ingredient.of(Items.REDSTONE), PotionContents.createItemStack(Items.POTION, EWPotions.MEDIUM_CATWALK)));
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, EWPotions.MEDIUM_CATWALK), Ingredient.of(Items.ECHO_SHARD), PotionContents.createItemStack(Items.POTION, EWPotions.LONG_CATWALK)));
+
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, Potions.MUNDANE), Ingredient.of(EWItems.TRAPPED_SOUL.get()), PotionContents.createItemStack(Items.POTION, EWPotions.FETTERED)));
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, Potions.THICK), Ingredient.of(EWItems.TRAPPED_SOUL.get()), PotionContents.createItemStack(Items.POTION, EWPotions.FETTERED)));
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, Potions.AWKWARD), Ingredient.of(EWItems.TRAPPED_SOUL.get()), PotionContents.createItemStack(Items.POTION, EWPotions.FETTERED)));
+		event.getBuilder().addRecipe(new ExactBrewingRecipe(PotionContents.createItemStack(Items.POTION, EWPotions.FETTERED), Ingredient.of(Items.REDSTONE), PotionContents.createItemStack(Items.POTION, EWPotions.LONG_FETTERED)));
+	}
+
+	@SubscribeEvent
+	private static void onServerAboutToStart(ServerAboutToStartEvent event) {
 		Registry<Biome> biomeRegistry = event.getServer().registryAccess().registryOrThrow(Registries.BIOME);
 		Map<ResourceKey<Biome>, Holder<Biome>> biomes = new HashMap<>();
 		for (ResourceKey<Biome> biomeKey : EWExtendedBiomes.POSSIBLE_BIOMES) {
@@ -42,14 +57,6 @@ public class CommonEvents {
 				ExpeditionWorld.LOGGER.info("Overworld Biome Extended");
 				source.setBiomes(biomes);
 			}
-		}
-	}
-
-	@SubscribeEvent
-	public static void livingTick(LivingEvent.LivingTickEvent event) {
-		LivingEntity living = event.getEntity();
-		if (living.hasEffect(EWMobEffects.FETTERED.get()) && living.level() instanceof ServerLevel serverLevel) {
-			serverLevel.sendParticles(EWParticles.TRAPPED_SOUL.get(), living.getRandomX(0.5D), living.getRandomY() - 0.25D, living.getRandomZ(0.5D), 1, 0.2, 0.2, 0.2, 0);
 		}
 	}
 }

@@ -1,8 +1,8 @@
 package dev.bc.expeditionworld.world.feature;
 
 import com.mojang.serialization.Codec;
-import dev.bc.expeditionworld.block.EWBlocks;
 import dev.bc.expeditionworld.block.PointedIceBlock;
+import dev.bc.expeditionworld.registry.EWBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;

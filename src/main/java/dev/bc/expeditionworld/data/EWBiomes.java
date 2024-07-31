@@ -1,11 +1,11 @@
 package dev.bc.expeditionworld.data;
 
 import dev.bc.expeditionworld.ExpeditionWorld;
-import dev.bc.expeditionworld.entity.EWEntities;
+import dev.bc.expeditionworld.registry.EWEntities;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.Carvers;
 import net.minecraft.data.worldgen.placement.CavePlacements;
 import net.minecraft.data.worldgen.placement.MiscOverworldPlacements;
@@ -24,7 +24,7 @@ import org.jetbrains.annotations.Nullable;
 public class EWBiomes {
 	public static final ResourceKey<Biome> FROZEN_CAVES = create("frozen_caves");
 
-	public static void bootstrap(BootstapContext<Biome> context) {
+	public static void bootstrap(BootstrapContext<Biome> context) {
 		HolderGetter<PlacedFeature> placedFeatures = context.lookup(Registries.PLACED_FEATURE);
 		HolderGetter<ConfiguredWorldCarver<?>> carvers = context.lookup(Registries.CONFIGURED_CARVER);
 		context.register(FROZEN_CAVES, frozenCaves(placedFeatures, carvers));

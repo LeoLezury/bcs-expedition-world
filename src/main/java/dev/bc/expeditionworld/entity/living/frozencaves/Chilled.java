@@ -1,6 +1,6 @@
 package dev.bc.expeditionworld.entity.living.frozencaves;
 
-import dev.bc.expeditionworld.potion.EWMobEffects;
+import dev.bc.expeditionworld.registry.EWMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -23,7 +23,7 @@ public class Chilled extends Zombie {
 	public boolean doHurtTarget(Entity entity) {
 		boolean flag = super.doHurtTarget(entity);
 		if (entity instanceof LivingEntity living && flag) {
-			living.addEffect(new MobEffectInstance(EWMobEffects.FROZEN.get(), 40));
+			living.addEffect(new MobEffectInstance(EWMobEffects.FROZEN, 40));
 		}
 		return flag;
 	}

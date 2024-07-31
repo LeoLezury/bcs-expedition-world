@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "bcs_expedition_world:sharp_icicle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "bcs_expedition_world:ice_crystal"
+  }
+}
