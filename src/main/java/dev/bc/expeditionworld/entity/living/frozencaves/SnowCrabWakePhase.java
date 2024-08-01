@@ -3,28 +3,26 @@ package dev.bc.expeditionworld.entity.living.frozencaves;
 import dev.bc.expeditionworld.entity.ai.AttackPhase;
 import dev.bc.expeditionworld.util.EWEntityUtil;
 
-public class SnowCrabMeleePhase extends AttackPhase<SnowCrab> {
-	public static final int ID = 1;
+public class SnowCrabWakePhase extends AttackPhase<SnowCrab> {
+	public static final int ID = 6;
 
-	public SnowCrabMeleePhase() {
-		super(ID, 1, 25, 25);
+	public SnowCrabWakePhase() {
+		super(ID, 1, 20, 200);
 	}
 
 	@Override
 	public boolean canStart(SnowCrab entity, boolean cooldownOver) {
-		return cooldownOver && EWEntityUtil.targetValid(entity) && !entity.isHiding() && EWEntityUtil.canReachTarget(entity, 2.5);
+		return (cooldownOver || EWEntityUtil.targetValid(entity) || entity.getLastHurtByMob() != null) && entity.isHiding();
 	}
 
 	@Override
 	public void onStart(SnowCrab entity) {
-		entity.triggerAnim("MeleeAttack", "MeleeAttack");
+
 	}
 
 	@Override
 	public void tick(SnowCrab entity) {
-		if (entity.getAttackTicks() == 8) {
-			EWEntityUtil.performMeleeAttack(entity, 3.2f);
-		}
+
 	}
 
 	@Override
@@ -34,6 +32,7 @@ public class SnowCrabMeleePhase extends AttackPhase<SnowCrab> {
 
 	@Override
 	public void onStop(SnowCrab entity) {
-
+		entity.setHiding(false);
+		entity.getAttackManager().getCooldowns().put(SnowCrabHidePhase.ID, 250);
 	}
 }

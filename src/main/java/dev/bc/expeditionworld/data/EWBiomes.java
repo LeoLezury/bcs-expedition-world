@@ -14,6 +14,7 @@ import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.*;
 import net.minecraft.world.level.levelgen.GenerationStep;
@@ -33,8 +34,10 @@ public class EWBiomes {
 	public static Biome frozenCaves(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> carvers) {
 		MobSpawnSettings.Builder mobSpawns = new MobSpawnSettings.Builder();
 		BiomeDefaultFeatures.commonSpawns(mobSpawns);
-		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.CHILLED.get(), 90, 4, 4));
+		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.CHILLED.get(), 80, 4, 4));
 		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.ICE_CREEPER.get(), 90, 3, 4));
+		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EWEntities.SNOW_CRAB.get(), 90, 2, 3));
+		mobSpawns.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.STRAY, 95, 4, 4));
 		BiomeGenerationSettings.Builder genSettings = new BiomeGenerationSettings.Builder(placedFeatures, carvers);
 
 		genSettings.addCarver(GenerationStep.Carving.AIR, Carvers.CAVE);

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "bcs_expedition_world.refmap.json",
   "mixins": [
+    "BiomeSourceMixin",
     "BlockMixin",
     "BlockStateBaseMixin",
     "EntityMixin",
@@ -15,10 +16,12 @@
     "MultiNoiseBiomeSourceMixin",
     "NoiseBasedChunkGeneratorMixin",
     "SnowGolemMixin",
-    "SnowLayerBlockMixin"
+    "SnowLayerBlockMixin",
+    "StrayMixin"
   ],
   "client": [
-    "client.HumanoidArmorLayerMixin"
+    "client.HumanoidArmorLayerMixin",
+    "client.LightTextureMixin"
   ],
   "injectors": {
     "defaultRequire": 1

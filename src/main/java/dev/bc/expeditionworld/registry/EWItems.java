@@ -36,6 +36,7 @@ public class EWItems {
 	public static final DeferredHolder<Item, DeferredSpawnEggItem> MIMIPOT_SPAWN_EGG = ITEMS.register("mimipot_spawn_egg", () -> new DeferredSpawnEggItem(EWEntities.MIMIPOT, 0x8b4e40, 0x585e4a, new Item.Properties()));
 	public static final DeferredHolder<Item, DeferredSpawnEggItem> CHILLED_SPAWN_EGG = ITEMS.register("chilled_spawn_egg", () -> new DeferredSpawnEggItem(EWEntities.CHILLED, 0x607791, 0x3e5945, new Item.Properties()));
 	public static final DeferredHolder<Item, DeferredSpawnEggItem> ICE_CREEPER_SPAWN_EGG = ITEMS.register("ice_creeper_spawn_egg", () -> new DeferredSpawnEggItem(EWEntities.ICE_CREEPER, 0xf2f4f61, 0x84aefd, new Item.Properties()));
+	public static final DeferredHolder<Item, DeferredSpawnEggItem> SNOW_CRAB_SPAWN_EGG = ITEMS.register("snow_crab_spawn_egg", () -> new DeferredSpawnEggItem(EWEntities.SNOW_CRAB, 0xe9f1f6, 0x95b9ff, new Item.Properties()));
 
 	// sculk mint
 	public static final DeferredHolder<Item, Item> SCULK_MINT = ITEMS.register("sculk_mint", () -> new Item(new Item.Properties()));

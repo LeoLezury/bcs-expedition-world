@@ -62,9 +62,17 @@ public class EWEntityLootSubProvider extends EntityLootSubProvider {
 			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 				.add(LootItem.lootTableItem(EWItems.FROSTBITE_GUNPOWDER.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 2.0F)))))
 			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
-				.add(LootItem.lootTableItem(EWItems.FRIGID_BEAK.get()).when(LootItemRandomChanceCondition.randomChance(0.02F))))
+				.add(LootItem.lootTableItem(EWItems.FRIGID_BEAK.get()).when(LootItemRandomChanceCondition.randomChance(0.02F)).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 1.0F)))))
 			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
 				.add(LootItem.lootTableItem(Items.GUNPOWDER).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 2.0F))))));
+
+		add(EWEntities.SNOW_CRAB.get(), LootTable.lootTable()
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(EWItems.ICE_CRYSTAL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F))).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 2.0F)))))
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(EWItems.SHARP_ICICLE.get()).when(LootItemRandomChanceCondition.randomChance(0.3F)).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 1.0F)))))
+			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))
+				.add(LootItem.lootTableItem(EWItems.FRIGID_BEAK.get()).when(LootItemRandomChanceCondition.randomChance(0.02F)).apply(EnchantedCountIncreaseFunction.lootingMultiplier(registries, UniformGenerator.between(0.0F, 1.0F))))));
 	}
 
 	@Override

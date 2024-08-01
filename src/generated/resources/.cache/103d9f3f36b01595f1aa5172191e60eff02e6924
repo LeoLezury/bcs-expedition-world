@@ -1,6 +1,6 @@
-// 1.21	2024-07-31T14:34:53.1811593	Registries
+// 1.21	2024-08-01T13:31:38.1069485	Registries
 5c7f906e2fa7dcf9ff5fa6ab454527628d4bf9e2 data/bcs_expedition_world/trim_material/trapped_soul.json
-72d70a63a5c7d2992c454a26be1da911982c2f8c data/bcs_expedition_world/worldgen/biome/frozen_caves.json
+4c29a2492d1aad98da482150c9280be97ef55116 data/bcs_expedition_world/worldgen/biome/frozen_caves.json
 f049725195b980002dc20458b6be60c84183873f data/bcs_expedition_world/worldgen/configured_feature/frozen_caves_flowers.json
 bc77492859d84f9a5f881d4142d7644b6d6e7e50 data/bcs_expedition_world/worldgen/configured_feature/frozen_caves_vegetation.json
 ccc3153bfd27c0ed4341ed6852e967a2ae383a1d data/bcs_expedition_world/worldgen/configured_feature/ice_crystal_ore.json

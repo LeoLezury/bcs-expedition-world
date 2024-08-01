@@ -1,14 +1,22 @@
 package dev.bc.expeditionworld.entity.living.frozencaves;
 
-import dev.bc.expeditionworld.entity.ai.*;
+import dev.bc.expeditionworld.ExpeditionWorld;
+import dev.bc.expeditionworld.entity.ai.AttackManager;
+import dev.bc.expeditionworld.entity.ai.MoveToTargetGoal;
+import dev.bc.expeditionworld.entity.ai.MultiPhaseAttacker;
+import dev.bc.expeditionworld.registry.EWSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.BodyRotationControl;
@@ -18,9 +26,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.AbstractIllager;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.npc.AbstractVillager;
+import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -40,6 +47,10 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	public static final RawAnimation IDLE_HIDING = RawAnimation.begin().thenLoop("misc.idle_hiding");
 	public static final RawAnimation JUMPING = RawAnimation.begin().thenLoop("move.jumping");
 	public static final RawAnimation LAND = RawAnimation.begin().thenPlay("move.land");
+	public static final RawAnimation HIDE = RawAnimation.begin().thenPlay("misc.hide");
+	public static final RawAnimation WAKE = RawAnimation.begin().thenPlay("misc.wake");
+
+	private static final AttributeModifier FOLLOW_RANGE_BONUS = new AttributeModifier(ExpeditionWorld.id("snow_crab.follow_range_bonus"), 16, AttributeModifier.Operation.ADD_VALUE);
 
 	protected static final EntityDataAccessor<Integer> ATTACK_STATE = SynchedEntityData.defineId(SnowCrab.class, EntityDataSerializers.INT);
 	protected static final EntityDataAccessor<Integer> ATTACK_TICKS = SynchedEntityData.defineId(SnowCrab.class, EntityDataSerializers.INT);
@@ -51,12 +62,17 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 		new SnowCrabMeleePhase(),
 		new SnowCrabJumpPhase(),
 		new SnowCrabJumpingPhase(),
-		new SnowCrabLandPhase()
+		new SnowCrabLandPhase(),
+		new SnowCrabHidePhase(),
+		new SnowCrabWakePhase()
 	));
 
 	public SnowCrab(EntityType<? extends Monster> type, Level level) {
 		super(type, level);
-		this.moveControl = new SmoothMoveControl(this);
+	}
+
+	public AttackManager<SnowCrab> getAttackManager() {
+		return attackManager;
 	}
 
 	@Override
@@ -70,15 +86,14 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	protected void registerGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(1, new MoveToTargetGoal(this, 0.6f));
-		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1.0));
+		this.goalSelector.addGoal(1, new MoveToTargetGoal(this, 1f));
+		this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 1f));
 		this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0f));
 		this.goalSelector.addGoal(4, new RandomLookAroundGoal(this));
 
 		this.targetSelector.addGoal(0, new HurtByTargetGoal(this, SnowCrab.class).setAlertOthers());
-		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
-		this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, AbstractIllager.class, true));
+		this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, false));
+		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Spider.class, false));
 	}
 
 	@Override
@@ -89,7 +104,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	public static AttributeSupplier.Builder createAttributes() {
 		return Monster.createMonsterAttributes()
 			.add(Attributes.MOVEMENT_SPEED, 0.25F)
-			.add(Attributes.FOLLOW_RANGE, 200.0D)
+			.add(Attributes.FOLLOW_RANGE, 12.0D)
 			.add(Attributes.MAX_HEALTH, 30.0D)
 			.add(Attributes.ATTACK_DAMAGE, 5.0D)
 			.add(Attributes.ARMOR, 2);
@@ -99,10 +114,22 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	protected void customServerAiStep() {
 		if (!isNoAi()) {
 			this.attackManager.tick();
-			if (SnowCrab.this.isHiding() || SnowCrab.this.getAttackState() == SnowCrabJumpingPhase.ID || SnowCrab.this.getAttackState() == SnowCrabLandPhase.ID) {
-				float yRot = SnowCrab.this.getFixedYRot();
-				SnowCrab.this.yBodyRot = Mth.wrapDegrees(yRot - 90f);
-				SnowCrab.this.yHeadRot = Mth.wrapDegrees(yRot - 90f);
+			AttributeInstance attributeInstance = getAttribute(Attributes.FOLLOW_RANGE);
+			if (attributeInstance != null) {
+				if (isHiding()) {
+					attributeInstance.removeModifier(FOLLOW_RANGE_BONUS.id());
+				} else {
+					attributeInstance.addOrReplacePermanentModifier(FOLLOW_RANGE_BONUS);
+				}
+			}
+			if (isHiding()) {
+				heal(0.05f);
+			}
+			if (this.isHiding() || this.getAttackState() == SnowCrabJumpingPhase.ID || this.getAttackState() == SnowCrabLandPhase.ID) {
+				float yRot = this.getFixedYRot();
+				this.yBodyRot = Mth.wrapDegrees(yRot - 90f);
+				this.yHeadRot = Mth.wrapDegrees(yRot - 90f);
+				this.setYRot(Mth.wrapDegrees(yRot - 90f));
 			}
 		}
 	}
@@ -139,8 +166,8 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 		return this.entityData.get(HIDING);
 	}
 
-	public void setHiding(boolean mossflora) {
-		this.entityData.set(HIDING, mossflora);
+	public void setHiding(boolean hiding) {
+		this.entityData.set(HIDING, hiding);
 	}
 
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
@@ -157,8 +184,8 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	@Override
 	public void setDeltaMovement(Vec3 vec3) {
-		if (this.isHiding() || getAttackState() == SnowCrabMeleePhase.ID) {
-			super.setDeltaMovement(new Vec3(0, vec3.y, 0));
+		if (this.isHiding() || getAttackState() == SnowCrabMeleePhase.ID || getAttackState() == SnowCrabHidePhase.ID) {
+			super.setDeltaMovement(new Vec3(0, Math.min(vec3.y, 0), 0));
 		} else {
 			super.setDeltaMovement(vec3);
 		}
@@ -173,10 +200,8 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 		controllers.add(new AnimationController<>(this, "Land", state -> PlayState.STOP)
 			.triggerableAnim("Land", LAND).transitionLength(5));
 		controllers.add(new AnimationController<>(this, "Jumping", state -> getAttackState() == SnowCrabJumpingPhase.ID ? state.setAndContinue(JUMPING) : PlayState.STOP));
-		controllers.add(new AnimationController<>(this, "Idle", 10, state -> {
-			return state.setAndContinue(isHiding() ? IDLE_HIDING : DefaultAnimations.IDLE);
-		}));
-		controllers.add(new AnimationController<>(this, "Walk", state -> state.isMoving() && getAttackState() != SnowCrabMeleePhase.ID ? state.setAndContinue(DefaultAnimations.WALK) : PlayState.STOP));
+		controllers.add(new AnimationController<>(this, "Status", state -> state.setAndContinue(isHiding() ? (getAttackState() == SnowCrabWakePhase.ID ? WAKE : IDLE_HIDING) : (getAttackState() == SnowCrabHidePhase.ID ? HIDE : DefaultAnimations.IDLE))));
+		controllers.add(new AnimationController<>(this, "Walk", state -> state.isMoving() && getAttackState() != SnowCrabMeleePhase.ID && getAttackState() != SnowCrabHidePhase.ID ? state.setAndContinue(DefaultAnimations.WALK) : PlayState.STOP));
 	}
 
 	@Override
@@ -194,7 +219,23 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 		return super.isAlliedTo(entity) || entity instanceof SnowCrab;
 	}
 
-	private class SnowCrabBodyRotationControl extends SmoothRotationControl {
+	@Override
+	protected SoundEvent getHurtSound(DamageSource damageSource) {
+		return EWSoundEvents.SNOW_CRAB_HURT.get();
+	}
+
+	@Override
+	protected SoundEvent getDeathSound() {
+		return EWSoundEvents.SNOW_CRAB_DEATH.get();
+	}
+
+	@Override
+	protected void playStepSound(BlockPos pos, BlockState state) {
+		super.playStepSound(pos, state);
+		this.playSound(EWSoundEvents.SNOW_CRAB_STEP.get(), 0.2f, 1);
+	}
+
+	private class SnowCrabBodyRotationControl extends BodyRotationControl {
 		public SnowCrabBodyRotationControl() {
 			super(SnowCrab.this);
 		}
@@ -205,6 +246,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 				float yRot = SnowCrab.this.getFixedYRot();
 				SnowCrab.this.yBodyRot = Mth.wrapDegrees(yRot - 90f);
 				SnowCrab.this.yHeadRot = Mth.wrapDegrees(yRot - 90f);
+				SnowCrab.this.setYRot(Mth.wrapDegrees(yRot - 90f));
 			} else {
 				super.clientTick();
 			}

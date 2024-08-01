@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "chance": 0.02,
+              "condition": "minecraft:random_chance"
+            },
+            {
+              "condition": "minecraft:location_check",
+              "predicate": {
+                "biomes": "bcs_expedition_world:frozen_caves"
+              }
+            }
+          ],
+          "functions": [
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "enchantment": "minecraft:looting",
+              "function": "minecraft:enchanted_count_increase"
+            }
+          ],
+          "name": "bcs_expedition_world:frigid_beak"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "bcs_expedition_world:entities/stray"
+}

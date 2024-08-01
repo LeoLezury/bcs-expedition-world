@@ -45,6 +45,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 		add(EWItems.MIMIPOT_SPAWN_EGG.get(), "Mimipot Spawn Egg");
 		add(EWItems.CHILLED_SPAWN_EGG.get(), "Chilled Spawn Egg");
 		add(EWItems.ICE_CREEPER_SPAWN_EGG.get(), "Ice Creeper Spawn Egg");
+		add(EWItems.SNOW_CRAB_SPAWN_EGG.get(), "Snow Crab Spawn Egg");
 
 		add(EWItems.SCULK_MINT.get(), "Sculk Mint");
 		add(EWItems.TRAPPED_SOUL.get(), "Trapped Soul");
@@ -107,6 +108,7 @@ public class EWEnglishLangProvider extends LanguageProvider {
 		add(EWEntities.MIMIPOT.get(), "Mimipot");
 		add(EWEntities.CHILLED.get(), "Chilled");
 		add(EWEntities.ICE_CREEPER.get(), "Ice Creeper");
+		add(EWEntities.SNOW_CRAB.get(), "Snow Crab");
 
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof", "Coldproof armor rustles");
 		add("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier", "Glacier armor clings");

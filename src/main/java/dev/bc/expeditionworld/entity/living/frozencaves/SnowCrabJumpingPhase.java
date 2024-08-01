@@ -38,7 +38,7 @@ public class SnowCrabJumpingPhase extends AttackPhase<SnowCrab> {
 
 	@Override
 	public boolean canContinue(SnowCrab entity) {
-		return !entity.onGround() && !entity.isInFluidType();
+		return entity.getAttackTicks() < 5 || (!entity.onGround() && !entity.isInFluidType());
 	}
 
 	@Override

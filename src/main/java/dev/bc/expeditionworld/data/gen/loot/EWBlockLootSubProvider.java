@@ -6,6 +6,7 @@ import dev.bc.expeditionworld.block.MossfloraBlock;
 import dev.bc.expeditionworld.registry.EWBlocks;
 import dev.bc.expeditionworld.registry.EWItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
+import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -40,7 +41,7 @@ public class EWBlockLootSubProvider extends BlockLootSubProvider {
 
 	@Override
 	protected void generate() {
-		HolderLookup<Enchantment> enchantments = registries.lookupOrThrow(Registries.ENCHANTMENT);
+		HolderGetter<Enchantment> enchantments = registries.lookupOrThrow(Registries.ENCHANTMENT);
 
 		add(EWBlocks.FETTERED_CHEST.get(), (block) -> LootTable.lootTable()
 			.withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F))

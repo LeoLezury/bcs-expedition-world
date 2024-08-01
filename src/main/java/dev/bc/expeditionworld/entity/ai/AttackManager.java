@@ -16,7 +16,7 @@ public class AttackManager<T extends LivingEntity & MultiPhaseAttacker> {
 	private final IntArrayList priorities = new IntArrayList();
 	private final Int2IntArrayMap cooldowns = new Int2IntArrayMap();
 
-	public Int2IntArrayMap getCoolDowns() {
+	public Int2IntArrayMap getCooldowns() {
 		return cooldowns;
 	}
 
@@ -39,7 +39,7 @@ public class AttackManager<T extends LivingEntity & MultiPhaseAttacker> {
 		if (entity.getAttackState() == 0) {
 			selectPhase().ifPresent(p -> {
 				p.start(entity);
-				cooldowns.put(p.getId(), p.getCoolDown());
+				cooldowns.put(p.getId(), p.getCooldown());
 			});
 		} else {
 			getActivePhase().ifPresent(p -> {

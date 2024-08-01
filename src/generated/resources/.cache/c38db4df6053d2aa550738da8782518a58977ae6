@@ -1,4 +1,5 @@
-// 1.21	2024-07-31T14:34:53.1811593	Global Loot Modifiers : bcs_expedition_world
+// 1.21	2024-08-01T13:18:53.8345154	Global Loot Modifiers : bcs_expedition_world
 01a3148dd27585d72e2245e8451882f9729e5bfe data/bcs_expedition_world/loot_modifiers/chest_ancient_city.json
+db9fedb03791fe49d5c0cef7b834cc4807e5a4e4 data/bcs_expedition_world/loot_modifiers/entity_stray.json
 9fa46557318ac500d3df1ceee0532a7e2179d611 data/bcs_expedition_world/loot_modifiers/entity_warden.json
-da2770d5096111e6d84922eca895015cebe9e9cd data/neoforge/loot_modifiers/global_loot_modifiers.json
+76b81735bc856575af882441f6ca949b7871b615 data/neoforge/loot_modifiers/global_loot_modifiers.json

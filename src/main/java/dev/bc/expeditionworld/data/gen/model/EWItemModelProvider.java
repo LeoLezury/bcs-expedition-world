@@ -24,6 +24,7 @@ public class EWItemModelProvider extends ItemModelProvider {
 		spawnEgg(EWItems.MIMIPOT_SPAWN_EGG.get());
 		spawnEgg(EWItems.CHILLED_SPAWN_EGG.get());
 		spawnEgg(EWItems.ICE_CREEPER_SPAWN_EGG.get());
+		spawnEgg(EWItems.SNOW_CRAB_SPAWN_EGG.get());
 
 		basicItem(EWItems.SCULK_MINT.get());
 

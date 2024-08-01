@@ -1,7 +1,8 @@
 {
   "entries": [
     "bcs_expedition_world:chest_ancient_city",
-    "bcs_expedition_world:entity_warden"
+    "bcs_expedition_world:entity_warden",
+    "bcs_expedition_world:entity_stray"
   ],
   "replace": false
 }

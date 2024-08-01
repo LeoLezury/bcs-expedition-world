@@ -21,12 +21,12 @@ public abstract class NoiseBasedChunkGeneratorMixin {
 	@Final
 	private Holder<NoiseGeneratorSettings> settings;
 	@Unique
-	private boolean modifiedRules = false;
+	private boolean expeditionWorld$modifiedRules = false;
 
 	@Inject(method = "buildSurface(Lnet/minecraft/world/level/chunk/ChunkAccess;Lnet/minecraft/world/level/levelgen/WorldGenerationContext;Lnet/minecraft/world/level/levelgen/RandomState;Lnet/minecraft/world/level/StructureManager;Lnet/minecraft/world/level/biome/BiomeManager;Lnet/minecraft/core/Registry;Lnet/minecraft/world/level/levelgen/blending/Blender;)V", at = @At("HEAD"))
 	private void expeditionWorld$buildSurface(ChunkAccess chunk, WorldGenerationContext context, RandomState random, StructureManager structureManager, BiomeManager biomeManager, Registry<Biome> biomes, Blender blender, CallbackInfo ci) {
-		if (!modifiedRules && settings.isBound()) {
-			modifiedRules = true;
+		if (!expeditionWorld$modifiedRules && settings.isBound()) {
+			expeditionWorld$modifiedRules = true;
 			SurfaceRules.RuleSource original = settings.value().surfaceRule();
 			SurfaceRules.RuleSource rules = SurfaceRules.sequence(EWExtendedBiomes.getSurfaceRules(), original);
 			settings = Holder.direct(new NoiseGeneratorSettings(

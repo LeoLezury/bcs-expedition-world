@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class SnowCrabJumpPhase extends AttackPhase<SnowCrab> {
 	public static final int ID = 2;
-	private static final ObjectArrayList<Integer> ALLOWED_ANGLES = new ObjectArrayList<>(Lists.newArrayList(40, 55, 60, 75, 80));
+	private static final ObjectArrayList<Integer> ALLOWED_ANGLES = new ObjectArrayList<>(Lists.newArrayList(45, 50, 55, 60, 65));
 
 	public SnowCrabJumpPhase() {
 		super(ID, 1, 13, 90, SnowCrabJumpingPhase.ID);
@@ -45,7 +45,7 @@ public class SnowCrabJumpPhase extends AttackPhase<SnowCrab> {
 
 	private static Optional<Vec3> calculateOptimalJumpVector(SnowCrab entity, RandomSource random, Vec3 target) {
 		for (int i : Util.shuffledCopy(ALLOWED_ANGLES, random)) {
-			Optional<Vec3> optional = LongJumpUtil.calculateJumpVectorForAngle(entity, target, 1.5f, i, false);
+			Optional<Vec3> optional = LongJumpUtil.calculateJumpVectorForAngle(entity, target, 3f, i, false);
 			if (optional.isPresent()) {
 				return optional;
 			}

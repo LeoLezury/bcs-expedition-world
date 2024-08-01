@@ -1,0 +1,10 @@
+{
+  "type": "bcs_expedition_world:append",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:entities/stray"
+    }
+  ],
+  "loot": "bcs_expedition_world:entities/stray"
+}

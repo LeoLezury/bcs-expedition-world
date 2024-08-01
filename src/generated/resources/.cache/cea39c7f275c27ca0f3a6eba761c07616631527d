@@ -1,4 +1,4 @@
-// 1.21	2024-07-31T14:34:53.1811593	Item Models: bcs_expedition_world
+// 1.21	2024-08-01T12:54:41.9534246	Item Models: bcs_expedition_world
 825b3a9ca4e8b31957302fe179b4638acba3092c assets/bcs_expedition_world/models/item/brick_mimichest_knife.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/bcs_expedition_world/models/item/chilled_spawn_egg.json
 661894d381d5075a63e1ad8ebcfd1c8af58f14e4 assets/bcs_expedition_world/models/item/coldproof_boots.json
@@ -49,6 +49,7 @@ d1e7399263cacf0d3a324488f6285bf7326503ca assets/bcs_expedition_world/models/item
 376a92ee6f8fbc73ddd4c691445b36642032a16d assets/bcs_expedition_world/models/item/pointed_ice.json
 ff02107b0b4eeec6e047b11470056494f53db577 assets/bcs_expedition_world/models/item/sculk_mint.json
 63d6434f0be95096cfda1bb82b967032c28acd7f assets/bcs_expedition_world/models/item/sharp_icicle.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/bcs_expedition_world/models/item/snow_crab_spawn_egg.json
 c51c393bcdc7f39b9b714d008835d17da8e17f5b assets/bcs_expedition_world/models/item/stone_mimichest_knife.json
 5c7816836dd983e6ea2677f106523d774c6d3773 assets/bcs_expedition_world/models/item/totem_of_ice.json
 74d9d3e527cde21df534bd0fa281abbb3b9efca8 assets/bcs_expedition_world/models/item/totem_of_ice_broken.json

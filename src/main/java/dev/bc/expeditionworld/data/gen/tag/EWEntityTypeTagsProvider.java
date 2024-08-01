@@ -23,6 +23,8 @@ public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 		tag(EWEntityTags.CAN_SPAWN_IN_FROZEN_CAVES).add(
 			EWEntities.CHILLED.get(),
 			EWEntities.ICE_CREEPER.get(),
+			EWEntities.SNOW_CRAB.get(),
+			EntityType.STRAY,
 			EntityType.BAT
 		);
 		tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
@@ -31,12 +33,18 @@ public class EWEntityTypeTagsProvider extends EntityTypeTagsProvider {
 		);
 		tag(EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES).add(
 			EWEntities.CHILLED.get(),
-			EWEntities.ICE_CREEPER.get()
+			EWEntities.ICE_CREEPER.get(),
+			EWEntities.SNOW_CRAB.get()
 		);
 		tag(EntityTypeTags.UNDEAD).add(
 			EWEntities.MIMICHEST.get(),
-			EWEntities.MIMIPOT.get(),
+			EWEntities.MIMIPOT.get()
+		);
+		tag(EntityTypeTags.ZOMBIES).add(
 			EWEntities.CHILLED.get()
+		);
+		tag(EntityTypeTags.ARTHROPOD).add(
+			EWEntities.SNOW_CRAB.get()
 		);
 	}
 }

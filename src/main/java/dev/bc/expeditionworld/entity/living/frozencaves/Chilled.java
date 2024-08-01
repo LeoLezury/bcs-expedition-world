@@ -4,6 +4,7 @@ import dev.bc.expeditionworld.registry.EWMobEffects;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -31,13 +32,13 @@ public class Chilled extends Zombie {
 	@Override
 	public void aiStep() {
 		super.aiStep();
-		if ((level().isDay() && level().canSeeSky(BlockPos.containing(getX(), getEyeY(), getZ()))) || isInWaterRainOrBubble()) {
+		if (!level().isClientSide && ((level().isDay() && level().canSeeSky(BlockPos.containing(getX(), getEyeY(), getZ()))) || isInWaterRainOrBubble())) {
 			unfreezeTime++;
 			if (unfreezeTime > 300) {
 				convertToZombieType(EntityType.ZOMBIE);
 			}
-			if (level().isClientSide) {
-				level().addParticle(ParticleTypes.FALLING_WATER, getRandomX(0.7), getRandomY(), getRandomZ(0.7), (getRandom().nextDouble() - 0.5) * 0.8, -0.05, (getRandom().nextDouble() - 0.5) * 0.8);
+			if (level() instanceof ServerLevel serverLevel) {
+				serverLevel.sendParticles(ParticleTypes.FALLING_WATER, getRandomX(0.7), getRandomY(), getRandomZ(0.7), 0, (getRandom().nextDouble() - 0.5) * 0.8, -0.05, (getRandom().nextDouble() - 0.5) * 0.8, 0.4);
 			}
 		} else {
 			unfreezeTime = 0;

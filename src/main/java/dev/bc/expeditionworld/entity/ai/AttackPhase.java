@@ -33,7 +33,7 @@ public abstract class AttackPhase<T extends LivingEntity & MultiPhaseAttacker> {
 		return duration;
 	}
 
-	public int getCoolDown() {
+	public int getCooldown() {
 		return cooldown;
 	}
 

@@ -25,5 +25,8 @@ public class EWSoundProvider extends SoundDefinitionsProvider {
 		add(EWSoundEvents.ARMOR_EQUIP_COLDPROOF, definition().with(sound(mcLoc("item/armor/equip_leather1")), sound(mcLoc("item/armor/equip_leather2")), sound(mcLoc("item/armor/equip_leather3")), sound(mcLoc("item/armor/equip_leather4")), sound(mcLoc("item/armor/equip_leather5")), sound(mcLoc("item/armor/equip_leather6"))).subtitle("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_coldproof"));
 		add(EWSoundEvents.ARMOR_EQUIP_GLACIER, definition().with(sound(mcLoc("item/armor/equip_diamond1")), sound(mcLoc("item/armor/equip_diamond2")), sound(mcLoc("item/armor/equip_diamond3")), sound(mcLoc("item/armor/equip_diamond4")), sound(mcLoc("item/armor/equip_diamond5")), sound(mcLoc("item/armor/equip_diamond6"))).subtitle("subtitles.item.armor." + ExpeditionWorld.ID + ".equip_glacier"));
 		add(EWSoundEvents.FROSTBITE_TNT_EXPLODE, definition().with(sound(loc("entity/frostbite_tnt/explode"))).subtitle("subtitles.entity." + ExpeditionWorld.ID + ".frostbite_tnt.explode"));
+		add(EWSoundEvents.SNOW_CRAB_HURT, definition().with(sound(loc("entity/snow_crab/hurt"))).subtitle("subtitles.entity." + ExpeditionWorld.ID + ".snow_crab.hurt"));
+		add(EWSoundEvents.SNOW_CRAB_DEATH, definition().with(sound(loc("entity/snow_crab/death"))).subtitle("subtitles.entity." + ExpeditionWorld.ID + ".snow_crab.death"));
+		add(EWSoundEvents.SNOW_CRAB_STEP, definition().with(sound(loc("entity/snow_crab/step"))).subtitle("subtitles.block.generic.footsteps"));
 	}
 }

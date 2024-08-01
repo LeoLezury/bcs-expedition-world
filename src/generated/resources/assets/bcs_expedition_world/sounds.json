@@ -5,6 +5,24 @@
     ],
     "subtitle": "subtitles.entity.bcs_expedition_world.frostbite_tnt.explode"
   },
+  "entity.snow_crab.death": {
+    "sounds": [
+      "bcs_expedition_world:entity/snow_crab/death"
+    ],
+    "subtitle": "subtitles.entity.bcs_expedition_world.snow_crab.death"
+  },
+  "entity.snow_crab.hurt": {
+    "sounds": [
+      "bcs_expedition_world:entity/snow_crab/hurt"
+    ],
+    "subtitle": "subtitles.entity.bcs_expedition_world.snow_crab.hurt"
+  },
+  "entity.snow_crab.step": {
+    "sounds": [
+      "bcs_expedition_world:entity/snow_crab/step"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  },
   "item.armor.equip_coldproof": {
     "sounds": [
       "item/armor/equip_leather1",
