@@ -59,6 +59,7 @@ public class MimichestKnife extends AbstractArrow {
 		this.entityData.set(BRICK, brick);
 	}
 
+	@Override
 	public void tick() {
 		if (this.inGroundTime > 4) {
 			this.dealtDamage = true;
@@ -152,6 +153,7 @@ public class MimichestKnife extends AbstractArrow {
 		this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
 	}
 
+	@Override
 	protected boolean tryPickup(Player player) {
 		return super.tryPickup(player) || this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
 	}
@@ -161,34 +163,40 @@ public class MimichestKnife extends AbstractArrow {
 		return isBrick() ? EWItems.BRICK_MIMICHEST_KNIFE.get().getDefaultInstance() : EWItems.STONE_MIMICHEST_KNIFE.get().getDefaultInstance();
 	}
 
+	@Override
 	public void playerTouch(Player player) {
 		if (this.ownedBy(player) || this.getOwner() == null) {
 			super.playerTouch(player);
 		}
 	}
 
+	@Override
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
 		super.readAdditionalSaveData(compoundTag);
 		this.dealtDamage = compoundTag.getBoolean("DealtDamage");
 		this.setBrick(compoundTag.getBoolean("Brick"));
 	}
 
+	@Override
 	public void addAdditionalSaveData(CompoundTag compoundTag) {
 		super.addAdditionalSaveData(compoundTag);
 		compoundTag.putBoolean("DealtDamage", this.dealtDamage);
 		compoundTag.putBoolean("Brick", this.isBrick());
 	}
 
+	@Override
 	public void tickDespawn() {
 		if (this.pickup != Pickup.ALLOWED) {
 			super.tickDespawn();
 		}
 	}
 
+	@Override
 	protected float getWaterInertia() {
 		return 0.99F;
 	}
 
+	@Override
 	public boolean shouldRender(double d, double e, double f) {
 		return true;
 	}

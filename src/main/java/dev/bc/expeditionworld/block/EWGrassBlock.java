@@ -42,10 +42,12 @@ public class EWGrassBlock extends EWSpreadingSnowyDirtBlock implements Bonemeala
 		return levelReader.getBlockState(blockPos.above()).isAir();
 	}
 
+	@Override
 	public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos pos, BlockState state) {
 		return true;
 	}
 
+	@Override
 	public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos pos, BlockState state) {
 		BlockPos blockpos = pos.above();
 		BlockState blockstate = Blocks.SHORT_GRASS.defaultBlockState();

@@ -28,6 +28,7 @@ public class MoaFeatherArrow extends AbstractArrow {
 		super(EWEntities.MOA_FEATHER_ARROW.get(), owner, level, pickupItemStack, firedFromWeapon);
 	}
 
+	@Override
 	public void tick() {
 		super.tick();
 		if (this.level().isClientSide && !this.inGround) {
@@ -40,12 +41,14 @@ public class MoaFeatherArrow extends AbstractArrow {
 		return EWItems.MOA_FEATHER_ARROW.get().getDefaultInstance();
 	}
 
+	@Override
 	protected void doPostHurtEffects(LivingEntity living) {
 		super.doPostHurtEffects(living);
 		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN, this.duration, 1);
 		living.addEffect(instance, this.getEffectSource());
 	}
 
+	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
 		if (tag.contains("Duration")) {
@@ -53,6 +56,7 @@ public class MoaFeatherArrow extends AbstractArrow {
 		}
 	}
 
+	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putInt("Duration", this.duration);

@@ -45,6 +45,7 @@ public class MossfloraBlock extends BushBlock {
 		return super.getStateForPlacement(context);
 	}
 
+	@Override
 	public boolean canBeReplaced(BlockState state, BlockPlaceContext context) {
 		return !context.isSecondaryUseActive() && context.getItemInHand().is(this.asItem()) && state.getValue(AGE) < 3 || super.canBeReplaced(state, context);
 	}

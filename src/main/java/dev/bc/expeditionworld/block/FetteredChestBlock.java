@@ -49,6 +49,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false).setValue(HALF, DoubleBlockHalf.LOWER));
 	}
 
+	@Override
 	public BlockState updateShape(BlockState blockState, Direction direction, BlockState blockState2, LevelAccessor levelAccessor, BlockPos blockPos, BlockPos blockPos2) {
 		if (blockState.getValue(WATERLOGGED)) {
 			levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
@@ -72,11 +73,13 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		return result;
 	}
 
+	@Override
 	public void setPlacedBy(Level level, BlockPos blockPos, BlockState blockState, LivingEntity livingEntity, ItemStack itemStack) {
 		BlockPos blockPos2 = blockPos.above();
 		level.setBlock(blockPos2, copyWaterloggedFrom(level, blockPos2, this.defaultBlockState().setValue(FACING, blockState.getValue(FACING)).setValue(HALF, DoubleBlockHalf.UPPER)), 3);
 	}
 
+	@Override
 	public boolean canSurvive(BlockState blockState, LevelReader levelReader, BlockPos blockPos) {
 		if (blockState.getValue(HALF) != DoubleBlockHalf.UPPER) {
 			return super.canSurvive(blockState, levelReader, blockPos);
@@ -90,6 +93,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		return blockState.hasProperty(BlockStateProperties.WATERLOGGED) ? blockState.setValue(BlockStateProperties.WATERLOGGED, levelReader.isWaterAt(blockPos)) : blockState;
 	}
 
+	@Override
 	public BlockState playerWillDestroy(Level level, BlockPos blockPos, BlockState blockState, Player player) {
 		if (!level.isClientSide) {
 			if (player.isCreative()) {
@@ -102,6 +106,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		return super.playerWillDestroy(level, blockPos, blockState, player);
 	}
 
+	@Override
 	public void playerDestroy(Level level, Player player, BlockPos blockPos, BlockState blockState, @Nullable BlockEntity blockEntity, ItemStack itemStack) {
 		super.playerDestroy(level, player, blockPos, Blocks.AIR.defaultBlockState(), blockEntity, itemStack);
 	}
@@ -120,6 +125,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 
 	}
 
+	@Override
 	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
 		builder.add(HALF, FACING, WATERLOGGED);
 	}
@@ -129,6 +135,7 @@ public class FetteredChestBlock extends HorizontalDirectionalBlock implements Si
 		return blockState.getValue(HALF) == DoubleBlockHalf.LOWER ? BOUNDING_BOX_LOWER : (chest ? BOUNDING_BOX_UPPER_CHEST : BOUNDING_BOX_UPPER_POT);
 	}
 
+	@Override
 	public FluidState getFluidState(BlockState state) {
 		return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
 	}

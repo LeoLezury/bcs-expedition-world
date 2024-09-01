@@ -32,6 +32,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 		super(EWEntities.FROST_CHARGE.get(), x, y, z, level);
 	}
 
+	@Override
 	protected Item getDefaultItem() {
 		return EWItems.FROST_CHARGE.get();
 	}
@@ -41,6 +42,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 		return stack.isEmpty() ? new ItemParticleOption(ParticleTypes.ITEM, getDefaultItem().getDefaultInstance()) : new ItemParticleOption(ParticleTypes.ITEM, stack);
 	}
 
+	@Override
 	public void handleEntityEvent(byte id) {
 		if (id == 3) {
 			ParticleOptions particle = this.getParticle();
@@ -50,6 +52,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 		}
 	}
 
+	@Override
 	protected void onHitEntity(EntityHitResult hitResult) {
 		super.onHitEntity(hitResult);
 		Entity entity = hitResult.getEntity();
@@ -59,6 +62,7 @@ public class FrostCharge extends ThrowableItemProjectile {
 		}
 	}
 
+	@Override
 	protected void onHit(HitResult hitResult) {
 		super.onHit(hitResult);
 		if (!this.level().isClientSide) {

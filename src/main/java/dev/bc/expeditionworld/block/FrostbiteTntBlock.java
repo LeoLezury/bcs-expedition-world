@@ -22,6 +22,7 @@ public class FrostbiteTntBlock extends TntBlock {
 		super(properties);
 	}
 
+	@Override
 	public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
 		if (!level.isClientSide) {
 			FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
@@ -31,6 +32,7 @@ public class FrostbiteTntBlock extends TntBlock {
 		}
 	}
 
+	@Override
 	public void onCaughtFire(BlockState state, Level level, BlockPos pos, @Nullable Direction face, @Nullable LivingEntity igniter) {
 		if (!level.isClientSide) {
 			FrostbiteTnt frostbiteTnt = new FrostbiteTnt(level, (double) pos.getX() + 0.5, pos.getY(), (double) pos.getZ() + 0.5, igniter);

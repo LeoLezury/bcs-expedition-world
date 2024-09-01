@@ -27,10 +27,12 @@ public class SnowflakeParticle extends TextureSheetParticle {
 		this.setSpriteFromAge(spriteSet);
 	}
 
+	@Override
 	public ParticleRenderType getRenderType() {
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
 
+	@Override
 	public void tick() {
 		super.tick();
 		this.setSpriteFromAge(this.sprites);
@@ -49,6 +51,7 @@ public class SnowflakeParticle extends TextureSheetParticle {
 			this.sprites = spriteSet;
 		}
 
+		@Override
 		public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xd, double yd, double zd) {
 			SnowflakeParticle snowflakeparticle = new SnowflakeParticle(level, x, y, z, xd, yd, zd, this.sprites);
 			snowflakeparticle.setColor(0.923F, 0.964F, 0.999F);

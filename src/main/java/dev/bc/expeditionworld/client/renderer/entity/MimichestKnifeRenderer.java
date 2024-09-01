@@ -27,6 +27,7 @@ public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
 		this.model = new MimichestKnifeModel<>(context.bakeLayer(MimichestKnifeModel.LAYER_LOCATION));
 	}
 
+	@Override
 	public void render(MimichestKnife knife, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
 		poseStack.pushPose();
 		float yRot = -Mth.rotLerp(g, knife.yRotO, knife.getYRot());
@@ -47,6 +48,7 @@ public class MimichestKnifeRenderer extends EntityRenderer<MimichestKnife> {
 		super.render(knife, f, g, poseStack, multiBufferSource, i);
 	}
 
+	@Override
 	public ResourceLocation getTextureLocation(MimichestKnife knife) {
 		return knife.isBrick() ? BRICK_LOCATION : STONE_LOCATION;
 	}

@@ -24,6 +24,7 @@ public class ChilledRenderer extends AbstractZombieRenderer<Chilled, ZombieModel
 		super(context, new ChilledModel(context.bakeLayer(MAIN_LAYER)), new ZombieModel<>(context.bakeLayer(INNER_ARMOR_LAYER)), new ZombieModel<>(context.bakeLayer(OUTER_ARMOR_LAYER)));
 	}
 
+	@Override
 	public ResourceLocation getTextureLocation(Zombie zombie) {
 		return CHILLED_LOCATION;
 	}

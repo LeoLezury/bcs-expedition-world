@@ -32,12 +32,14 @@ public class FrozenArrow extends AbstractArrow {
 		return EWItems.FROZEN_ARROW.get().getDefaultInstance();
 	}
 
+	@Override
 	protected void doPostHurtEffects(LivingEntity living) {
 		super.doPostHurtEffects(living);
 		MobEffectInstance instance = new MobEffectInstance(EWMobEffects.FROZEN, this.duration, 0);
 		living.addEffect(instance, this.getEffectSource());
 	}
 
+	@Override
 	public void readAdditionalSaveData(CompoundTag tag) {
 		super.readAdditionalSaveData(tag);
 		if (tag.contains("Duration")) {
@@ -46,6 +48,7 @@ public class FrozenArrow extends AbstractArrow {
 
 	}
 
+	@Override
 	public void addAdditionalSaveData(CompoundTag tag) {
 		super.addAdditionalSaveData(tag);
 		tag.putInt("Duration", this.duration);

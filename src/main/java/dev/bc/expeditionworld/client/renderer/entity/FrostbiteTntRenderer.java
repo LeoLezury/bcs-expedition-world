@@ -25,6 +25,7 @@ public class FrostbiteTntRenderer extends EntityRenderer<FrostbiteTnt> {
 		this.blockRenderer = context.getBlockRenderDispatcher();
 	}
 
+	@Override
 	public void render(FrostbiteTnt tnt, float yaw, float partialTicks, PoseStack poseStack, MultiBufferSource bufferSource, int light) {
 		poseStack.pushPose();
 		poseStack.translate(0.0F, 0.5F, 0.0F);
@@ -46,6 +47,7 @@ public class FrostbiteTntRenderer extends EntityRenderer<FrostbiteTnt> {
 		super.render(tnt, yaw, partialTicks, poseStack, bufferSource, light);
 	}
 
+	@Override
 	public ResourceLocation getTextureLocation(FrostbiteTnt tnt) {
 		return TextureAtlas.LOCATION_BLOCKS;
 	}

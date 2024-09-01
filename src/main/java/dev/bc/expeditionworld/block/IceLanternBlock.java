@@ -21,6 +21,7 @@ public class IceLanternBlock extends Block {
 		return CODEC;
 	}
 
+	@Override
 	public void randomTick(BlockState state, ServerLevel serverLevel, BlockPos pos, RandomSource randomSource) {
 		for (Direction direction : Direction.values()) {
 			BlockPos relative = pos.relative(direction);
