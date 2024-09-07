@@ -13,7 +13,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 
 @OnlyIn(Dist.CLIENT)
-@EventBusSubscriber(modid = ExpeditionWorld.ID)
+@EventBusSubscriber(modid = ExpeditionWorld.ID, value = Dist.CLIENT)
 public class ClientEvents {
 	public static float oldAmbientLightAddition = 0;
 	public static float ambientLightAddition = 0;

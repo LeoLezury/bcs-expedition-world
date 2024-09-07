@@ -46,7 +46,7 @@ import software.bernie.geckolib.model.DefaultedEntityGeoModel;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
 @OnlyIn(Dist.CLIENT)
-@EventBusSubscriber(modid = ExpeditionWorld.ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = ExpeditionWorld.ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetupEvents {
 	@SubscribeEvent
 	private static void onClientSetup(FMLClientSetupEvent event) {
