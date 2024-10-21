@@ -20,7 +20,6 @@
     "StrayMixin"
   ],
   "client": [
-    "client.HumanoidArmorLayerMixin",
     "client.LightTextureMixin"
   ],
   "injectors": {

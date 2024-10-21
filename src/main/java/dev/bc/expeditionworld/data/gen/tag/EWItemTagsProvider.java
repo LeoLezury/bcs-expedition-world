@@ -79,5 +79,15 @@ public class EWItemTagsProvider extends ItemTagsProvider {
 		tag(ItemTags.BOW_ENCHANTABLE).add(
 			EWItems.GLACIER_BOW.get()
 		);
+		tag(ItemTags.TRIMMABLE_ARMOR).remove(
+			EWItems.COLDPROOF_HAT.get(),
+			EWItems.COLDPROOF_COAT.get(),
+			EWItems.COLDPROOF_LEGGINGS.get(),
+			EWItems.COLDPROOF_BOOTS.get(),
+			EWItems.GLACIER_HELMET.get(),
+			EWItems.GLACIER_CHESTPLATE.get(),
+			EWItems.GLACIER_LEGGINGS.get(),
+			EWItems.GLACIER_BOOTS.get()
+		);
 	}
 }
