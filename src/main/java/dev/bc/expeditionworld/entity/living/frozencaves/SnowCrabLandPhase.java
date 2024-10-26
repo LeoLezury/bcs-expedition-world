@@ -6,7 +6,7 @@ public class SnowCrabLandPhase extends AttackPhase<SnowCrab> {
 	public static final int ID = 4;
 
 	public SnowCrabLandPhase() {
-		super(ID, 1, 8, 0);
+		super(ID, 1, 20, 0);
 	}
 
 	@Override

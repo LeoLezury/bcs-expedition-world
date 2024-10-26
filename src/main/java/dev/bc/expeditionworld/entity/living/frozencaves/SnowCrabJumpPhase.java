@@ -1,6 +1,7 @@
 package dev.bc.expeditionworld.entity.living.frozencaves;
 
 import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import dev.bc.expeditionworld.entity.ai.AttackPhase;
 import dev.bc.expeditionworld.util.EWEntityUtil;
 import dev.bc.expeditionworld.util.EWMathUtil;
@@ -18,7 +19,7 @@ public class SnowCrabJumpPhase extends AttackPhase<SnowCrab> {
 	private static final ObjectArrayList<Integer> ALLOWED_ANGLES = new ObjectArrayList<>(Lists.newArrayList(45, 50, 55, 60, 65));
 
 	public SnowCrabJumpPhase() {
-		super(ID, 1, 13, 90, SnowCrabJumpingPhase.ID);
+		super(ID, 1, 19, 90, SnowCrabJumpingPhase.ID);
 	}
 
 	@Override
@@ -34,7 +35,7 @@ public class SnowCrabJumpPhase extends AttackPhase<SnowCrab> {
 	@Override
 	public void tick(SnowCrab entity) {
 		LivingEntity target = entity.getTarget();
-		if (entity.getAttackTicks() == 11 && target != null) {
+		if (entity.getAttackTicks() == 15 && target != null) {
 			calculateOptimalJumpVector(entity, entity.getRandom(), target.position()).ifPresent(vec3 -> {
 				entity.setDeltaMovement(vec3);
 				entity.setDiscardFriction(true);

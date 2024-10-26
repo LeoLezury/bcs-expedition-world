@@ -14,7 +14,9 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -45,7 +47,7 @@ import java.util.List;
 
 public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	public static final RawAnimation IDLE_HIDING = RawAnimation.begin().thenLoop("misc.idle_hiding");
-	public static final RawAnimation JUMPING = RawAnimation.begin().thenLoop("move.jumping");
+	public static final RawAnimation JUMPING = RawAnimation.begin().thenPlayAndHold("move.jumping");
 	public static final RawAnimation LAND = RawAnimation.begin().thenPlay("move.land");
 	public static final RawAnimation HIDE = RawAnimation.begin().thenPlay("misc.hide");
 	public static final RawAnimation WAKE = RawAnimation.begin().thenPlay("misc.wake");
@@ -135,6 +137,19 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	}
 
 	@Override
+	public EntityDimensions getDefaultDimensions(Pose pose) {
+		return isHiding() ? super.getDefaultDimensions(pose).scale(1, 0.4f) : super.getDefaultDimensions(pose);
+	}
+
+	@Override
+	public void onSyncedDataUpdated(EntityDataAccessor<?> key) {
+		super.onSyncedDataUpdated(key);
+		if (key == HIDING) {
+			refreshDimensions();
+		}
+	}
+
+	@Override
 	public int getAttackState() {
 		return this.entityData.get(ATTACK_STATE);
 	}
@@ -168,6 +183,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	public void setHiding(boolean hiding) {
 		this.entityData.set(HIDING, hiding);
+		refreshDimensions();
 	}
 
 	public void readAdditionalSaveData(CompoundTag compoundTag) {
@@ -184,7 +200,7 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 
 	@Override
 	public void setDeltaMovement(Vec3 vec3) {
-		if (this.isHiding() || getAttackState() == SnowCrabMeleePhase.ID || getAttackState() == SnowCrabHidePhase.ID) {
+		if (this.isHiding() || getAttackState() == SnowCrabMeleePhase.ID || getAttackState() == SnowCrabHidePhase.ID || (getAttackState() == SnowCrabJumpPhase.ID && getAttackTicks() < 15) || getAttackState() == SnowCrabLandPhase.ID) {
 			super.setDeltaMovement(new Vec3(0, Math.min(vec3.y, 0), 0));
 		} else {
 			super.setDeltaMovement(vec3);
@@ -194,14 +210,14 @@ public class SnowCrab extends Monster implements GeoEntity, MultiPhaseAttacker {
 	@Override
 	public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
 		controllers.add(new AnimationController<>(this, "MeleeAttack", state -> PlayState.STOP)
-			.triggerableAnim("MeleeAttack", DefaultAnimations.ATTACK_SLAM).transitionLength(5));
+			.triggerableAnim("MeleeAttack", DefaultAnimations.ATTACK_SLAM));
 		controllers.add(new AnimationController<>(this, "Jump", state -> PlayState.STOP)
 			.triggerableAnim("Jump", DefaultAnimations.JUMP).transitionLength(5));
 		controllers.add(new AnimationController<>(this, "Land", state -> PlayState.STOP)
-			.triggerableAnim("Land", LAND).transitionLength(5));
+			.triggerableAnim("Land", LAND));
 		controllers.add(new AnimationController<>(this, "Jumping", state -> getAttackState() == SnowCrabJumpingPhase.ID ? state.setAndContinue(JUMPING) : PlayState.STOP));
-		controllers.add(new AnimationController<>(this, "Status", state -> state.setAndContinue(isHiding() ? (getAttackState() == SnowCrabWakePhase.ID ? WAKE : IDLE_HIDING) : (getAttackState() == SnowCrabHidePhase.ID ? HIDE : DefaultAnimations.IDLE))));
-		controllers.add(new AnimationController<>(this, "Walk", state -> state.isMoving() && getAttackState() != SnowCrabMeleePhase.ID && getAttackState() != SnowCrabHidePhase.ID ? state.setAndContinue(DefaultAnimations.WALK) : PlayState.STOP));
+		controllers.add(new AnimationController<>(this, "Status", state -> (getAttackState() == 0 || getAttackState() == SnowCrabWakePhase.ID || getAttackState() == SnowCrabHidePhase.ID) ? state.setAndContinue(isHiding() ? (getAttackState() == SnowCrabWakePhase.ID ? WAKE : IDLE_HIDING) : (getAttackState() == SnowCrabHidePhase.ID ? HIDE : DefaultAnimations.IDLE)) : PlayState.STOP));
+		controllers.add(new AnimationController<>(this, "Walk", state -> state.isMoving() && getAttackState() == 0 ? state.setAndContinue(DefaultAnimations.WALK) : PlayState.STOP));
 	}
 
 	@Override
